@@ -27,6 +27,4 @@ const Wrapper = styled.main`
   width: 100%;
   background: linear-gradient(90deg, #D699A1 0%, #D296A1 100%);
   overflow: hidden;
-  
-  height: 10000px;
 `
