@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import TextAnimation from 'components/TextAnimation'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
 
@@ -31,9 +33,13 @@ const Hero = () => {
 
   return (
     <Wrapper data-scroll-section>
-      <Title1>Morgan</Title1>
-      <Title2>&</Title2>
-      <Title3>Brandon</Title3>
+      <Title1>
+        <TextAnimation height="12.5vw">Morgan</TextAnimation>
+      </Title1>
+      <Title2>
+        <TextAnimation height="25vw">&</TextAnimation>
+      </Title2>
+      <Title3><TextAnimation height="12.5vw">Brandon</TextAnimation></Title3>
 
       <Cloud1 ref={cloud1Ref} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
@@ -58,6 +64,7 @@ const Title1 = styled.h1`
   z-index: 1;
   color: ${colors.roseIvory};
 
+  width: 46.181vw;
   top: 10.417vw;
   left: 11.25vw;
 `
@@ -68,6 +75,7 @@ const Title2 = styled.h2`
   position: absolute;
   color: ${colors.roseIvory};
 
+  width: 31.944vw;
   top: 17.014vw;
   left: 17.639vw;
 `
@@ -78,6 +86,7 @@ const Title3 = styled.h2`
   z-index: 1;
   color: ${colors.roseIvory};
 
+  width: 52.847vw;
   top: 33.333vw;
   left: 32.014vw;
 `

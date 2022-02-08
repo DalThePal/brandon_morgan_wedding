@@ -9,7 +9,7 @@ import Wedlocked1PNG from 'images/wedlocked1.png'
 import Wedlocked2PNG from 'images/wedlocked2.png'
 import Wedlocked3PNG from 'images/wedlocked3.png'
 import Wedlocked4PNG from 'images/wedlocked4.png'
-// import Wedlocked5PNG from 'images/wedlocked5.png'
+import Wedlocked5PNG from 'images/wedlocked5.png'
 
 const Wedlocked = () => {
 
@@ -48,6 +48,7 @@ const Wedlocked = () => {
         <Image2 src={Wedlocked2PNG} alt="Brandon and Morgan"/>
         <Image3 src={Wedlocked3PNG} alt="Brandon and Morgan showing ring"/>
         <Image4 src={Wedlocked4PNG} alt="Morgan showing ring"/>
+        <Image5 src={Wedlocked5PNG} alt="Morgan showing off her ring"/>
 
         <Text>
           In May of 2021, Brandon surprised Morgan with a birthday trip 
@@ -147,6 +148,16 @@ const Image4 = styled.img`
   height: 24.861vw;
   top: 46.528vw;
   left: 83.819vw;
+`
+
+const Image5 = styled.img`
+  position: absolute;
+  mix-blend-mode: screen;
+
+  width: 18.75vw;
+  height: 24.972vw;
+  top: 27.014vw;
+  left: 105.278vw;
 `
 
 const Text = styled.p`
