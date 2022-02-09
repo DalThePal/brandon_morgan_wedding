@@ -17,7 +17,7 @@ const colors = {
   mauve300: '#C6A7B2',
   mauve200: '#D1B9C1',
   mauve100: '#DAC7CD',
-  mauve50: '#1D2D7',
+  mauve50: '#E1D2D7',
   opal800: '#414946',
   opal700: '#515B58',
   opal600: '#65726E',

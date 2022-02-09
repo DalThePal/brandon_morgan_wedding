@@ -5,15 +5,18 @@ import gsap from 'gsap'
 import colors from 'styles/colors'
 import text from 'styles/text'
 
+import Link from './Link'
+
 const Header = () => {
 
-  const wrapperRef  = useRef(null)
-  const line1Ref    = useRef(null)
-  const line2Ref    = useRef(null)
-  const circleRef   = useRef(null)
-  const pathRef     = useRef(null)
-  const textRef     = useRef(null)
-  const contentRef  = useRef(null)
+  const wrapperRef    = useRef(null)
+  const line1Ref      = useRef(null)
+  const line2Ref      = useRef(null)
+  const circleRef     = useRef(null)
+  const pathRef       = useRef(null)
+  const textRef       = useRef(null)
+  const closeTextRef  = useRef(null)
+  const contentRef    = useRef(null)
 
   const [open, setOpen] = useState(false)
   
@@ -64,7 +67,12 @@ const Header = () => {
 
       gsap.to(textRef.current, {
         duration,
-        color: colors.mauve800
+        opacity: 0
+      })
+
+      gsap.to(closeTextRef.current, {
+        duration,
+        opacity: 1
       })
 
     } else {
@@ -114,9 +122,13 @@ const Header = () => {
 
       gsap.to(textRef.current, {
         duration,
-        color: colors.roseIvory
+        opacity: 1
       })
 
+      gsap.to(closeTextRef.current, {
+        duration,
+        opacity: 0
+      })
     }
   }, [open])
 
@@ -165,6 +177,7 @@ const Header = () => {
         </Logo>
         <Toggle onClick={() => setOpen(!open)}>
           <ToggleText ref={textRef}>Menu</ToggleText>
+          <CloseText ref={closeTextRef}>Close</CloseText>
           <ToggleSvg>
             <Line ref={line1Ref} x1={"0%"} x2={'100%'} y1={'40%'} y2={'40%'}/>
             <Line ref={line2Ref} x1={"0%"} x2={'100%'} y1={'55%'} y2={'55%'}/>
@@ -172,7 +185,9 @@ const Header = () => {
         </Toggle>
       </Top>
       <Content ref={contentRef}>
-
+        <Link width={"40.833vw"}>Travel</Link>
+        <Link width={"52.569vw"}>Registry</Link>
+        <Link width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></Link>
       </Content>
     </Wrapper>
   )
@@ -207,6 +222,7 @@ const Logo = styled.svg`
 `
 
 const Toggle = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -224,6 +240,15 @@ const ToggleText = styled.p`
   margin-right: 0.694vw;
 `
 
+const CloseText = styled(ToggleText)`
+  position: absolute;
+  opacity: 0;
+  color: ${colors.mauve800};
+
+  left: 0;
+  top: 35%;
+`
+
 const ToggleSvg = styled.svg`
   width: 3.472vw;
   height: 3.472vw;
@@ -238,9 +263,20 @@ const Content = styled.div`
   background-color: ${colors.roseIvory};
   position: absolute;
   display: none;
+  flex-direction: column;
+  align-items: center;
   top: 0;
   left: 0;
 
   width: 100vw;
   height: 100vh;
+  padding-top: 6.944vw;
+`
+
+const Soon = styled.p`
+  ${text.desktop.nav}
+  text-align: center;
+  color: ${colors.mauve50};
+  width: 100%;
+  letter-spacing: 0;
 `
