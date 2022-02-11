@@ -8,9 +8,10 @@ import colors from 'styles/colors'
 import text from 'styles/text'
 
 import CloudPNG from 'images/cloud.png'
-import DiamondPNG from 'images/diamond.png'
+import DiamondMP4 from 'images/diamond.mp4'
 
 const Hero = () => {
+  const diamondRef = useRef(null)
   const cloud1Ref = useRef(null)
   const cloud2Ref = useRef(null)
   const cloud3Ref = useRef(null)
@@ -24,6 +25,7 @@ const Hero = () => {
   }
 
   useEffect(() => {
+    diamondRef.current.play()
     window.addEventListener('mousemove', mouseMove)
 
     return () => {
@@ -45,7 +47,7 @@ const Hero = () => {
       <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={cloud3Ref} src={CloudPNG} alt="cloud"/>
 
-      <Diamond src={DiamondPNG} alt="diamond"/>
+      <Diamond ref={diamondRef} muted loop src={DiamondMP4} alt="diamond"/>
     </Wrapper>
   )
 }
@@ -123,7 +125,7 @@ const Cloud3 = styled.img`
   height: 21.319vw;
 `
 
-const Diamond = styled.img`
+const Diamond = styled.video`
   width: 100vw;
   top: 0;
   left: 0;

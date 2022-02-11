@@ -6,6 +6,7 @@ import colors from 'styles/colors'
 import text from 'styles/text'
 
 import Link from './Link'
+import Button from 'components/Button'
 
 const Header = () => {
 
@@ -188,10 +189,16 @@ const Header = () => {
         <Link width={"40.833vw"}>Travel</Link>
         <Link width={"52.569vw"}>Registry</Link>
         <Link width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></Link>
+        <Button>
+          Target
+        </Button>
       </Content>
     </Wrapper>
   )
 }
+
+//https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225
+// https://www.target.com/gift-registry/gift-giver
 
 export default Header
 
