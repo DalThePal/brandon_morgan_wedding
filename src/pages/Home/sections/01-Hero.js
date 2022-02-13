@@ -10,10 +10,6 @@ import text from 'styles/text'
 import CloudPNG from 'images/cloud.png'
 
 const Hero = () => {
-
-  const wrapperRef = useRef(null)
-  const vrRef = useRef(null)
-
   const cloud1Ref = useRef(null)
   const cloud2Ref = useRef(null)
   const cloud3Ref = useRef(null)
@@ -39,6 +35,14 @@ const Hero = () => {
     tl.call(setTitle1Trigger, [true], 1.4)
     tl.call(setTitle3Trigger, [true], 1.5)
 
+    tl.fromTo([cloud1Ref.current, cloud2Ref.current, cloud3Ref.current], {
+      y: '100%'
+    }, {
+      duration: 1,
+      ease: 'circ.out',
+      y: '0%'
+    }, 1.5)
+
     return () => {
       tl.kill()
       window.removeEventListener('mousemove', mouseMove)
@@ -46,7 +50,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper data-scroll-section>
 
       <Title1>
         <AppearAnimation trigger={title1Trigger} duration={0.5} height="12.5vw">Morgan</AppearAnimation>
