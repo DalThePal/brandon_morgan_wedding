@@ -39,14 +39,7 @@ const Hero = () => {
     tl.call(setTitle1Trigger, [true], 1.4)
     tl.call(setTitle3Trigger, [true], 1.5)
 
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        scroller: '.smooth-scroll'
-      }
-    })
-
     return () => {
-      scrollTl.kill()
       tl.kill()
       window.removeEventListener('mousemove', mouseMove)
     }
@@ -54,8 +47,6 @@ const Hero = () => {
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
-
-      <VR ref={vrRef}/>
 
       <Title1>
         <AppearAnimation trigger={title1Trigger} duration={0.5} height="12.5vw">Morgan</AppearAnimation>
@@ -147,13 +138,4 @@ const Cloud3 = styled.img`
   top: 45.556vw;
   width: 37.292vw;
   height: 21.319vw;
-`
-
-const VR = styled.div`
-  background-color: ${colors.roseIvory};
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-
-  width: 0.069vw;
 `
