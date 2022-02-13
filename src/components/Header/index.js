@@ -7,6 +7,7 @@ import text from 'styles/text'
 
 import Link from './Link'
 import Button from 'components/Button'
+import Animation from 'components/AppearAnimation'
 
 const Header = () => {
 
@@ -20,8 +21,26 @@ const Header = () => {
   const contentRef    = useRef(null)
 
   const [open, setOpen] = useState(false)
+  const [btn1Trigger, setBtn1Trigger] = useState(false)
+  const [btn2Trigger, setBtn2Trigger] = useState(false)
+  const [tl, setTl] = useState(gsap.timeline())
   
   const duration = 0.5
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      paused: true
+    })
+    tl.call(setBtn1Trigger, [true], 0)
+    tl.call(setBtn2Trigger, [true], 0.1)
+
+    setTl(tl)
+
+    return () => {
+      tl.kill()
+    }
+
+  }, [])
 
   useEffect(() => {
     if (open) {
@@ -133,6 +152,11 @@ const Header = () => {
     }
   }, [open])
 
+  const registryMouseLeave = () => {
+    setBtn1Trigger(false)
+    setBtn2Trigger(false)
+  }
+
   return (
     <Wrapper ref={wrapperRef} data-scroll-sticky data-scroll-target=".smooth-scroll">
       <Top>
@@ -187,17 +211,26 @@ const Header = () => {
       </Top>
       <Content ref={contentRef}>
         <Link width={"40.833vw"}>Travel</Link>
-        <Link width={"52.569vw"}>Registry</Link>
+        <Link width={"52.569vw"}>
+          <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
+            Registry
+            <ButtonRow >
+              <Animation height={"4.931vw"} trigger={btn1Trigger} duration={0.3}>
+                <Button>Target</Button>
+              </Animation>
+              <Animation height={"4.931vw"} trigger={btn2Trigger} duration={0.3}>
+                <Button>Crate & Barrell</Button>
+              </Animation>
+            </ButtonRow>
+          </Registry>
+        </Link>
         <Link width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></Link>
-        <Button>
-          Target
-        </Button>
       </Content>
     </Wrapper>
   )
 }
 
-//https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225
+// https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225
 // https://www.target.com/gift-registry/gift-giver
 
 export default Header
@@ -286,4 +319,21 @@ const Soon = styled.p`
   color: ${colors.mauve50};
   width: 100%;
   letter-spacing: 0;
+`
+
+const Registry = styled.div`
+  position: relative;
+`
+
+const ButtonRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0;
+
+  width: 40.778vw;
 `

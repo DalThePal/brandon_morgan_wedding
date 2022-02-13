@@ -47,6 +47,13 @@ const text = {
       font-size: 99px;
       line-height: 95%;
     `,
+    h7: `
+      font-family: SangBleu Sunrise;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 40px;
+      line-height: 130%;
+    `,
     body: `
       font-family: SangBleu Sunrise, sans-serif;
       font-style: normal;
@@ -109,6 +116,13 @@ const text = {
       font-weight: normal;
       font-size: 6.875vw;
       line-height: 95%;
+    `,
+    h7: `
+      font-family: SangBleu Sunrise;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 2.778vw;
+      line-height: 130%;
     `,
     body: `
       font-family: SangBleu Sunrise, sans-serif;

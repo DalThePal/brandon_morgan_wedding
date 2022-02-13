@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-import colors from 'styles/colors'
+import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
 
 import Wedlocked1PNG from 'images/wedlocked1.png'
@@ -69,7 +69,7 @@ export default Wedlocked
 
 const Wrapper = styled.section`
   position: relative;
-  background: linear-gradient(90deg, #D699A1 0%, #D296A1 100%);
+  background: ${gradients.darkPink};
   width: 100%;
 
   height: 190vw;
@@ -77,7 +77,7 @@ const Wrapper = styled.section`
 
 const Inner = styled.div`
   position: relative;
-  background: linear-gradient(90deg, #D699A1 0%, #D296A1 100%);
+  background: ${gradients.darkPink};
 
   height: 95vw;
   width: 200vw;

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-import colors from 'styles/colors'
+import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
 
 import CloudPNG from 'images/cloud.png'
@@ -53,7 +53,7 @@ export default Tinder
 
 const Wrapper = styled.section`
   position: relative;
-  background: linear-gradient(90deg, #D699A1 0%, #D296A1 100%);
+  background: ${gradients.darkPink};
   width: 100%;
 
   height: 117.083vw;

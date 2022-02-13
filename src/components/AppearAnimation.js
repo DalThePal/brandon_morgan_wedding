@@ -2,16 +2,23 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-const Animation = ({children, height}) => {
+const Animation = ({children, height, trigger, duration}) => {
 
   const innerRef = useRef(null)
 
   useEffect(() => {
-    gsap.to(innerRef.current, {
-      duration: 1,
-      top: '0%'
-    })
-  }, [])
+    if (trigger) {
+      gsap.to(innerRef.current, {
+        duration,
+        top: '0%'
+      })
+    } else {
+      gsap.to(innerRef.current, {
+        duration,
+        top: '150%'
+      })
+    }
+  }, [trigger, duration])
 
   return (
     <Wrapper height={height}>

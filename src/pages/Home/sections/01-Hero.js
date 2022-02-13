@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-import TextAnimation from 'components/TextAnimation'
+import AppearAnimation from 'components/AppearAnimation'
 
 import colors from 'styles/colors'
 import text from 'styles/text'
@@ -16,6 +16,11 @@ const Hero = () => {
   const cloud2Ref = useRef(null)
   const cloud3Ref = useRef(null)
 
+  const [title1Trigger, setTitle1Trigger] = useState(false)
+  const [title2Trigger, setTitle2Trigger] = useState(false)
+  const [title3Trigger, setTitle3Trigger] = useState(false)
+  const [diamondTrigger, setDiamondTrigger] = useState(false)
+
   const mouseMove = e => {
     gsap.to([cloud1Ref.current, cloud2Ref.current, cloud3Ref.current], {
       stagger: 0.02,
@@ -25,8 +30,22 @@ const Hero = () => {
   }
 
   useEffect(() => {
-    diamondRef.current.play()
     window.addEventListener('mousemove', mouseMove)
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        diamondRef.current.play()
+      }
+    })
+
+    tl.call(setTitle2Trigger, [true], 1.2)
+    tl.call(setTitle1Trigger, [true], 1.4)
+    tl.call(setTitle3Trigger, [true], 1.5)
+    tl.call(setDiamondTrigger, [true], 1)
+    tl.to(diamondRef.current, {
+      duration: 0.65,
+      height: '56.25vw'
+    }, 1)
 
     return () => {
       window.removeEventListener('mousemove', mouseMove)
@@ -36,18 +55,22 @@ const Hero = () => {
   return (
     <Wrapper data-scroll-section>
       <Title1>
-        <TextAnimation height="12.5vw">Morgan</TextAnimation>
+        <AppearAnimation trigger={title1Trigger} duration={0.5} height="12.5vw">Morgan</AppearAnimation>
       </Title1>
       <Title2>
-        <TextAnimation height="25vw">&</TextAnimation>
+        <AppearAnimation trigger={title2Trigger} duration={0.5} height="25vw">&</AppearAnimation>
       </Title2>
-      <Title3><TextAnimation height="12.5vw">Brandon</TextAnimation></Title3>
+      <Title3>
+        <AppearAnimation trigger={title3Trigger} duration={0.5} height="12.5vw">Brandon</AppearAnimation>
+      </Title3>
 
       <Cloud1 ref={cloud1Ref} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={cloud3Ref} src={CloudPNG} alt="cloud"/>
 
-      <Diamond ref={diamondRef} muted loop src={DiamondMP4} alt="diamond"/>
+      <AppearAnimation trigger={diamondTrigger} duration={0.65} height={"45vw"}>
+        <Diamond ref={diamondRef} muted loop controls={false} controlsList={false} src={DiamondMP4} alt="diamond"/>
+      </AppearAnimation>
     </Wrapper>
   )
 }
@@ -55,6 +78,10 @@ const Hero = () => {
 export default Hero
 
 const Wrapper = styled.section`
+  .vsc-controller {
+    display: none;
+  }
+
   position: relative;
   width: 100%;
   height: 56.25vw;
@@ -126,8 +153,9 @@ const Cloud3 = styled.img`
 `
 
 const Diamond = styled.video`
+  
   width: 100vw;
   top: 0;
   left: 0;
-  height: 56.25vw;
+  height: 5.25vw;
 `

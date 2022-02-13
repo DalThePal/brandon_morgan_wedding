@@ -48,7 +48,7 @@ const CrossThrough = styled.div`
   width: 100%;
 `
 
-const Wrapper = styled.a`
+const Wrapper = styled.div`
   ${text.desktop.h4}
   color: ${props => props.disabled ? colors.mauve50 : colors.mauve600};
   cursor: pointer;

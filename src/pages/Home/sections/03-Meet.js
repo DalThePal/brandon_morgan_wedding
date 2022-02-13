@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import colors from 'styles/colors'
+import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
 
 import MeetPNG from 'images/meet.png'
@@ -27,7 +27,7 @@ export default Meet
 const Wrapper = styled.section`
   position: relative;
   width: 100%;
-  background: linear-gradient(90deg, #D699A1 0%, #D296A1 100%);
+  background: ${gradients.darkPink};
 
   height: 74.861vw;
 `

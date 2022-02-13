@@ -40,3 +40,9 @@ const colors = {
 }
 
 export default colors
+
+export const gradients = {
+  pink: `linear-gradient(90deg, #D699A1 0%, #D296A1 100%)`,
+  darkPink: `linear-gradient(90deg, #BB858D 0%, #BD848E 100%)`
+}
+
