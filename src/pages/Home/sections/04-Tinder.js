@@ -44,7 +44,9 @@ const Tinder = () => {
         “match” just might really be perfect.
       </Text>
 
-      <Img src={TinderPNG} alt="a rekindled tinder"/>
+      <ImgWrapper>
+        <Img src={TinderPNG} alt="a rekindled tinder"/>
+      </ImgWrapper>
     </Wrapper>
   )
 }
@@ -53,7 +55,7 @@ export default Tinder
 
 const Wrapper = styled.section`
   position: relative;
-  background: ${gradients.darkPink};
+  z-index: 3;
   width: 100%;
 
   height: 117.083vw;
@@ -109,13 +111,20 @@ const Text = styled.p`
   top: 94.861vw;
 `
 
-const Img = styled.img`
+const ImgWrapper = styled.div`
   position: absolute;
-  object-fit: cover;
-  mix-blend-mode: screen;
+  background: ${gradients.darkPink};
 
   width: 29.514vw;
   height: 55.556vw;
   left: 8.333vw;
   top: 61.528vw;
+`
+
+const Img = styled.img`
+  object-fit: cover;
+  mix-blend-mode: screen;
+
+  width: 100%;
+  height: 100%;
 `

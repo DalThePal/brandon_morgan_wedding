@@ -17,7 +17,10 @@ const Meet = () => {
         glances and casually acquainted run-ins later, the two lost 
         touch as years passed.
       </Text>
-      <Img src={MeetPNG} alt="Morgan meets Brandon"/>
+
+      <ImageWrapper>
+        <Img src={MeetPNG} alt="Morgan meets Brandon"/>
+      </ImageWrapper>
     </Wrapper>
   )
 }
@@ -26,8 +29,8 @@ export default Meet
 
 const Wrapper = styled.section`
   position: relative;
+  z-index: 3;
   width: 100%;
-  background: ${gradients.darkPink};
 
   height: 74.861vw;
 `
@@ -35,6 +38,7 @@ const Wrapper = styled.section`
 const Title = styled.h3`
   ${text.desktop.h5}
   position: absolute;
+  z-index: 2;
   color: ${colors.roseIvory};
 
   left: 8.333vw;
@@ -44,6 +48,7 @@ const Title = styled.h3`
 const Text = styled.p`
   ${text.desktop.body}
   position: absolute;
+  z-index: 2;
   color: ${colors.roseIvory};
 
   top: 44.097vw;
@@ -52,13 +57,22 @@ const Text = styled.p`
   height: 10.417vw
 `
 
-const Img = styled.img`
+const ImageWrapper = styled.div`
   position: absolute;
-  mix-blend-mode: screen;
-  object-fit: cover;
+  z-index: 1;
+  opacity: 0.75;
+  background: ${gradients.darkPink};
 
   width: 40.278vw;
   height: 52.083vw;
   top: 13.819vw;
   right: 8.333vw;
+`
+
+const Img = styled.img`
+  mix-blend-mode: screen;
+  object-fit: cover;
+
+  width: 100%;
+  height: 100%;
 `

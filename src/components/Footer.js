@@ -33,6 +33,7 @@ export default Footer
 
 const Wrapper = styled.footer`
   position: relative;
+  z-index: 3;
   width: 100%;
   display: flex;
   align-items: flex-start;

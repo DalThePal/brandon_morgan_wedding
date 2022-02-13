@@ -20,6 +20,8 @@ const Snuggle = () => {
 export default Snuggle
 
 const Wrapper = styled.section`
+  position: relative;
+  z-index: 3;
   width: 100%;
 
   height: 66.944vw;

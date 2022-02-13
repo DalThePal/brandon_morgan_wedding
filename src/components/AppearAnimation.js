@@ -4,15 +4,24 @@ import gsap from 'gsap'
 
 const Animation = ({children, height, trigger, duration}) => {
 
+  const wrapperRef = useRef(null)
   const innerRef = useRef(null)
 
   useEffect(() => {
     if (trigger) {
       gsap.to(innerRef.current, {
         duration,
-        top: '0%'
+        top: '0%',
+        onComplete: () => {
+          gsap.to(wrapperRef.current, {
+            overflow: 'visible'
+          })
+        }
       })
     } else {
+      gsap.set(wrapperRef.current, {
+        overflow: 'hidden'
+      })
       gsap.to(innerRef.current, {
         duration,
         top: '150%'
@@ -21,7 +30,7 @@ const Animation = ({children, height, trigger, duration}) => {
   }, [trigger, duration])
 
   return (
-    <Wrapper height={height}>
+    <Wrapper ref={wrapperRef} height={height}>
       <Inner ref={innerRef}>{children}</Inner>
     </Wrapper>
   )

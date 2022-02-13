@@ -17,6 +17,7 @@ export default Date
 
 const Wrapper = styled.section`
   position: relative;
+  z-index: 3;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -27,6 +28,8 @@ const Wrapper = styled.section`
 `
 
 const SubText = styled.h3`
+  position: relative;
+  z-index: 5;
   ${text.desktop.body};
   color: ${colors.roseIvory};
 

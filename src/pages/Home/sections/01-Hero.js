@@ -8,10 +8,8 @@ import colors from 'styles/colors'
 import text from 'styles/text'
 
 import CloudPNG from 'images/cloud.png'
-import DiamondMP4 from 'images/diamond.mp4'
 
 const Hero = () => {
-  const diamondRef = useRef(null)
   const cloud1Ref = useRef(null)
   const cloud2Ref = useRef(null)
   const cloud3Ref = useRef(null)
@@ -19,7 +17,6 @@ const Hero = () => {
   const [title1Trigger, setTitle1Trigger] = useState(false)
   const [title2Trigger, setTitle2Trigger] = useState(false)
   const [title3Trigger, setTitle3Trigger] = useState(false)
-  const [diamondTrigger, setDiamondTrigger] = useState(false)
 
   const mouseMove = e => {
     gsap.to([cloud1Ref.current, cloud2Ref.current, cloud3Ref.current], {
@@ -32,22 +29,14 @@ const Hero = () => {
   useEffect(() => {
     window.addEventListener('mousemove', mouseMove)
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        diamondRef.current.play()
-      }
-    })
+    const tl = gsap.timeline()
 
     tl.call(setTitle2Trigger, [true], 1.2)
     tl.call(setTitle1Trigger, [true], 1.4)
     tl.call(setTitle3Trigger, [true], 1.5)
-    tl.call(setDiamondTrigger, [true], 1)
-    tl.to(diamondRef.current, {
-      duration: 0.65,
-      height: '56.25vw'
-    }, 1)
 
     return () => {
+      tl.kill()
       window.removeEventListener('mousemove', mouseMove)
     }
   }, [])
@@ -68,9 +57,6 @@ const Hero = () => {
       <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={cloud3Ref} src={CloudPNG} alt="cloud"/>
 
-      <AppearAnimation trigger={diamondTrigger} duration={0.65} height={"45vw"}>
-        <Diamond ref={diamondRef} muted loop controls={false} controlsList={false} src={DiamondMP4} alt="diamond"/>
-      </AppearAnimation>
     </Wrapper>
   )
 }
@@ -78,11 +64,8 @@ const Hero = () => {
 export default Hero
 
 const Wrapper = styled.section`
-  .vsc-controller {
-    display: none;
-  }
-
   position: relative;
+  z-index: 3;
   width: 100%;
   height: 56.25vw;
 `
@@ -90,7 +73,7 @@ const Wrapper = styled.section`
 const Title1 = styled.h1`
   ${text.desktop.h4}
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   color: ${colors.roseIvory};
 
   width: 46.181vw;
@@ -100,7 +83,7 @@ const Title1 = styled.h1`
 
 const Title2 = styled.h2`
   ${text.desktop.h2}
-  z-index: 1;
+  z-index: 4;
   position: absolute;
   color: ${colors.roseIvory};
 
@@ -112,7 +95,7 @@ const Title2 = styled.h2`
 const Title3 = styled.h2`
   ${text.desktop.h4}
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   color: ${colors.roseIvory};
 
   width: 52.847vw;
@@ -150,12 +133,4 @@ const Cloud3 = styled.img`
   top: 45.556vw;
   width: 37.292vw;
   height: 21.319vw;
-`
-
-const Diamond = styled.video`
-  
-  width: 100vw;
-  top: 0;
-  left: 0;
-  height: 5.25vw;
 `
