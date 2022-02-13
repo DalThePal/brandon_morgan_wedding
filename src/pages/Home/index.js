@@ -42,9 +42,13 @@ const Home = () => {
       }
     })
 
+    scrollTl.set(diamondRef.current, {
+      position: 'fixed',
+      top: 'unset'
+    })
     scrollTl.to(diamondRef.current, {
       height: '5.125vw',
-      top: '43.5vw'
+      bottom: '21.8vw'
     })
 
     return () => {
@@ -83,7 +87,7 @@ const Home = () => {
 export default Home
 
 const Diamond = styled.video`
-  position: relative;
+  position: absolute;
   z-index: 2;
   width: 100vw;
   top: 0;
