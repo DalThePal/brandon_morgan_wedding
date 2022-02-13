@@ -10,6 +10,9 @@ import TinderPNG from 'images/tinder.png'
 
 const Tinder = () => {
 
+  const wrapperRef  = useRef(null)
+  const vrRef       = useRef(null)
+
   const cloud1Ref = useRef(null)
   const cloud2Ref = useRef(null)
   const cloud3Ref = useRef(null)
@@ -23,6 +26,27 @@ const Tinder = () => {
   }
 
   useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        scroller: ".smooth-scroll",
+        trigger: wrapperRef.current,
+        start: `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
+        end: `bottom bottom+=${(window.innerWidth / 100) * 25}`,
+        scrub: true,
+      }
+    })
+
+    tl.to(vrRef.current, {
+      height: '0%',
+      ease: "none"
+    })
+
+    return () => {
+      tl.kill()
+    }
+  }, [])
+
+  useEffect(() => {
     window.addEventListener('mousemove', mouseMove)
 
     return () => {
@@ -31,7 +55,10 @@ const Tinder = () => {
   }, [])
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper ref={wrapperRef} data-scroll-section>
+
+      <VR ref={vrRef}/>
+
       <Cloud1 ref={cloud1Ref} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={cloud3Ref} src={CloudPNG} alt="cloud"/>
@@ -127,4 +154,15 @@ const Img = styled.img`
 
   width: 100%;
   height: 100%;
+`
+
+const VR = styled.div`
+  background-color: ${colors.roseIvory};
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0.069vw;
+  height: 89.514vw;
+  bottom: 46.181vw;
 `

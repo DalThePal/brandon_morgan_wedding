@@ -47,12 +47,12 @@ const Arrows = ({ trigger, left }) => {
   )
 }
 
-const Button = ({ children }) => {
+const Button = ({ children, onClick }) => {
 
   const [trigger, setTrigger] = useState(false)
 
   return (
-    <Wrapper onMouseEnter={() => setTrigger(true)} onMouseLeave={() => setTrigger(false)}>
+    <Wrapper onMouseEnter={() => setTrigger(true)} onMouseLeave={() => setTrigger(false)} onClick={onClick}>
       <Arrows left trigger={trigger}/>
       {children}
       <Arrows trigger={trigger}/>

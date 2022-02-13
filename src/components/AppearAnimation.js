@@ -8,24 +8,42 @@ const Animation = ({children, height, trigger, duration}) => {
   const innerRef = useRef(null)
 
   useEffect(() => {
+
+    const tl1 = gsap.timeline({
+      paused: true
+    })
+
+    tl1.to(innerRef.current, {
+      duration,
+      top: '0%'
+    }, 0)
+    tl1.to(wrapperRef.current, {
+      overflow: 'visible'
+    }, duration)
+
+    const tl2 = gsap.timeline({
+      paused: true
+    })
+
+    tl2.set(wrapperRef.current, {
+      overflow: 'hidden'
+    }, 0)
+    tl2.to(innerRef.current, {
+      duration,
+      top: '150%'
+    }, 0)
+
     if (trigger) {
-      gsap.to(innerRef.current, {
-        duration,
-        top: '0%',
-        onComplete: () => {
-          gsap.to(wrapperRef.current, {
-            overflow: 'visible'
-          })
-        }
-      })
+      tl2.kill()
+      tl1.play(0)
     } else {
-      gsap.set(wrapperRef.current, {
-        overflow: 'hidden'
-      })
-      gsap.to(innerRef.current, {
-        duration,
-        top: '150%'
-      })
+      tl1.kill()
+      tl2.play(0)
+    }
+
+    return () => {
+      tl1.kill()
+      tl2.kill()
     }
   }, [trigger, duration])
 

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import gsap from 'gsap'
 
 import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
@@ -7,8 +8,38 @@ import text from 'styles/text'
 import MeetPNG from 'images/meet.png'
 
 const Meet = () => {
+
+  const wrapperRef  = useRef(null)
+  const vrRef       = useRef(null)
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        scroller: ".smooth-scroll",
+        trigger: wrapperRef.current,
+        start: `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
+        end: `bottom bottom+=${(window.innerWidth / 100) * 32}`,
+        scrub: true,
+      }
+    })
+
+    tl.fromTo(vrRef.current, {
+      height: '32.639vw'
+    }, {
+      height: '0vw',
+      ease: 'none'
+    })
+
+    return () => {
+      tl.kill()
+    }
+  }, [])
+
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper ref={wrapperRef} data-scroll-section>
+
+      <VR ref={vrRef}/>
+
       <Title>The meet-cute</Title>
       <Text>
         Brandon first laid eyes on Morgan in the noisy kitchen of a 
@@ -75,4 +106,15 @@ const Img = styled.img`
 
   width: 100%;
   height: 100%;
+`
+
+const VR = styled.div`
+  background-color: ${colors.roseIvory};
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+
+  width: 0.069vw;
+  height: 32.639vw;
+  bottom: 52.639vw;
 `

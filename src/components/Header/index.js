@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
+import { Link } from 'react-router-dom'
 
 import colors from 'styles/colors'
 import text from 'styles/text'
 
-import Link from './Link'
+import LinkWrapper from './Link'
 import Button from 'components/Button'
 import Animation from 'components/AppearAnimation'
 
@@ -44,6 +45,7 @@ const Header = () => {
 
   useEffect(() => {
     if (open) {
+      window.locomotiveScroll.stop()
 
       gsap.fromTo(contentRef.current, {
         display: 'flex'
@@ -96,6 +98,7 @@ const Header = () => {
       })
 
     } else {
+      window.locomotiveScroll.start()
 
       gsap.to(contentRef.current, {
         duration,
@@ -157,10 +160,15 @@ const Header = () => {
     setBtn2Trigger(false)
   }
 
+  const buttonClick = (href) => {
+    registryMouseLeave()
+    window.open(href, '__blank')
+  }
+
   return (
     <Wrapper ref={wrapperRef} data-scroll-sticky data-scroll-target=".smooth-scroll">
       <Top>
-        <Logo viewBox="0 0 60 60" fill="none">
+        <Logo viewBox="0 0 60 60" fill="none" onClick={() => window.locomotiveScroll.scrollTo(0)}>
           <circle ref={circleRef} cx="30" cy="30" r="29.5" stroke="#F9F2F7"/>
           <path 
             ref={pathRef} 
@@ -210,21 +218,23 @@ const Header = () => {
         </Toggle>
       </Top>
       <Content ref={contentRef}>
-        <Link width={"40.833vw"}>Travel</Link>
-        <Link width={"52.569vw"}>
+        <LinkWrapper width={"40.833vw"}>
+          <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink>
+        </LinkWrapper>
+        <LinkWrapper width={"52.569vw"}>
           <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
             Registry
             <ButtonRow >
               <Animation height={"4.931vw"} trigger={btn1Trigger} duration={0.3}>
-                <Button>Target</Button>
+                <Button onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</Button>
               </Animation>
               <Animation height={"4.931vw"} trigger={btn2Trigger} duration={0.3}>
-                <Button>Crate & Barrell</Button>
+                <Button onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</Button>
               </Animation>
             </ButtonRow>
           </Registry>
-        </Link>
-        <Link width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></Link>
+        </LinkWrapper>
+        <LinkWrapper width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></LinkWrapper>
       </Content>
     </Wrapper>
   )
@@ -257,6 +267,8 @@ const Top = styled.div`
 `
 
 const Logo = styled.svg`
+  cursor: pointer;
+
   height: 4.167vw;
   width: 4.167vw;
 `
@@ -336,4 +348,9 @@ const ButtonRow = styled.div`
   letter-spacing: 0;
 
   width: 40.778vw;
+`
+
+const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `

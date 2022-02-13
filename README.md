@@ -7,9 +7,8 @@
 * Text lerping
 * Tablet view
 * Mobile view
-* Registry buttons need to link out
 * Favicon
-* Stop scroll on menu open
-* Scroll to top on logo click
-* Section text and image animations?
+* Section intial text and image animations?
+* Sections flickering when scrolled back into view. transform: will-change?
+* Put VR in separate file and import it DRY
 

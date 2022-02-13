@@ -39,7 +39,7 @@ const Wedlocked = () => {
 
   return (
     <Wrapper id="wedlocked" ref={wrapperRef} data-scroll data-scroll-section>
-      <Inner ref={innerRef} data-scroll data-scroll-sticky data-scroll-target="#wedlocked" data-scroll-offset={(window.innerWidth / 100) * 21}>
+      <Inner ref={innerRef} data-scroll data-scroll-sticky data-scroll-target="#wedlocked" data-scroll-offset={`${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`}>
         <Title1>Wedlocked</Title1>
         <Title2>&</Title2>
         <Title3>Loaded</Title3>
@@ -70,6 +70,7 @@ const Wedlocked = () => {
           immediately began looking forward to their wedding (an opportunity 
           to eat, drink, and be married with their beloved family and friends).
         </Text>
+        
       </Inner>
     </Wrapper>
   )

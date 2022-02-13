@@ -8,6 +8,7 @@ import Meet       from './sections/03-Meet'
 import Tinder     from './sections/04-Tinder'
 import Snuggle    from './sections/05-Snuggle'
 import Wedlocked  from './sections/06-Wedlocked'
+import PathFiller from './sections/07-PathFiller'
 
 import Animation from 'components/AppearAnimation'
 
@@ -80,6 +81,7 @@ const Home = () => {
       <Tinder/>
       <Snuggle/>
       <Wedlocked/>
+      <PathFiller/>
     </>
   )
 }
