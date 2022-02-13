@@ -37,7 +37,7 @@ const Arrows = ({ trigger, left }) => {
     } else {
       timeline.reverse()
     }
-  }, [trigger])
+  }, [trigger, timeline])
 
   return (
     <ArrowOverflow left={left}>
