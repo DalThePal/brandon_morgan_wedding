@@ -2,8 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import { useMedia } from 'utils/hooks'
+
 import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 import Wedlocked1PNG from 'images/wedlocked1.png'
 import Wedlocked2PNG from 'images/wedlocked2.png'
@@ -16,30 +19,53 @@ const Wedlocked = () => {
   const wrapperRef = useRef(null)
   const innerRef = useRef(null)
 
+  const scrollStart = useMedia(
+    `top+=${(window.innerWidth / 100) * 21} top`,
+    `top+=${(window.innerWidth / 100) * 21} top`,
+    `top+=${(window.innerWidth / 100) * 21} top`,
+    `top+=${(window.innerWidth / 100) * 21} top`
+  )
+
+  const scrollEnd = useMedia(
+    `bottom bottom+=${(window.innerWidth / 100) * 21}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 21}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 21}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 21}`
+  )
+
+  const scrollOffset = useMedia(
+    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
+    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
+    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
+    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`
+  )
+
+  const innerLeft = useMedia('-50%', '-50%', '-50%', '-205%')
+
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: wrapperRef.current,
         scroller: '.smooth-scroll',
-        start: `top+=${(window.innerWidth / 100) * 21} top`,
-        end: `bottom bottom+=${(window.innerWidth / 100) * 21}`,
+        start: scrollStart,
+        end: scrollEnd,
         scrub: true
       }
     })
 
     tl.to(innerRef.current, {
-      left: '-50%',
+      left: innerLeft,
       ease: 'none'
     }, 0)
 
     return () => {
       tl.kill()
     }
-  }, [])
+  }, [scrollStart, scrollEnd, innerLeft])
 
   return (
     <Wrapper id="wedlocked" ref={wrapperRef} data-scroll data-scroll-section>
-      <Inner ref={innerRef} data-scroll data-scroll-sticky data-scroll-target="#wedlocked" data-scroll-offset={`${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`}>
+      <Inner ref={innerRef} data-scroll data-scroll-sticky data-scroll-target="#wedlocked" data-scroll-offset={scrollOffset}>
         <Title1>Wedlocked</Title1>
         <Title2>&</Title2>
         <Title3>Loaded</Title3>
@@ -84,15 +110,23 @@ const Wrapper = styled.section`
   width: 100%;
 
   height: 190vw;
+
+  ${media.mobile} {
+    height: 368.533vw;
+  }
 `
 
 const Inner = styled.div`
   position: relative;
   z-index: 3;
-  // background: ${gradients.darkPink};
 
   height: 95vw;
   width: 200vw;
+
+  ${media.mobile} {
+    height: 185.6vw;
+    width: 346.667vw;
+  }
 `
 
 const Title1 = styled.h2`
@@ -103,6 +137,12 @@ const Title1 = styled.h2`
 
   top: 25.694vw;
   left: 2.083vw;
+
+  ${media.mobile} {
+    ${text.mobile.h4}
+    top: 77.333vw;
+    left: 8vw;
+  }
 `
 
 const Title2 = styled.h2`
@@ -113,6 +153,13 @@ const Title2 = styled.h2`
 
   top: 35.486vw;
   left: 3.889vw;
+
+  ${media.mobile} {
+    ${text.mobile.h2}
+    font-size: 106.667vw;
+    top: 101.867vw;
+    left: 12.267vw;
+  }
 `
 
 const Title3 = styled.h2`
@@ -123,6 +170,12 @@ const Title3 = styled.h2`
 
   top: 47.083vw;
   left: 41.181vw;
+
+  ${media.mobile} {
+    ${text.mobile.h4}
+    top: 131.733vw;
+    left: 95.2vw;
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -136,6 +189,13 @@ const ImageWrapper1 = styled(ImageWrapper)`
   top: 24.306vw;
   width: 18.75vw;
   height: 25vw;
+
+  ${media.mobile} {
+    left: 26.667vw;
+    top: 72vw;
+    width: 45.333vw;
+    height: 60.533vw;
+  }
 `
 
 const ImageWrapper2 = styled(ImageWrapper)`
@@ -143,6 +203,13 @@ const ImageWrapper2 = styled(ImageWrapper)`
   height: 22.292vw;
   top: 38.056vw;
   left: 29.792vw;
+
+  ${media.mobile} {
+    width: 71.467vw;
+    height: 53.867vw;
+    left: 78.4vw;
+    top: 105.333vw;
+  }
 `
 
 const ImageWrapper3 = styled(ImageWrapper)`
@@ -150,6 +217,13 @@ const ImageWrapper3 = styled(ImageWrapper)`
   height: 25vw;
   top: 28.681vw;
   left: 62.153vw;
+
+  ${media.mobile} {
+    width: 45.333vw;
+    height: 60.533vw;
+    top: 90.133vw;
+    left: 156.8vw;
+  }
 `
 
 const ImageWrapper4 = styled(ImageWrapper)`
@@ -157,6 +231,13 @@ const ImageWrapper4 = styled(ImageWrapper)`
   height: 24.861vw;
   top: 46.528vw;
   left: 83.819vw;
+
+  ${media.mobile} {
+    width: 45.067vw;
+    height: 60.267vw;
+    top: 125.867vw;
+    left: 209.067vw;
+  }
 `
 
 const ImageWrapper5 = styled(ImageWrapper)`
@@ -164,6 +245,13 @@ const ImageWrapper5 = styled(ImageWrapper)`
   height: 24.972vw;
   top: 27.014vw;
   left: 105.278vw;
+
+  ${media.mobile} {
+    width: 45.333vw;
+    height: 60.533vw;
+    top: 104vw;
+    left: 260.8vw;
+  }
 `
 
 const Img = styled.img`
@@ -180,4 +268,11 @@ const Text = styled.p`
   width: 53.889vw;
   left: 72.917vw;
   top: 73.472vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    width: 335px;
+    left: 209.6vw;
+    top: 197.867vw;
+  }
 `
