@@ -2,8 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import { useMedia } from 'utils/hooks'
+
 import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 import CloudPNG from 'images/cloud.png'
 import TinderPNG from 'images/tinder.png'
@@ -16,6 +19,20 @@ const Tinder = () => {
   const cloud1Ref = useRef(null)
   const cloud2Ref = useRef(null)
   const cloud3Ref = useRef(null)
+
+  const scrollStart = useMedia(
+    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 40} bottom-=${(window.innerWidth / 100) * 169.6}`
+  )
+
+  const scrollEnd = useMedia(
+    `bottom bottom+=${(window.innerWidth / 100) * 25}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 25}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 25}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 115}`
+  )
 
   const mouseMove = (e) => {
     gsap.to([cloud1Ref.current, cloud2Ref.current, cloud3Ref.current], {
@@ -30,8 +47,8 @@ const Tinder = () => {
       scrollTrigger: {
         scroller: ".smooth-scroll",
         trigger: wrapperRef.current,
-        start: `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
-        end: `bottom bottom+=${(window.innerWidth / 100) * 25}`,
+        start: scrollStart,
+        end: scrollEnd,
         scrub: true,
       }
     })
@@ -44,7 +61,7 @@ const Tinder = () => {
     return () => {
       tl.kill()
     }
-  }, [])
+  }, [scrollStart, scrollEnd])
 
   useEffect(() => {
     window.addEventListener('mousemove', mouseMove)
@@ -63,7 +80,7 @@ const Tinder = () => {
       <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={cloud3Ref} src={CloudPNG} alt="cloud"/>
 
-      <Title>A rekindled tinder</Title>
+      <Title>Love at first swipe</Title>
       <Text>
         One summer night in 2018, the connection was rekindled by a 
         Tinder “super-like” and an impulsive Facebook Message. After 
@@ -86,6 +103,10 @@ const Wrapper = styled.section`
   width: 100%;
 
   height: 117.083vw;
+
+  ${media.mobile} {
+    height: 444.533vw;
+  }
 `
 
 const Cloud1 = styled.img`
@@ -96,6 +117,13 @@ const Cloud1 = styled.img`
   top: 14.722vw;
   height: 21.319vw;
   width: 37.292vw;
+
+  ${media.mobile} {
+    left: -21.6vw;
+    top: 30.933vw;
+    height: 41.067vw;
+    width: 72vw;
+  }
 `
 
 const Cloud2 = styled.img`
@@ -106,6 +134,14 @@ const Cloud2 = styled.img`
   top: 23.611vw;
   height: 33.264vw;
   width: 58.264vw;
+
+  ${media.mobile} {
+    transform: rotate(180deg);
+    left: 1.867vw;
+    top: 0vw;
+    height: 97.867vw;
+    width: 171.2vw;
+  }
 `
 
 const Cloud3 = styled.img`
@@ -116,16 +152,33 @@ const Cloud3 = styled.img`
   top: 6.944vw;
   width: 88.75vw;
   height: 50.764vw;
+
+  ${media.mobile} {
+    transform: rotate(0deg);
+    right: -2.667vw;
+    top: 48.267vw;
+    width: 112.267vw;
+    height: 64vw;
+  }
 `
 
 const Title = styled.h2`
   ${text.desktop.h5}
   position: absolute;
+  z-index: 2;
   color: ${colors.roseIvory};
 
   width: 51.319vw;
   right: 8.056vw;
   top: 74.375vw;
+
+  ${media.mobile} {
+    ${text.mobile.h6}
+    width: 89.333vw;
+    right: 50%;
+    transform: translateX(50%);
+    top: 272vw;
+  }
 `
 
 const Text = styled.p`
@@ -136,6 +189,14 @@ const Text = styled.p`
   width: 40.417vw;
   right: 9.583vw;
   top: 94.861vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    width: 89.333vw;
+    right: 50%;
+    transform: translateX(50%);
+    top: 353.867vw;
+  }
 `
 
 const ImgWrapper = styled.div`
@@ -146,6 +207,15 @@ const ImgWrapper = styled.div`
   height: 55.556vw;
   left: 8.333vw;
   top: 61.528vw;
+
+  ${media.mobile} {
+    opacity: 0.8;
+    width: 89.333vw;
+    height: 128vw;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 173.333vw;
+  }
 `
 
 const Img = styled.img`
@@ -165,4 +235,10 @@ const VR = styled.div`
   width: 0.069vw;
   height: 89.514vw;
   bottom: 46.181vw;
+
+  ${media.mobile} {
+    width: 0.267vw;
+    height: 200vw;
+    bottom: 284.533vw;
+  }
 `

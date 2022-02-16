@@ -37,7 +37,6 @@ const Meet = () => {
         start: scrollStart,
         end: scrollEnd,
         scrub: true,
-        markers: true
       }
     })
 
