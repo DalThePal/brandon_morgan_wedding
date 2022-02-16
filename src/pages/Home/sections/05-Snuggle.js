@@ -2,8 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import { useMedia } from 'utils/hooks'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 const Snuggle = () => {
 
@@ -16,19 +19,33 @@ const Snuggle = () => {
   const line4Ref    = useRef(null)
   const line5Ref    = useRef(null)
 
+  const scrollStart = useMedia(
+    `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
+    `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
+    `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
+    `top-=${(window.innerWidth / 100) * 12} bottom-=${(window.innerWidth / 100) * 169.6}`
+  )
+
+  const scrollEnd = useMedia(
+    `bottom+=${(window.innerWidth / 100) * 35} bottom`,
+    `bottom+=${(window.innerWidth / 100) * 35} bottom`,
+    `bottom+=${(window.innerWidth / 100) * 35} bottom`,
+    `bottom+=${(window.innerWidth / 100) * 205} bottom`
+  )
+
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
-        start: `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
-        end: `bottom+=${(window.innerWidth / 100) * 35} bottom`,
+        start: scrollStart,
+        end: scrollEnd,
         scrub: true
       }
     })
 
     tl.to(vr1Ref.current, {
-      duration: 1,
+      duration: 0.6,
       height: '0%',
       ease: 'none',
     }, 0)
@@ -39,7 +56,7 @@ const Snuggle = () => {
       attr: {
         x2: "0%"
       }
-    }, 1)
+    }, 0.6)
 
     tl.to(line2Ref.current, {
       duration: 0.5,
@@ -47,7 +64,7 @@ const Snuggle = () => {
       attr: {
         x1: "100%"
       }
-    }, 1)
+    }, 0.6)
 
     tl.to([line3Ref.current, line4Ref.current], {
       duration: 1,
@@ -55,7 +72,7 @@ const Snuggle = () => {
       attr: {
         y1: '100%'
       }
-    }, 1.5)
+    }, 1.1)
 
     tl.to(line5Ref.current, {
       duration: 0.5,
@@ -64,7 +81,7 @@ const Snuggle = () => {
         x1: '50%',
         x2: "50%"
       }
-    }, 2.5)
+    }, 2.1)
 
     tl.to(vr2Ref.current, {
       duration: 1,
@@ -75,7 +92,7 @@ const Snuggle = () => {
     return () => {
       tl.kill()
     }
-  }, [])
+  }, [scrollStart, scrollEnd])
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
@@ -108,6 +125,10 @@ const Wrapper = styled.section`
   width: 100%;
 
   height: 66.944vw;
+
+  ${media.mobile} {
+    height: 243.2vw;
+  }
 `
 
 const Text = styled.p`
@@ -119,6 +140,13 @@ const Text = styled.p`
 
   width: 83.333vw;
   top: 17.361vw;
+
+  ${media.mobile} {
+    ${text.mobile.h7}
+    font-size: 10.4vw;
+    width: 78.667vw;
+    top: 45.333vw;
+  }
 `
 
 const Border = styled.svg`
@@ -129,11 +157,22 @@ const Border = styled.svg`
   top: 13.889vw;
   width: 90.278vw;
   height: 46.111vw;
+
+  ${media.mobile} {
+    top: 40vw;
+    width: 89.333vw;
+    height: 163.2vw;
+  }
 `
 
 const Line = styled.line`
   stroke: ${colors.roseIvory};
+
   stroke-width: 0.069vw;
+
+  ${media.mobile} {
+    stroke-width: 0.267vw;
+  }
 `
 
 const VR = styled.div`
@@ -143,14 +182,28 @@ const VR = styled.div`
   transform: translateX(-50%);
 
   width: 0.069vw;
+
+  ${media.mobile} {
+    width: 0.267vw;
+  }
 `
 
 const VR1 = styled(VR)`
   height: 24.306vw;
   bottom: 53.056vw;
+
+  ${media.mobile} {
+    height: 53.333vw;
+    bottom: 203.2vw;
+  }
 `
 
 const VR2 = styled(VR)`
   height: 20.833vw;
   bottom: -13.889vw;
+
+  ${media.mobile} {
+    height: 80vw;
+    bottom: -40vw;
+  }
 `
