@@ -5,7 +5,8 @@
       "components/*": ["components/*"],
       "fonts/*": ["fonts/*"],
       "pages/*": ["pages/*"],
-      "styles/*": ["styles/*"]
+      "styles/*": ["styles/*"],
+      "utils/*": ["utils/*"]
     }
   },
   "exclude": ["node_modules"]
