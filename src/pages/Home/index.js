@@ -2,6 +2,10 @@ import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import media from 'styles/media'
+
+import { useMedia } from 'utils/hooks'
+
 import Hero       from './sections/01-Hero'
 import Date       from './sections/02-Date'
 import Meet       from './sections/03-Meet'
@@ -20,6 +24,11 @@ const Home = () => {
 
   const [diamondTrigger, setDiamondTrigger] = useState(false)
 
+  const animationHeight = useMedia('45vw', '45vw', '45vw', '112vw')
+  const diamondHeight = useMedia('56.25vw', '56.25vw', '56.25vw', '112vw')
+  const diamondScrollHeight = useMedia('5.125vw', '5.125vw', '5.125vw', '25vw')
+  const diamondScrollBottom = useMedia('21.8vw', '21.8vw', '21.8vw', '169.6vw')
+
   useEffect(() => {
     const tl = gsap.timeline({
       onComplete: () => {
@@ -30,7 +39,7 @@ const Home = () => {
     tl.call(setDiamondTrigger, [true], 1)
     tl.to(diamondRef.current, {
       duration: 0.8,
-      height: '56.25vw'
+      height: diamondHeight
     }, 0.2)
 
     const scrollTl = gsap.timeline({
@@ -48,8 +57,8 @@ const Home = () => {
       top: 'unset'
     })
     scrollTl.to(diamondRef.current, {
-      height: '5.125vw',
-      bottom: '21.8vw'
+      height: diamondScrollHeight,
+      bottom: diamondScrollBottom
     })
 
     return () => {
@@ -61,7 +70,7 @@ const Home = () => {
   return (
     <>
       <AnimationWrapper>
-        <Animation trigger={diamondTrigger} duration={0.65} height={"45vw"}>
+        <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
           <Diamond 
             ref={diamondRef} 
             muted 
@@ -89,12 +98,13 @@ const Home = () => {
 export default Home
 
 const Diamond = styled.video`
-  position: absolute;
-  z-index: 2;
   width: 100vw;
-  top: 0;
-  left: 0;
   height: 5.25vw;
+
+  ${media.mobile} {
+    width: 100%;
+    height: 112vw;
+  }
 `
 
 const AnimationWrapper = styled.div`
@@ -106,5 +116,9 @@ const AnimationWrapper = styled.div`
 
   .vsc-controller {
     display: none;
+  }
+
+  ${media.mobile} {
+    height: 112vw;    
   }
 `
