@@ -4,6 +4,7 @@ import gsap from 'gsap'
 
 import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 import MeetPNG from 'images/meet.png'
 
@@ -64,6 +65,10 @@ const Wrapper = styled.section`
   width: 100%;
 
   height: 74.861vw;
+
+  ${media.mobile} {
+    
+  }
 `
 
 const Title = styled.h3`

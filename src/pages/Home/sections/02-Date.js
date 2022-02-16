@@ -47,7 +47,7 @@ const Date = () => {
     return () => {
       scrollTl.kill()
     }
-  }, [])
+  }, [scrollTlStart, scrollTlEnd])
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>

@@ -65,7 +65,7 @@ const Home = () => {
       tl.kill()
       scrollTl.kill()
     }
-  }, [])
+  }, [diamondHeight, diamondScrollHeight, diamondScrollBottom])
 
   return (
     <>
