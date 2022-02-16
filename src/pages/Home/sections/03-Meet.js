@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import { useMedia } from 'utils/hooks'
+
 import colors, { gradients } from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
@@ -13,35 +15,48 @@ const Meet = () => {
   const wrapperRef  = useRef(null)
   const vrRef       = useRef(null)
 
+  const scrollStart = useMedia(
+    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 30} bottom-=${(window.innerWidth / 100) * 169.6}`
+  )
+
+  const scrollEnd = useMedia(
+    `bottom bottom+=${(window.innerWidth / 100) * 32}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 32}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 32}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 125}`
+  )
+
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         scroller: ".smooth-scroll",
         trigger: wrapperRef.current,
-        start: `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
-        end: `bottom bottom+=${(window.innerWidth / 100) * 32}`,
+        start: scrollStart,
+        end: scrollEnd,
         scrub: true,
+        markers: true
       }
     })
 
-    tl.fromTo(vrRef.current, {
-      height: '32.639vw'
-    }, {
+    tl.to(vrRef.current, {
       height: '0vw',
       ease: 'none'
-    })
+    }, 0)
 
     return () => {
       tl.kill()
     }
-  }, [])
+  }, [scrollStart, scrollEnd])
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
 
       <VR ref={vrRef}/>
 
-      <Title>The meet-cute</Title>
+      <Title>The meet cute</Title>
       <Text>
         Brandon first laid eyes on Morgan in the noisy kitchen of a 
         University of Utah college party house lovingly referred to 
@@ -67,7 +82,7 @@ const Wrapper = styled.section`
   height: 74.861vw;
 
   ${media.mobile} {
-    
+    height: 334.133vw;
   }
 `
 
@@ -79,6 +94,12 @@ const Title = styled.h3`
 
   left: 8.333vw;
   top: 32.986vw;
+
+  ${media.mobile} {
+    ${text.mobile.h6}
+    top: 152vw;
+    left: 5.333vw;
+  }
 `
 
 const Text = styled.p`
@@ -90,7 +111,16 @@ const Text = styled.p`
   top: 44.097vw;
   left: 19.097vw;
   width: 40.278vw;
-  height: 10.417vw
+  height: 10.417vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    top: 208.8vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 89.333vw;
+    height: 72vw;
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -103,6 +133,14 @@ const ImageWrapper = styled.div`
   height: 52.083vw;
   top: 13.819vw;
   right: 8.333vw;
+
+  ${media.mobile} {
+    width: 89.333vw;
+    height: 115.467vw;
+    top: 53.333vw;
+    right: 50%;
+    transform: translateX(50%);
+  }
 `
 
 const Img = styled.img`
@@ -122,4 +160,10 @@ const VR = styled.div`
   width: 0.069vw;
   height: 32.639vw;
   bottom: 52.639vw;
+
+  ${media.mobile} {
+    width: 0.267vw;
+    height: 66.667vw;
+    bottom: 294.133vw;
+  }
 `
