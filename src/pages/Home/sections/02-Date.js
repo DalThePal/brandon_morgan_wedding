@@ -2,22 +2,40 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import { useMedia } from 'utils/hooks'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 const Date = () => {
 
   const wrapperRef = useRef(null)
   const vrRef = useRef(null)
 
+  const scrollTlStart = useMedia(
+    `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 90.4} bottom-=${(window.innerWidth / 100) * 169.6}`
+  )
+
+  const scrollTlEnd = useMedia(
+    `bottom bottom+=${(window.innerWidth / 100) * 27}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 27}`,
+    `bottom bottom+=${(window.innerWidth / 100) * 27}`,
+    `bottom bottom+=${(window.innerWidth / 100) * -69}`
+  )
+
   useEffect(() => {
     const scrollTl = gsap.timeline({
       scrollTrigger: {
         scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
-        start: `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
-        end: `bottom bottom+=${(window.innerWidth / 100) * 27}`,
+        start: scrollTlStart,
+        end: scrollTlEnd,
         scrub: true,
+        markers: true
       }
     })
 
@@ -54,6 +72,11 @@ const Wrapper = styled.section`
 
   padding-top: 34.722vw;
   height: 78.333vw;
+
+  ${media.mobile} {
+    padding-top: 54.4vw;
+    height: 139.467vw;
+  }
 `
 
 const SubText = styled.h3`
@@ -63,6 +86,11 @@ const SubText = styled.h3`
   color: ${colors.roseIvory};
 
   margin-bottom: 2.639vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    margin-bottom: 6.667vw;
+  }
 `
 
 const Title = styled.h2`
@@ -71,6 +99,11 @@ const Title = styled.h2`
   text-align: center;
 
   width: 83.333vw;
+
+  ${media.mobile} {
+    ${text.mobile.h2}
+    width: 89.333vw;
+  }
 `
 
 const VR = styled.div`
@@ -82,4 +115,10 @@ const VR = styled.div`
   width: 0.069vw;
   height: 34.236vw;
   bottom: 47.778vw;
+
+  ${media.mobile} {
+    width: 0.267vw;
+    height: 131.467vw;
+    bottom: 98.4vw;
+  }
 `
