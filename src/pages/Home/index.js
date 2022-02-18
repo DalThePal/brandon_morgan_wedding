@@ -17,6 +17,8 @@ import PathFiller from './sections/07-PathFiller'
 import Animation from 'components/AppearAnimation'
 import ImageSequence from 'components/ImageSequence'
 
+import Diamond from 'components/Diamond'
+
 const Home = () => {
 
   const diamondRef = useRef(null)
@@ -66,38 +68,41 @@ const Home = () => {
     }
   }, [diamondHeight, diamondScrollHeight, diamondScrollBottom])
 
-  return (
-    <>
-      <AnimationWrapper>
-        <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <Diamond ref={diamondRef}>
-            <ImageSequence/>
-          </Diamond>
-        </Animation>
-      </AnimationWrapper>
+  // return (
+  //   <>
+  //     <AnimationWrapper>
+  //       <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
+  //         <Diamond/>
+  //       </Animation>
+  //     </AnimationWrapper>
 
-      <Hero/>
-      <Date/>
-      <Meet/>
-      <Tinder/>
-      <Snuggle/>
-      <Wedlocked/>
-      <PathFiller/>
-    </>
+  //     <Hero/>
+  //     <Date/>
+  //     <Meet/>
+  //     <Tinder/>
+  //     <Snuggle/>
+  //     <Wedlocked/>
+  //     <PathFiller/>
+  //   </>
+  // )
+  return (
+    <div style={{width: '100vw', height: '100vh'}}>
+      <Diamond/>
+    </div>
   )
 }
 
 export default Home
 
-const Diamond = styled.div`
-  width: 100vw;
-  height: 5.25vw;
+// const Diamond = styled.div`
+//   width: 100vw;
+//   height: 5.25vw;
 
-  ${media.mobile} {
-    width: 100vw;
-    height: 112vw;
-  }
-`
+//   ${media.mobile} {
+//     width: 100vw;
+//     height: 112vw;
+//   }
+// `
 
 const AnimationWrapper = styled.div`
   position: absolute;
