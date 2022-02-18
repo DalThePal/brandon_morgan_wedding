@@ -70,7 +70,9 @@ const Home = () => {
     <>
       <AnimationWrapper>
         <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <ImageSequence/>
+          <Diamond ref={diamondRef}>
+            <ImageSequence/>
+          </Diamond>
         </Animation>
       </AnimationWrapper>
 
@@ -87,7 +89,7 @@ const Home = () => {
 
 export default Home
 
-const Diamond = styled.video`
+const Diamond = styled.div`
   width: 100vw;
   height: 5.25vw;
 
