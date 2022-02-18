@@ -76,7 +76,7 @@ export default Hero
 
 const Wrapper = styled.section`
   position: relative;
-  z-index: 3;
+  z-index: 69;
   width: 100%;
 
   height: 56.25vw;

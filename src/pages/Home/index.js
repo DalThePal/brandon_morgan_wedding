@@ -15,8 +15,7 @@ import Wedlocked  from './sections/06-Wedlocked'
 import PathFiller from './sections/07-PathFiller'
 
 import Animation from 'components/AppearAnimation'
-
-import DiamondMP4 from 'images/diamond.mp4'
+import ImageSequence from 'components/ImageSequence'
 
 const Home = () => {
 
@@ -32,7 +31,7 @@ const Home = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       onComplete: () => {
-        diamondRef.current.play()
+        // diamondRef.current.play()
       }
     })
 
@@ -71,16 +70,7 @@ const Home = () => {
     <>
       <AnimationWrapper>
         <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <Diamond 
-            ref={diamondRef} 
-            muted 
-            loop 
-            controls={false}
-            src={DiamondMP4} 
-            alt="diamond"
-            data-scroll-sticky
-            data-scroll-target=".smooth-scroll"
-          />
+          <ImageSequence/>
         </Animation>
       </AnimationWrapper>
 

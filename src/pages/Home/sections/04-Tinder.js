@@ -201,7 +201,7 @@ const Text = styled.p`
 
 const ImgWrapper = styled.div`
   position: absolute;
-  background: ${gradients.darkPink};
+  background: ${gradients.imageSequence};
 
   width: 29.514vw;
   height: 55.556vw;

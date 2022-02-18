@@ -183,7 +183,7 @@ const Title3 = styled.h2`
 const ImageWrapper = styled.div`
   position: absolute;
   opacity: 0.75;
-  background: ${gradients.darkPink};
+  background: ${gradients.imageSequence};
 `
 
 const ImageWrapper1 = styled(ImageWrapper)`

@@ -31,6 +31,6 @@ export default App;
 
 const Wrapper = styled.main`
   width: 100%;
-  background: ${gradients.darkPink};
+  background: ${gradients.imageSequence};
   overflow: hidden;
 `

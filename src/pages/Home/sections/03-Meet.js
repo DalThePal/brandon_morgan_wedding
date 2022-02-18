@@ -126,7 +126,7 @@ const ImageWrapper = styled.div`
   position: absolute;
   z-index: 1;
   opacity: 0.75;
-  background: ${gradients.darkPink};
+  background: ${gradients.imageSequence};
 
   width: 40.278vw;
   height: 52.083vw;
