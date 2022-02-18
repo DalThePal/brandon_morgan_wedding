@@ -253,7 +253,7 @@ export default Header
 const Wrapper = styled.header`
   width: 100%;
   position: absolute;
-  z-index: 9;
+  z-index: 70;
   top: 0;
   left: 0;
 `
