@@ -58,15 +58,16 @@ export default Animation
 
 const Inner = styled.span`
   position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 150%;
 `
 
 const Wrapper = styled.div`
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   height: ${props => props.height};
   width: 100%;

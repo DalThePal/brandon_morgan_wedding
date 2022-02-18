@@ -102,7 +102,7 @@ const Diamond = styled.video`
   height: 5.25vw;
 
   ${media.mobile} {
-    width: 100%;
+    width: 100vw;
     height: 112vw;
   }
 `
@@ -111,7 +111,7 @@ const AnimationWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 45vw;
 
   .vsc-controller {

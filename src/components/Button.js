@@ -72,6 +72,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  width: fit-content;
 
   height: 4.931vw;
   border-radius: 5.208vw;
