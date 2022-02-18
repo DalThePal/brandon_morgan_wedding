@@ -4,6 +4,7 @@ import gsap from 'gsap'
 
 import text from 'styles/text'
 import colors from 'styles/colors'
+import media from 'styles/media'
 
 const Link = ({children, width, disabled}) => {
 
@@ -43,9 +44,13 @@ const CrossThrough = styled.div`
   top: 50%;
   transform: translateY(-50%);
   background-color: ${colors.mauve600};
+  width: 100%;
 
   height: 0.694vw;
-  width: 100%;
+
+  ${media.mobile} {
+    height: 1.333vw;
+  }
 `
 
 const Wrapper = styled.div`
@@ -59,4 +64,10 @@ const Wrapper = styled.div`
 
   width: ${props => props.width};
   margin-bottom: 3.472vw;
+
+  ${media.mobile} {
+    ${text.mobile.h6}
+    margin-bottom: 20vw;
+    width: 100%;
+  }
 `

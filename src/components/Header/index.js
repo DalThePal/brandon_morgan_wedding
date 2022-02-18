@@ -3,8 +3,11 @@ import styled from 'styled-components'
 import gsap from 'gsap'
 import { Link } from 'react-router-dom'
 
+import { useMedia } from 'utils/hooks'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 import LinkWrapper from './Link'
 import Button from 'components/Button'
@@ -27,6 +30,8 @@ const Header = () => {
   const [tl, setTl] = useState(gsap.timeline())
   
   const duration = 0.5
+
+  const animationHeight = useMedia("4.931vw", "4.931vw", "4.931vw", "18.933vw")
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -225,10 +230,10 @@ const Header = () => {
           <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
             Registry
             <ButtonRow >
-              <Animation height={"4.931vw"} trigger={btn1Trigger} duration={0.3}>
+              <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
                 <Button onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</Button>
               </Animation>
-              <Animation height={"4.931vw"} trigger={btn2Trigger} duration={0.3}>
+              <Animation height={animationHeight} trigger={btn2Trigger} duration={0.3}>
                 <Button onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</Button>
               </Animation>
             </ButtonRow>
@@ -264,6 +269,10 @@ const Top = styled.div`
   padding-top: 1.458vw;
   padding-left: 8.333vw;
   padding-right: 8.333vw;
+
+  ${media.mobile} {
+    height: 26.667vw;
+  }
 `
 
 const Logo = styled.svg`
@@ -271,6 +280,11 @@ const Logo = styled.svg`
 
   height: 4.167vw;
   width: 4.167vw;
+
+  ${media.mobile} {
+    height: 16vw;
+    width: 16vw;
+  }
 `
 
 const Toggle = styled.div`
@@ -282,6 +296,11 @@ const Toggle = styled.div`
 
   height: 2.847vw;
   width: 7.083vw;
+
+  ${media.mobile} {
+    width: 13.333vw;
+    height: 13.333vw;
+  }
 `
 
 const ToggleText = styled.p`
@@ -290,6 +309,10 @@ const ToggleText = styled.p`
   text-decoration: underline;
 
   margin-right: 0.694vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const CloseText = styled(ToggleText)`
@@ -299,16 +322,29 @@ const CloseText = styled(ToggleText)`
 
   left: 0;
   top: 35%;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const ToggleSvg = styled.svg`
   width: 3.472vw;
   height: 3.472vw;
+
+  ${media.mobile} {
+    width: 13.333vw;
+    height: 13.333vw;
+  }
 `
 
 const Line = styled.line`
   stroke: ${colors.roseIvory};
   stroke-width: 0.139vw;
+
+  ${media.mobile} {
+    stroke-width: 0.267vw;
+  }
 `
 
 const Content = styled.div`
@@ -319,10 +355,14 @@ const Content = styled.div`
   align-items: center;
   top: 0;
   left: 0;
-
   width: 100vw;
   height: 100vh;
+
   padding-top: 6.944vw;
+
+  ${media.mobile} {
+    padding-top: 53.333vw;
+  }
 `
 
 const Soon = styled.p`
@@ -331,6 +371,10 @@ const Soon = styled.p`
   color: ${colors.mauve50};
   width: 100%;
   letter-spacing: 0;
+
+  ${media.mobile} {
+    ${text.mobile.nav}
+  }
 `
 
 const Registry = styled.div`
@@ -348,6 +392,12 @@ const ButtonRow = styled.div`
   letter-spacing: 0;
 
   width: 40.778vw;
+
+  ${media.mobile} {
+    flex-direction: column;
+    width: 100%;
+    height: 41.867vw;
+  }
 `
 
 const StyledLink = styled(Link)`

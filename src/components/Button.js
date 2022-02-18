@@ -4,6 +4,7 @@ import gsap from 'gsap'
 
 import colors from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 import { ReactComponent as ArrowSVG } from 'images/arrow.svg'
 
@@ -75,6 +76,13 @@ const Wrapper = styled.div`
   height: 4.931vw;
   border-radius: 5.208vw;
   padding: 1.389vw 2.083vw;
+
+  ${media.mobile} {
+    ${text.mobile.nav}
+    height: 18.933vw;
+    border-radius: 20vw;
+    padding: 5.333vw 8vw;
+  }
 `
 
 const ArrowOverflow = styled.div`
@@ -85,6 +93,13 @@ const ArrowOverflow = styled.div`
   height: 2.153vw;
   margin-left: ${props => !props.left ? '2.083vw' : '0vw'};
   margin-right: ${props => props.left ? '2.083vw' : '0vw'};
+
+  ${media.mobile} {
+    width: 8.267vw;
+    height: 8.267vw;
+    margin-left: ${props => !props.left ? '8vw' : '0vw'};
+    margin-right: ${props => props.left ? '8vw' : '0vw'};
+  }
 `
 
 const Arrow = styled(ArrowSVG)`

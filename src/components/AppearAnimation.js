@@ -64,6 +64,9 @@ const Inner = styled.span`
 const Wrapper = styled.div`
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   height: ${props => props.height};
   width: 100%;
