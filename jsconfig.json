@@ -4,9 +4,12 @@
     "paths": {
       "components/*": ["components/*"],
       "fonts/*": ["fonts/*"],
+      "images/*": ["images/*"],
+      "models/*": ["models/*"],
       "pages/*": ["pages/*"],
       "styles/*": ["styles/*"],
-      "utils/*": ["utils/*"]
+      "utils/*": ["utils/*"],
+      "videos/*": ["vidoes/*"]
     }
   },
   "exclude": ["node_modules"]
