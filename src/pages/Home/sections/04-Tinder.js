@@ -24,7 +24,7 @@ const Tinder = () => {
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 40} bottom-=${(window.innerWidth / 100) * 169.6}`
+    `top-=${(window.innerWidth / 100) * 40} bottom-=${(window.innerWidth / 100) * 166}`
   )
 
   const scrollEnd = useMedia(

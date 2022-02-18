@@ -3,7 +3,6 @@
 * Should diamond spin in initial animation?
 * Header initial animation
 * Text lerping
-* Tablet view
 * Mobile view
 * Section intial text and image animations?
 * Sections flickering when scrolled back into view. transform: will-change?

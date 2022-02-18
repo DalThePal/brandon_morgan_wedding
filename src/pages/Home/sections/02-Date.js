@@ -17,7 +17,7 @@ const Date = () => {
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 90.4} bottom-=${(window.innerWidth / 100) * 169.6}`
+    `top-=${(window.innerWidth / 100) * 90.4} bottom-=${(window.innerWidth / 100) * 166}`
   )
 
   const scrollTlEnd = useMedia(

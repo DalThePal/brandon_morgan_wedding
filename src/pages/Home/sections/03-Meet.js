@@ -19,7 +19,7 @@ const Meet = () => {
     `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 30} bottom-=${(window.innerWidth / 100) * 169.6}`
+    `top-=${(window.innerWidth / 100) * 30} bottom-=${(window.innerWidth / 100) * 166}`
   )
 
   const scrollEnd = useMedia(

@@ -23,21 +23,21 @@ const Wedlocked = () => {
     `top+=${(window.innerWidth / 100) * 21} top`,
     `top+=${(window.innerWidth / 100) * 21} top`,
     `top+=${(window.innerWidth / 100) * 21} top`,
-    `top+=${(window.innerWidth / 100) * 21} top`
+    `top top+=${(window.innerWidth / 100) * 30}`
   )
 
   const scrollEnd = useMedia(
     `bottom bottom+=${(window.innerWidth / 100) * 21}`,
     `bottom bottom+=${(window.innerWidth / 100) * 21}`,
     `bottom bottom+=${(window.innerWidth / 100) * 21}`,
-    `bottom bottom+=${(window.innerWidth / 100) * 21}`
+    `bottom-=${(window.innerWidth / 100) * 50} bottom`
   )
 
   const scrollOffset = useMedia(
     `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
     `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
     `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`
+    `-${(window.innerWidth / 100) * 30}, ${(window.innerWidth / 100) * 30}`
   )
 
   const innerLeft = useMedia('-50%', '-50%', '-50%', '-205%')
@@ -49,7 +49,7 @@ const Wedlocked = () => {
         scroller: '.smooth-scroll',
         start: scrollStart,
         end: scrollEnd,
-        scrub: true
+        scrub: true,
       }
     })
 
@@ -104,6 +104,7 @@ const Wedlocked = () => {
 
 export default Wedlocked
 
+
 const Wrapper = styled.section`
   position: relative;
   z-index: 3;
@@ -112,7 +113,8 @@ const Wrapper = styled.section`
   height: 190vw;
 
   ${media.mobile} {
-    height: 368.533vw;
+    height: 539.734vw;
+    overflow: hidden;
   }
 `
 
@@ -124,7 +126,7 @@ const Inner = styled.div`
   width: 200vw;
 
   ${media.mobile} {
-    height: 185.6vw;
+    height: 269.867vw;
     width: 346.667vw;
   }
 `
@@ -140,7 +142,7 @@ const Title1 = styled.h2`
 
   ${media.mobile} {
     ${text.mobile.h4}
-    top: 77.333vw;
+    top: 5.333vw;
     left: 8vw;
   }
 `
@@ -157,7 +159,7 @@ const Title2 = styled.h2`
   ${media.mobile} {
     ${text.mobile.h2}
     font-size: 106.667vw;
-    top: 101.867vw;
+    top: 29.867vw;
     left: 12.267vw;
   }
 `
@@ -173,7 +175,7 @@ const Title3 = styled.h2`
 
   ${media.mobile} {
     ${text.mobile.h4}
-    top: 131.733vw;
+    top: 59.733vw;
     left: 95.2vw;
   }
 `
@@ -192,7 +194,7 @@ const ImageWrapper1 = styled(ImageWrapper)`
 
   ${media.mobile} {
     left: 26.667vw;
-    top: 72vw;
+    top: 0vw;
     width: 45.333vw;
     height: 60.533vw;
   }
@@ -208,7 +210,7 @@ const ImageWrapper2 = styled(ImageWrapper)`
     width: 71.467vw;
     height: 53.867vw;
     left: 78.4vw;
-    top: 105.333vw;
+    top: 33.333vw;
   }
 `
 
@@ -221,7 +223,7 @@ const ImageWrapper3 = styled(ImageWrapper)`
   ${media.mobile} {
     width: 45.333vw;
     height: 60.533vw;
-    top: 90.133vw;
+    top: 18.133vw;
     left: 156.8vw;
   }
 `
@@ -235,7 +237,7 @@ const ImageWrapper4 = styled(ImageWrapper)`
   ${media.mobile} {
     width: 45.067vw;
     height: 60.267vw;
-    top: 125.867vw;
+    top: 53.867vw;
     left: 209.067vw;
   }
 `
@@ -249,7 +251,7 @@ const ImageWrapper5 = styled(ImageWrapper)`
   ${media.mobile} {
     width: 45.333vw;
     height: 60.533vw;
-    top: 104vw;
+    top: 32vw;
     left: 260.8vw;
   }
 `
@@ -273,6 +275,6 @@ const Text = styled.p`
     ${text.mobile.body}
     width: 335px;
     left: 209.6vw;
-    top: 197.867vw;
+    top: 125.867vw;
   }
 `

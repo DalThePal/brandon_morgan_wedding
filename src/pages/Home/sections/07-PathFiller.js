@@ -2,20 +2,37 @@ import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
+import { useMedia } from 'utils/hooks'
+
 import colors from 'styles/colors'
+import media from 'styles/media'
 
 const PathFiller = () => {
 
   const wrapperRef  = useRef(null)
   const vrRef       = useRef(null)
 
+  const scrollStart = useMedia(
+    `top bottom-=${(window.innerWidth / 100) * 20}`,
+    `top bottom-=${(window.innerWidth / 100) * 20}`,
+    `top bottom-=${(window.innerWidth / 100) * 20}`,
+    `top bottom-=${(window.innerWidth / 100) * 166}`
+  )
+
+  const scrollEnd = useMedia(
+    `bottom+=${(window.innerWidth / 100) * 20} bottom`,
+    `bottom+=${(window.innerWidth / 100) * 20} bottom`,
+    `bottom+=${(window.innerWidth / 100) * 20} bottom`,
+    `bottom+=${(window.innerWidth / 100) * 165} bottom`
+  )
+
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
-        start: `top bottom-=${(window.innerWidth / 100) * 20}`,
-        end: `bottom+=${(window.innerWidth / 100) * 20} bottom`,
+        start: scrollStart,
+        end: scrollEnd,
         scrub: true,
       }
     })
@@ -28,7 +45,7 @@ const PathFiller = () => {
     return () => {
       tl.kill()
     }
-  }, [])
+  }, [scrollStart, scrollEnd])
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
@@ -46,6 +63,11 @@ const Wrapper = styled.section`
   justify-content: center;
 
   height: 31.25vw;
+
+  ${media.mobile} {
+    margin-top: 26.667vw;
+    height: 120vw;
+  }
 `
 
 const VR = styled.div`
@@ -53,4 +75,8 @@ const VR = styled.div`
   height: 100%;
 
   width: 0.069vw;
+
+  ${media.mobile} {
+    width: 0.267vw;
+  }
 `

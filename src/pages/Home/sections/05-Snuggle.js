@@ -23,7 +23,7 @@ const Snuggle = () => {
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
-    `top-=${(window.innerWidth / 100) * 12} bottom-=${(window.innerWidth / 100) * 169.6}`
+    `top-=${(window.innerWidth / 100) * 12} bottom-=${(window.innerWidth / 100) * 166}`
   )
 
   const scrollEnd = useMedia(
