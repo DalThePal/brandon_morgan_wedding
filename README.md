@@ -7,3 +7,4 @@
 * Sections flickering when scrolled back into view. transform: will-change?
 * Put VR in separate file and import it (DRY)
 * Hide Registry buttons on button click
+* convert png sequence to webgl
