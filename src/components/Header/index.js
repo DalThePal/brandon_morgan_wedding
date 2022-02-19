@@ -245,9 +245,6 @@ const Header = () => {
   )
 }
 
-// https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225
-// https://www.target.com/gift-registry/gift-giver
-
 export default Header
 
 const Wrapper = styled.header`
