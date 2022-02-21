@@ -6,6 +6,7 @@ import Weekend    from './sections/03-Weekend'
 import Clouds     from './sections/04-Clouds'
 import JetSetters from './sections/05-JetSetters'
 import Hotels     from './sections/06-Hotels'
+import RSVP       from './sections/07-RSVP'
 
 const Travel = () => {
   return (
@@ -16,6 +17,7 @@ const Travel = () => {
       <Clouds/>
       <JetSetters/>
       <Hotels/>
+      <RSVP/>
     </>
   )
 }

@@ -4,7 +4,37 @@ import styled from 'styled-components'
 import colors from 'styles/colors'
 import text from 'styles/text'
 
+import ListItem from 'components/ListItem'
+
+const HOTEL_DATA = [
+  {
+    title: "The Marriott Hotel, Salt Lake City",
+    href: ""
+  },
+  {
+    title: "The Hotel Monaco",
+    href: ""
+  },
+  {
+    title: "The Hilton at Salt Lake City Center",
+    href: ""
+  },
+  {
+    title: "Hyatt House Pleasant Grove",
+    href: ""
+  },
+]
+
 const Hotels = () => {
+
+  const listItems = HOTEL_DATA.map((item, index) => {
+    return (
+      <ListItem key={index}>
+        <P>{item.title}</P>
+      </ListItem>
+    )
+  })
+
   return (
     <Wrapper data-scroll-section>
       <H6>
@@ -12,7 +42,7 @@ const Hotels = () => {
         you feel most comfortable, we’d like to suggest some options.
       </H6>
       <UL>
-
+        {listItems}
       </UL>
     </Wrapper>
   )
@@ -42,4 +72,9 @@ const H6 = styled.h6`
 
 const UL = styled.ul`
   width: 100%;
+`
+
+const P = styled.p`
+  ${text.desktop.body}
+  color: ${colors.roseIvory};
 `
