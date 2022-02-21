@@ -8,6 +8,8 @@ import JetSetters from './sections/05-JetSetters'
 import Hotels     from './sections/06-Hotels'
 import RSVP       from './sections/07-RSVP'
 
+import Footer from 'components/Footer'
+
 const Travel = () => {
   return (
     <>
@@ -18,6 +20,7 @@ const Travel = () => {
       <JetSetters/>
       <Hotels/>
       <RSVP/>
+      <Footer diamond/>
     </>
   )
 }

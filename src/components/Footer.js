@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { useMedia } from 'utils/hooks'
@@ -8,14 +8,24 @@ import text from 'styles/text'
 import media from 'styles/media'
 
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
+import DiamondMP4 from 'videos/diamond.mp4'
 
-const Footer = () => {
+const Footer = ({ diamond }) => {
+
+  const diamondRef = useRef(null)
 
   const x1 = useMedia("57%", "57%", "57%", "65%")
   const x2 = useMedia("43%", "43%", "43%", "35%")
 
+  useEffect(() => {
+    if (diamondRef.current) {
+      diamondRef.current.play()
+    }
+  }, [])
+
   return (
     <Wrapper data-scroll-section>
+      {diamond && <Diamond ref={diamondRef} muted controls={false} loop src={DiamondMP4}/>}
       <Arc/>
       <SVG viewBox='0 0 100% 100%'>
         <Line x1={"0%"}   x2={"0%"}   y1={"0%"}   y2={'100%'}/>
@@ -50,6 +60,10 @@ const Wrapper = styled.footer`
   padding-top: 6.944vw;
   padding-left: 8.333vw;
   padding-right: 8.333vw;
+
+  .vsc-controller {
+    display: none;
+  }
 
   ${media.mobile} {
     flex-direction: column;
@@ -165,5 +179,20 @@ const Arc = styled(ArcSVG)`
     width: 21.333vw;
     height: 21.333vw;
     top: 13.867vw;
+  }
+`
+
+const Diamond = styled.video`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  top: 0.5vw;
+  width: 4.514vw;
+  height: 5.25vw;
+
+  ${media.mobile} {
+    width: 100vw;
+    height: 112vw;
   }
 `

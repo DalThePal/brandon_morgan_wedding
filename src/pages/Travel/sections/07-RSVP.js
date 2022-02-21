@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import gsap from 'gsap'
 
 import text   from 'styles/text'
 import colors from 'styles/colors'

@@ -6,7 +6,6 @@ import colors from 'styles/colors'
 
 import Scroll from 'components/Scroll'
 import Header from 'components/Header'
-import Footer from 'components/Footer'
 
 import Home   from 'pages/Home'
 import Travel from 'pages/Travel'
@@ -18,11 +17,10 @@ const App = () => {
       <Header/>
 
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/travel" element={<Travel/>}/>
+        <Route path="/"       element={<Home/>}   />
+        <Route path="/travel" element={<Travel/>} />
       </Routes>
 
-      <Footer/>
     </Wrapper>
   );
 }

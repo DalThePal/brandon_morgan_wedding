@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-import colors from 'styles/colors'
 import media  from 'styles/media'
 
 import { ReactComponent as ArrowSVG } from 'images/arrow.svg'

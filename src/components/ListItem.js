@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import gsap from 'gsap'
 
 import colors from 'styles/colors'
 
