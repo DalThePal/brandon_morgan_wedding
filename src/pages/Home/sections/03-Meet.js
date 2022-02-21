@@ -4,7 +4,7 @@ import gsap from 'gsap'
 
 import { useMedia } from 'utils/hooks'
 
-import colors, { gradients } from 'styles/colors'
+import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
 
@@ -126,7 +126,7 @@ const ImageWrapper = styled.div`
   position: absolute;
   z-index: 1;
   opacity: 0.75;
-  background: ${gradients.imageSequence};
+  background: ${colors.background};
 
   width: 40.278vw;
   height: 52.083vw;

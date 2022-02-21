@@ -1,5 +1,6 @@
 
 const colors = {
+  background: '#c68d96',
   charcoal: '#262626',
   emerald800: '#060f0E',
   emerald700: '#081311',

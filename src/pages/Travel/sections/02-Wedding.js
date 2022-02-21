@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import colors, { gradients } from 'styles/colors'
+import colors from 'styles/colors'
 import text from 'styles/text'
 
 import WeddingPNG from 'images/wedding.png'
@@ -28,7 +28,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: ${gradients.imageSequence};
+  background: ${colors.background};
 
   height: 41.25vw;
   padding-left: 7.222vw;
