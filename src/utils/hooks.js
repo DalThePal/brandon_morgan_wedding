@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import gsap from 'gsap'
 
 export const useCloudMovement = (refs) => {
-  console.log(refs)
 
   useEffect(() => {
     if (refs) {

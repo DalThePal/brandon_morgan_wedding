@@ -1,16 +1,19 @@
 import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
+import { Link, useLocation } from 'react-router-dom'
 
 import { useMedia } from 'utils/hooks'
 
 import colors from 'styles/colors'
-import text from 'styles/text'
-import media from 'styles/media'
+import text   from 'styles/text'
+import media  from 'styles/media'
 
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondMP4 from 'videos/diamond.mp4'
 
 const Footer = ({ diamond }) => {
+
+  const {pathname} = useLocation()
 
   const diamondRef = useRef(null)
 
@@ -39,7 +42,8 @@ const Footer = ({ diamond }) => {
         <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
         <Links>
           {/* <Link>Registry</Link> */}
-          {/* <Link>Travel</Link> */}
+          {pathname === "/" && <StyledLink to="/travel">Travel</StyledLink>}
+          {pathname === "/travel" && <StyledLink to="/">Home</StyledLink>}
         </Links>
       </Right>
     </Wrapper>
@@ -126,19 +130,19 @@ const Links = styled.div`
   justify-content: flex-start;
 `
 
-// const Link = styled.a`
-//   ${text.desktop.body}
-//   color: ${colors.roseIvory};
-//   text-decoration: underline;
-//   cursor: pointer;
+const StyledLink = styled(Link)`
+  ${text.desktop.body}
+  color: ${colors.roseIvory};
+  text-decoration: underline;
+  cursor: pointer;
 
-//   margin-right: 5.208vw;
+  margin-right: 5.208vw;
 
-//   ${media.mobile} {
-//     ${text.mobile.body}
-//     margin-right: 9.6vw;
-//   }
-// `
+  ${media.mobile} {
+    ${text.mobile.body}
+    margin-right: 9.6vw;
+  }
+`
 
 const SVG = styled.svg`
   position: absolute;
