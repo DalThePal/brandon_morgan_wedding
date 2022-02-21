@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-import { useCloudMovement } from 'utils/hooks'
+import { useCloudMovement, useMedia } from 'utils/hooks'
 
 import { VR } from 'components/Styled'
+
+import media from 'styles/media'
 
 import CloudPNG from 'images/cloud.png'
 import PlanePNG from 'images/plane2.png'
@@ -22,6 +24,36 @@ const Clouds = () => {
   const [cloud1Ref, setCloud1Ref] = useState(null) 
   const [cloud2Ref, setCloud2Ref] = useState(null) 
   const [cloud3Ref, setCloud3Ref] = useState(null) 
+
+  const planeStart = useMedia(
+    `top top+=${(window.innerWidth / 100) * 7}`,
+    `top top+=${(window.innerWidth / 100) * 7}`,
+    `top top+=${(window.innerWidth / 100) * 7}`,
+    `top top+=${(window.innerWidth / 100) * 40}`
+  )
+
+  const planeEnd = useMedia(
+    `bottom bottom-=${(window.innerWidth / 100) * 36}`,
+    `bottom bottom-=${(window.innerWidth / 100) * 36}`,
+    `bottom bottom-=${(window.innerWidth / 100) * 36}`,
+    `bottom+=${(window.innerWidth / 100) * 150} bottom`
+  )
+
+  const planeBottom = useMedia('-13.889vw', '-13.889vw', '-13.889vw', '-77.867vw')
+
+  const vrStart = useMedia(
+    `top top+=${(window.innerWidth / 100) * 7}`,
+    `top top+=${(window.innerWidth / 100) * 7}`,
+    `top top+=${(window.innerWidth / 100) * 7}`,
+    `top top+=${(window.innerWidth / 100) * 40}`
+  )
+
+  const vrEnd = useMedia(
+    `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
+    `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
+    `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
+    `bottom+=${(window.innerWidth / 100) * 130} bottom`
+  )
  
   useCloudMovement([
     cloud1Ref,
@@ -35,13 +67,13 @@ const Clouds = () => {
         scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
         scrub: true,
-        start: `top top+=${(window.innerWidth / 100) * 7}`,
-        end: `bottom bottom-=${(window.innerWidth / 100) * 36}`,
+        start: planeStart,
+        end: planeEnd,
       }
     })
 
     planeTl.to(planeRef.current, {
-      bottom: '-13.889vw',
+      bottom: planeBottom,
       ease: "none"
     }, 0)
 
@@ -50,8 +82,9 @@ const Clouds = () => {
         scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
         scrub: true,
-        start: `top top+=${(window.innerWidth / 100) * 7}`,
-        end: `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
+        start: vrStart,
+        end: vrEnd,
+        markers: true
       }
     })
 
@@ -89,6 +122,10 @@ const Wrapper = styled.section`
   position: relative;
 
   height: 50.764vw;
+
+  ${media.mobile} {
+    height: 138.933vw;
+  }
 `
 
 const Cloud1 = styled.img`
@@ -100,6 +137,13 @@ const Cloud1 = styled.img`
   height: 21.319vw;
   top: 7.778vw;
   left: -7.361vw;
+
+  ${media.mobile} {
+    width: 72vw;
+    height: 41.067vw;
+    top: 57.6vw;
+    left: -19.733vw;
+  }
 `
 
 const Cloud2 = styled.img`
@@ -111,6 +155,13 @@ const Cloud2 = styled.img`
   height: 33.264vw;
   top: 16.667vw;
   left: -2.083vw;
+
+  ${media.mobile} {
+    width: 112.267vw;
+    height: 64vw;
+    top: 74.933vw;
+    left: -9.6vw;
+  }
 `
 
 const Cloud3 = styled.img`
@@ -122,6 +173,13 @@ const Cloud3 = styled.img`
   height: 50.764vw;
   top: 0vw;
   left: 28.889vw;
+
+  ${media.mobile} {
+    width: 171.2vw;
+    height: 97.867vw;
+    top: 26.667vw;
+    left: 1.867vw;
+  }
 `
 
 const Plane = styled.img`
@@ -133,6 +191,12 @@ const Plane = styled.img`
   width: 10.417vw;
   height: 10.417vw;
   bottom: 10.417vw;
+
+  ${media.mobile} {
+    width: 51.2vw;
+    height: 51.2vw;
+    bottom: 31.467vw;
+  }
 `
 
 const VR1 = styled(VR)`
@@ -141,6 +205,12 @@ const VR1 = styled(VR)`
   height: 20.833vw;
   left: 46.597vw;
   bottom: -6.25vw;
+
+  ${media.mobile} {
+    height: 80vw;
+    left: 36.533vw;
+    bottom: -37.333vw;
+  }
 `
 
 const VR2 = styled(VR)`
@@ -149,6 +219,12 @@ const VR2 = styled(VR)`
   height: 20.833vw;
   left: 48.264vw;
   bottom: -8.333vw;
+
+  ${media.mobile} {
+    height: 80vw;
+    left: 42.933vw;
+    bottom: -45.333vw;
+  }
 `
 
 const VR3 = styled(VR)`
@@ -158,6 +234,11 @@ const VR3 = styled(VR)`
 
   height: 20.833vw;
   bottom: -10.417vw;
+
+  ${media.mobile} {
+    height: 80vw;
+    bottom: -53.333vw;
+  }
 `
 
 const VR4 = styled(VR)`
@@ -166,6 +247,12 @@ const VR4 = styled(VR)`
   height: 20.833vw;
   right: 48.264vw;
   bottom: -8.333vw;
+
+  ${media.mobile} {
+    height: 80vw;
+    right: 42.933vw;
+    bottom: -45.333vw;
+  }
 `
 
 const VR5 = styled(VR)`
@@ -174,4 +261,10 @@ const VR5 = styled(VR)`
   height: 20.833vw;
   right: 46.597vw;
   bottom: -6.25vw;
+
+  ${media.mobile} {
+    height: 80vw;
+    right: 36.533vw;
+    bottom: -37.333vw;
+  }
 `
