@@ -84,7 +84,6 @@ const Clouds = () => {
         scrub: true,
         start: vrStart,
         end: vrEnd,
-        markers: true
       }
     })
 
@@ -97,7 +96,7 @@ const Clouds = () => {
       planeTl.kill()
       vrTl.kill()
     }
-  }, [])
+  }, [planeBottom, planeEnd, planeStart, vrStart, vrEnd])
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>

@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import colors from 'styles/colors'
-import text from 'styles/text'
+import text   from 'styles/text'
+import media  from 'styles/media'
 
 const JetSetters = () => {
   return (
@@ -26,6 +27,11 @@ const Wrapper = styled.section`
 
   padding-top: 17.361vw;
   height: 49.028vw;
+
+  ${media.mobile} {
+    height: 241.333vw;
+    padding-top: 91.2vw;
+  }
 `
 
 const P = styled.p`
@@ -34,6 +40,11 @@ const P = styled.p`
   text-align: center;
   
   margin-bottom: 3.472vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    margin-bottom: 5.333vw;
+  }
 `
 
 const H6 = styled.h6`
@@ -42,4 +53,9 @@ const H6 = styled.h6`
   text-align: center;
 
   width: 83.333vw;
+
+  ${media.mobile} {
+    ${text.mobile.h2}
+    width: 89.067vw;
+  }
 `
