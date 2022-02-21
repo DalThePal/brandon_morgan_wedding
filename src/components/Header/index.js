@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { useMedia } from 'utils/hooks'
 
@@ -223,8 +223,10 @@ const Header = () => {
         </Toggle>
       </Top>
       <Content ref={contentRef}>
-        <LinkWrapper width={"40.833vw"}>
-          <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink>
+        <LinkWrapper width={"40.833vw"} disabled>
+          {/* <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink> */}
+          <p>Travel</p>
+          <Soon>Coming Soon...</Soon>
         </LinkWrapper>
         <LinkWrapper width={"52.569vw"}>
           <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
@@ -397,7 +399,7 @@ const ButtonRow = styled.div`
   }
 `
 
-const StyledLink = styled(Link)`
-  color: inherit;
-  text-decoration: none;
-`
+// const StyledLink = styled(Link)`
+//   color: inherit;
+//   text-decoration: none;
+// `
