@@ -28,7 +28,7 @@ const Footer = () => {
       <Right>
         <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
         <Links>
-          <Link>Registry</Link>
+          {/* <Link>Registry</Link> */}
           {/* <Link>Travel</Link> */}
         </Links>
       </Right>
@@ -112,19 +112,19 @@ const Links = styled.div`
   justify-content: flex-start;
 `
 
-const Link = styled.a`
-  ${text.desktop.body}
-  color: ${colors.roseIvory};
-  text-decoration: underline;
-  cursor: pointer;
+// const Link = styled.a`
+//   ${text.desktop.body}
+//   color: ${colors.roseIvory};
+//   text-decoration: underline;
+//   cursor: pointer;
 
-  margin-right: 5.208vw;
+//   margin-right: 5.208vw;
 
-  ${media.mobile} {
-    ${text.mobile.body}
-    margin-right: 9.6vw;
-  }
-`
+//   ${media.mobile} {
+//     ${text.mobile.body}
+//     margin-right: 9.6vw;
+//   }
+// `
 
 const SVG = styled.svg`
   position: absolute;
