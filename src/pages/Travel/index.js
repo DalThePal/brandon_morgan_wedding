@@ -1,9 +1,15 @@
 import React from 'react'
 
+import Hero    from './sections/01-Hero'
+import Wedding from './sections/02-Wedding'
+import Weekend from './sections/03-Weekend' 
+
 const Travel = () => {
   return (
     <>
-      travel page
+      <Hero/>
+      <Wedding/>
+      <Weekend/>
     </>
   )
 }
