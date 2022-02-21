@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import colors from 'styles/colors'
+import media  from 'styles/media'
 
 import Arrows from 'components/Arrows'
 
@@ -26,8 +27,16 @@ const Wrapper = styled.li`
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  border-style: solid;
+  border-color: ${colors.roseIvory};
 
   height: 3.472vw;
-  border-top: 0.069vw solid ${colors.roseIvory};
+  border-top-width: 0.069vw;
   margin-bottom: 1.042vw;
+
+  ${media.mobile} {
+    height: 13.333vw;
+    border-top-width: 0.267vw;
+    margin-bottom: 4vw;
+  }
 `

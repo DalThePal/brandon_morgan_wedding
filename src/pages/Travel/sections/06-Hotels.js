@@ -1,31 +1,44 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useMedia } from 'utils/hooks'
+
 import colors from 'styles/colors'
-import text from 'styles/text'
+import text   from 'styles/text'
+import media  from 'styles/media'
 
 import ListItem from 'components/ListItem'
 
-const HOTEL_DATA = [
-  {
-    title: "The Marriott Hotel, Salt Lake City",
-    href: ""
-  },
-  {
-    title: "The Hotel Monaco",
-    href: ""
-  },
-  {
-    title: "The Hilton at Salt Lake City Center",
-    href: ""
-  },
-  {
-    title: "Hyatt House Pleasant Grove",
-    href: ""
-  },
-]
-
 const Hotels = () => {
+
+  const HOTEL_DATA = [
+    {
+      title: useMedia(
+        "The Marriott Hotel, Salt Lake City", 
+        "The Marriott Hotel, Salt Lake City", 
+        "The Marriott Hotel, Salt Lake City",
+        "The Marriott Hotel, SLC"
+      ),
+      href: ""
+    },
+    {
+      title: "The Hotel Monaco",
+      href: ""
+    },
+    {
+      title: useMedia(
+        "The Hilton at Salt Lake City Center",
+        "The Hilton at Salt Lake City Center",
+        "The Hilton at Salt Lake City Center",
+        "The Hilton at SLC Center",
+      ),
+      href: ""
+    },
+    {
+      title: "Hyatt House Pleasant Grove",
+      href: ""
+    },
+  ]
 
   const listItems = HOTEL_DATA.map((item, index) => {
     return (
@@ -61,6 +74,13 @@ const Wrapper = styled.section`
   padding-top: 20.833vw;
   padding-left: 8.333vw;
   padding-right: 8.333vw;
+
+  ${media.mobile} {
+    height: 137.333vw;
+    padding-top: 26.667vw;
+    padding-left: 5.333vw;
+    padding-right: 5.333vw;
+  }
 `
 
 const H6 = styled.h6`
@@ -69,6 +89,12 @@ const H6 = styled.h6`
 
   width: 61.806vw;
   margin-bottom: 3.472vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    width: 100%;
+    margin-bottom: 13.333vw;
+  }
 `
 
 const UL = styled.ul`
@@ -78,4 +104,12 @@ const UL = styled.ul`
 const P = styled.p`
   ${text.desktop.body}
   color: ${colors.roseIvory};
+
+  ${media.mobile} {
+    font-family: SangBleu Sunrise;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 4.0vw;
+    line-height: 150%;
+  }
 `
