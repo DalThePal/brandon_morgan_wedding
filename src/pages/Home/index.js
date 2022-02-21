@@ -15,7 +15,8 @@ import Wedlocked  from './sections/06-Wedlocked'
 import PathFiller from './sections/07-PathFiller'
 
 import Animation from 'components/AppearAnimation'
-import ImageSequence from 'components/ImageSequence'
+
+import DiamondMP4 from 'videos/diamond.mp4'
 
 const Home = () => {
 
@@ -31,7 +32,7 @@ const Home = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       onComplete: () => {
-        // diamondRef.current.play()
+        diamondRef.current.play()
       }
     })
 
@@ -70,9 +71,7 @@ const Home = () => {
     <>
       <AnimationWrapper>
         <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <Diamond ref={diamondRef}>
-            <ImageSequence/>
-          </Diamond>
+          <Diamond ref={diamondRef} muted controls={false} loop src={DiamondMP4}/>
         </Animation>
       </AnimationWrapper>
 
@@ -89,7 +88,7 @@ const Home = () => {
 
 export default Home
 
-const Diamond = styled.div`
+const Diamond = styled.video`
   width: 100vw;
   height: 5.25vw;
 

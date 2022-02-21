@@ -29,7 +29,7 @@ const Footer = () => {
         <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
         <Links>
           <Link>Registry</Link>
-          <Link>Travel</Link>
+          {/* <Link>Travel</Link> */}
         </Links>
       </Right>
     </Wrapper>
