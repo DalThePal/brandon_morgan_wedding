@@ -1,4 +1,4 @@
-import React, { lazy, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ScreenContext } from 'components/Providers'
 
@@ -8,7 +8,6 @@ import media  from 'styles/media'
 
 import WeddingPNG           from 'images/wedding.png'
 import WeddingMobilePNG     from 'images/wedding_mobile.png'
-
 
 const Wedding = () => {
 

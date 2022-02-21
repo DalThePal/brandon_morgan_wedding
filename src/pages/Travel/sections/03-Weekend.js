@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import colors from 'styles/colors'
-import text from 'styles/text'
+import text   from 'styles/text'
+import media  from 'styles/media'
 
 import WeekendPNG from 'images/weekend.png'
 
@@ -33,6 +34,10 @@ const Wrapper = styled.section`
   position: relative;
 
   height: 76.389vw;
+
+  ${media.mobile} {
+    height: 272.8vw;
+  }
 `
 
 const Content = styled.div`
@@ -44,6 +49,11 @@ const Content = styled.div`
 
   top: 31.042vw;
   left: 8.264vw;
+
+  ${media.mobile} {
+    top: 125.333vw;
+    left: 5.333vw;
+  }
 `
 
 const H2 = styled.h2`
@@ -52,6 +62,12 @@ const H2 = styled.h2`
 
   margin-bottom: 1.944vw;
   width: 61.806vw;
+
+  ${media.mobile} {
+    ${text.mobile.h1}
+    width: 92.8vw;
+    margin-bottom: 6.667vw;
+  }
 `
 
 const P = styled.p`
@@ -59,6 +75,11 @@ const P = styled.p`
   color: ${colors.roseIvory};
 
   width: 40.278vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    width: 89.067vw;
+  }
 `
 
 const Img = styled.img`
@@ -70,4 +91,10 @@ const Img = styled.img`
   top: 20.833vw;
   height: 55.556vw;
   width: 50vw;
+
+  ${media.mobile} {
+    height: 111.2vw;
+    width: 100%;
+    top: 26.667vw;
+  }
 `
