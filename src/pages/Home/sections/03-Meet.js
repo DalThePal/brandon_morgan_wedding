@@ -152,7 +152,7 @@ const Img = styled.img`
   height: 100%;
 `
 
-const StyledVR = styled.div`
+const StyledVR = styled(VR)`
   left: 50%;
   transform: translate(-50%);
 

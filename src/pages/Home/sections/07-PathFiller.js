@@ -6,7 +6,6 @@ import { useMedia } from 'utils/hooks'
 
 import { VR } from 'components/Styled'
 
-import colors from 'styles/colors'
 import media from 'styles/media'
 
 const PathFiller = () => {
