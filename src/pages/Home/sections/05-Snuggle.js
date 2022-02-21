@@ -4,6 +4,8 @@ import gsap from 'gsap'
 
 import { useMedia } from 'utils/hooks'
 
+import { VR } from 'components/Styled'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
@@ -175,20 +177,9 @@ const Line = styled.line`
   }
 `
 
-const VR = styled.div`
-  position: absolute;
-  background-color: ${colors.roseIvory};
+const VR1 = styled(VR)`
   left: 50%;
   transform: translateX(-50%);
-
-  width: 0.069vw;
-
-  ${media.mobile} {
-    width: 0.267vw;
-  }
-`
-
-const VR1 = styled(VR)`
   height: 24.306vw;
   bottom: 53.056vw;
 
@@ -198,7 +189,7 @@ const VR1 = styled(VR)`
   }
 `
 
-const VR2 = styled(VR)`
+const VR2 = styled(VR1)`
   height: 20.833vw;
   bottom: -13.889vw;
 

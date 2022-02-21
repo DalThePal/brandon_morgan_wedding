@@ -30,7 +30,7 @@ const Footer = ({ diamond }) => {
     <Wrapper data-scroll-section>
       {diamond && <Diamond ref={diamondRef} muted controls={false} loop src={DiamondMP4}/>}
       <Arc/>
-      <SVG viewBox='0 0 100% 100%'>
+      <SVG>
         <Line x1={"0%"}   x2={"0%"}   y1={"0%"}   y2={'100%'}/>
         <Line x1={"100%"} x2={"100%"} y1={"0%"}   y2={'100%'}/>
         <Line x1={"0%"}   x2={"100%"} y1={"100%"} y2={"100%"}/>

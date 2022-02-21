@@ -4,6 +4,8 @@ import gsap from 'gsap'
 
 import { useMedia } from 'utils/hooks'
 
+import { VR } from 'components/Styled'
+
 import colors from 'styles/colors'
 import media from 'styles/media'
 
@@ -49,7 +51,7 @@ const PathFiller = () => {
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
-      <VR ref={vrRef}/>
+      <StyledVR ref={vrRef}/>
     </Wrapper>
   )
 }
@@ -58,9 +60,7 @@ export default PathFiller
 
 const Wrapper = styled.section`
   width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  position: relative;
 
   height: 31.25vw;
 
@@ -70,13 +70,7 @@ const Wrapper = styled.section`
   }
 `
 
-const VR = styled.div`
-  background-color: ${colors.roseIvory};
+const StyledVR = styled(VR)`
   height: 100%;
-
-  width: 0.069vw;
-
-  ${media.mobile} {
-    width: 0.267vw;
-  }
+  bottom: 0vw;
 `

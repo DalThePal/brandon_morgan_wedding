@@ -4,6 +4,8 @@ import gsap from 'gsap'
 
 import { useMedia } from 'utils/hooks'
 
+import { VR } from 'components/Styled'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
@@ -51,7 +53,7 @@ const Date = () => {
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
 
-      <VR ref={vrRef}/>
+      <StyledVR ref={vrRef}/>
 
       <SubText>WE'RE SAYING I DO</SubText>
       <Title>September 10th, 2022</Title>
@@ -105,18 +107,14 @@ const Title = styled.h2`
   }
 `
 
-const VR = styled.div`
-  background-color: ${colors.roseIvory};
-  position: absolute;
+const StyledVR = styled(VR)`
   left: 50%;
   transform: translate(-50%);
 
-  width: 0.069vw;
   height: 34.236vw;
   bottom: 47.778vw;
 
   ${media.mobile} {
-    width: 0.267vw;
     height: 131.467vw;
     bottom: 98.4vw;
   }

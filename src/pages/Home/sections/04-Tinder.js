@@ -4,6 +4,8 @@ import gsap from 'gsap'
 
 import { useMedia, useCloudMovement } from 'utils/hooks'
 
+import { VR } from 'components/Styled'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
@@ -64,7 +66,7 @@ const Tinder = () => {
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
 
-      <VR ref={vrRef}/>
+      <StyledVR ref={vrRef}/>
 
       <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
@@ -216,18 +218,14 @@ const Img = styled.img`
   height: 100%;
 `
 
-const VR = styled.div`
-  background-color: ${colors.roseIvory};
-  position: absolute;
+const StyledVR = styled(VR)`
   left: 50%;
   transform: translateX(-50%);
 
-  width: 0.069vw;
   height: 89.514vw;
   bottom: 46.181vw;
 
   ${media.mobile} {
-    width: 0.267vw;
     height: 200vw;
     bottom: 284.533vw;
   }

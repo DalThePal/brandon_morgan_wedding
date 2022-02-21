@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useCloudMovement } from 'utils/hooks'
 
 import CloudPNG from 'images/cloud.png'
+import PlanePNG from 'images/plane2.png'
 
 const Clouds = () => {
 
