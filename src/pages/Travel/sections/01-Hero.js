@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import text from 'styles/text'
+import text   from 'styles/text'
 import colors from 'styles/colors'
+import media  from 'styles/media'
 
 import PlanePNG from 'images/plane.png'
 
@@ -27,6 +28,13 @@ const Wrapper = styled.section`
   padding-top: 12.153vw;
   padding-left: 7.222vw;
   padding-right: 7.222vw;
+
+  ${media.mobile} {
+    height: 189.333vw;
+    padding-top: 26.667vw;
+    padding-left: 5.333vw;
+    padding-right: 5.333vw;
+  }
 `
 
 const Container = styled.div`
@@ -34,14 +42,31 @@ const Container = styled.div`
   z-index: 2;
   display: flex;
   width: 100%;
+  border-color: ${colors.roseIvory};
+  border-style: solid;
 
-  border-top: 0.069vw solid ${colors.roseIvory};
-  border-bottom: 0.069vw solid ${colors.roseIvory};
+  border-top-width: 0.069vw;
+  border-bottom-width: 0.069vw;
+
+  ${media.mobile} {
+    height: 162.4vw;
+    border-top-width: 0.267vw;
+    border-bottom-width: 0.267vw;
+  }
 `
 
 const H1 = styled.h1`
   ${text.desktop.h2}
   color: ${colors.roseIvory};
+
+  ${media.mobile} {
+    ${text.mobile.h4}   
+    position: relative;
+    left: 47%;
+    top: 2%;
+    transform: rotate(90deg);
+    transform-origin: 0% 0%;
+  }
 `
 
 const Plane = styled.img`
@@ -53,4 +78,12 @@ const Plane = styled.img`
   width: 28.472vw;
   top: 12.153vw;
   right: 1.389vw;
+
+  ${media.mobile} {
+    transform: scaleX(1);
+    height: 134.133vw;
+    width: 138.4vw;
+    top 48.267vw;
+    right: 5.333vw;
+  }
 `
