@@ -6,13 +6,13 @@ import text from 'styles/text'
 
 const Hotels = () => {
   return (
-    <Wrapper>
-      <H7>
+    <Wrapper data-scroll-section>
+      <H6>
         While you’re welcome to reserve lodging wherever 
         you feel most comfortable, we’d like to suggest some options.
-      </H7>
+      </H6>
       <UL>
-        
+
       </UL>
     </Wrapper>
   )
@@ -32,7 +32,7 @@ const Wrapper = styled.section`
   padding-right: 8.333vw;
 `
 
-const H7 = styled.h7`
+const H6 = styled.h6`
   ${text.desktop.h7}
   color: ${colors.roseIvory};
 
