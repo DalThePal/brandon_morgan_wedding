@@ -55,6 +55,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  will-change: transform;
 
   height: 52.153vw;
   padding-top: 20.833vw;
