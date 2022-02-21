@@ -196,7 +196,8 @@ const Diamond = styled.video`
   height: 5.25vw;
 
   ${media.mobile} {
-    width: 100vw;
-    height: 112vw;
+    width: 27vw;
+    height: 27vw;
+    top: -3.5vw;
   }
 `
