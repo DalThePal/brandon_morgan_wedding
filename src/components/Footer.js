@@ -33,11 +33,9 @@ const Footer = ({ diamond, leftText }) => {
       </SVG> 
       <Left>{leftText}</Left>
       <Right>
-        <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
+        <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
         <Links>
-          {/* <Link>Registry</Link> */}
-          {pathname === "/" && <StyledLink to="/travel">Travel</StyledLink>}
-          {pathname === "/travel" && <StyledLink to="/">Home</StyledLink>}
+          <StyledLink to="/" disabled>Details</StyledLink>
         </Links>
       </Right>
     </Wrapper>
@@ -129,6 +127,7 @@ const StyledLink = styled(Link)`
   color: ${colors.roseIvory};
   text-decoration: underline;
   cursor: pointer;
+  opacity: ${props => props.disabled ? 0.5 : 1};
 
   margin-right: 5.208vw;
 
