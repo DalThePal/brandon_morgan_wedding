@@ -49,7 +49,7 @@ const Hotels = () => {
   })
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper >
       <H6>
         While you’re welcome to reserve lodging wherever 
         you feel most comfortable, we’d like to suggest some options.

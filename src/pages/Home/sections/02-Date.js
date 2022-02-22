@@ -51,7 +51,7 @@ const Date = () => {
   }, [scrollTlStart, scrollTlEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
 
       <StyledVR ref={vrRef}/>
 

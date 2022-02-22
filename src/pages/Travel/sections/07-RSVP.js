@@ -7,7 +7,7 @@ import media  from 'styles/media'
 
 const RSVP = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper >
       <H2>rSVP</H2>
       <P>
         Check back once you recieve your formal invite. 

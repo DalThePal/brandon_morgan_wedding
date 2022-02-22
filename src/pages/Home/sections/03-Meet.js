@@ -53,7 +53,7 @@ const Meet = () => {
   }, [scrollStart, scrollEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
 
       <StyledVR ref={vrRef}/>
 

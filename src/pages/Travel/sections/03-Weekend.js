@@ -9,7 +9,7 @@ import WeekendPNG from 'images/weekend.png'
 
 const Weekend = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper >
       <Content>
         <H2>The wedding weekend</H2>
         <P>

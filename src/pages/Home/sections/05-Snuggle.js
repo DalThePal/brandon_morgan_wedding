@@ -97,7 +97,7 @@ const Snuggle = () => {
   }, [scrollStart, scrollEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
       
       <VR1 ref={vr1Ref}/>
       <Border>

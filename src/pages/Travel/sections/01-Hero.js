@@ -9,7 +9,7 @@ import PlanePNG from 'images/plane.png'
 
 const Hero = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper >
       <Plane src={PlanePNG} alt="plane"/>
       <Container>
         <H1>Travel</H1>

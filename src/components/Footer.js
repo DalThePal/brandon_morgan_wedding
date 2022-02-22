@@ -19,7 +19,7 @@ const Footer = ({ diamond, leftText }) => {
   const x2 = useMedia("43%", "43%", "43%", "35%")
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       {diamond && <Diamond ref={diamondRef} src={DiamondGIF}/>}
       <Arc/>
       <SVG>
