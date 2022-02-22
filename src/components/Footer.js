@@ -9,7 +9,7 @@ import text   from 'styles/text'
 import media  from 'styles/media'
 
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
-import DiamondMP4 from 'videos/diamond.mp4'
+import DiamondGIF from 'videos/diamond.gif'
 
 const Footer = ({ diamond }) => {
 
@@ -20,15 +20,9 @@ const Footer = ({ diamond }) => {
   const x1 = useMedia("57%", "57%", "57%", "65%")
   const x2 = useMedia("43%", "43%", "43%", "35%")
 
-  useEffect(() => {
-    if (diamondRef.current) {
-      diamondRef.current.play()
-    }
-  }, [])
-
   return (
     <Wrapper data-scroll-section>
-      {diamond && <Diamond ref={diamondRef} muted controls={false} loop src={DiamondMP4}/>}
+      {diamond && <Diamond ref={diamondRef} src={DiamondGIF}/>}
       <Arc/>
       <SVG>
         <Line x1={"0%"}   x2={"0%"}   y1={"0%"}   y2={'100%'}/>
@@ -186,17 +180,15 @@ const Arc = styled(ArcSVG)`
   }
 `
 
-const Diamond = styled.video`
+const Diamond = styled.img`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   
   top: 0.5vw;
-  width: 4.514vw;
   height: 5.25vw;
 
   ${media.mobile} {
-    width: 27vw;
     height: 27vw;
     top: -3.5vw;
   }
