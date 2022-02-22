@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap/all";
+import { useLocation } from 'react-router-dom'
 
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
@@ -25,6 +26,8 @@ const scrollOptions = {
 };
 
 const Scroll = () => {
+
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll({
@@ -68,7 +71,7 @@ const Scroll = () => {
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 };

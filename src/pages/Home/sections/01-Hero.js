@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
 import AppearAnimation from 'components/AppearAnimation'
+
+import { useCloudMovement } from 'utils/hooks'
 
 import colors from 'styles/colors'
 import text from 'styles/text'
@@ -11,45 +13,42 @@ import media from 'styles/media'
 import CloudPNG from 'images/cloud.png'
 
 const Hero = () => {
-  const cloud1Ref = useRef(null)
-  const cloud2Ref = useRef(null)
-  const cloud3Ref = useRef(null)
+  const [cloud1Ref, setCloud1Ref] = useState(null) 
+  const [cloud2Ref, setCloud2Ref] = useState(null) 
+  const [cloud3Ref, setCloud3Ref] = useState(null) 
 
   const [title1Trigger, setTitle1Trigger] = useState(false)
   const [title2Trigger, setTitle2Trigger] = useState(false)
   const [title3Trigger, setTitle3Trigger] = useState(false)
-
-  const mouseMove = e => {
-    gsap.to([cloud1Ref.current, cloud2Ref.current, cloud3Ref.current], {
-      stagger: 0.02,
-      x: -e.clientX / 50,
-      y: -e.clientY / 50
-    })
-  }
+ 
+  useCloudMovement([
+    cloud1Ref,
+    cloud2Ref,
+    cloud3Ref
+  ])
 
   useEffect(() => {
-    window.addEventListener('mousemove', mouseMove)
-
-    const tl = gsap.timeline()
-
-    tl.call(setTitle2Trigger, [true], 1.2)
-    tl.call(setTitle1Trigger, [true], 1.4)
-    tl.call(setTitle3Trigger, [true], 1.5)
-
-    tl.fromTo([cloud1Ref.current, cloud2Ref.current, cloud3Ref.current], {
-      y: '100%'
-    }, {
-      duration: 1,
-      ease: 'circ.out',
-      opacity: 1,
-      y: '0%'
-    }, 1.5)
-
-    return () => {
-      tl.kill()
-      window.removeEventListener('mousemove', mouseMove)
+    if (cloud1Ref && cloud2Ref && cloud3Ref) {
+      const tl = gsap.timeline()
+  
+      tl.call(setTitle2Trigger, [true], 1.2)
+      tl.call(setTitle1Trigger, [true], 1.4)
+      tl.call(setTitle3Trigger, [true], 1.5)
+  
+      tl.fromTo([cloud1Ref, cloud2Ref, cloud3Ref], {
+        y: '100%'
+      }, {
+        duration: 1,
+        ease: 'circ.out',
+        opacity: 1,
+        y: '0%'
+      }, 1.5)
+  
+      return () => {
+        tl.kill()
+      }
     }
-  }, [])
+  }, [cloud1Ref, cloud2Ref, cloud3Ref])
 
   return (
     <Wrapper data-scroll-section>
@@ -64,9 +63,9 @@ const Hero = () => {
         <AppearAnimation trigger={title3Trigger} duration={0.5} height="12.5vw">Brandon</AppearAnimation>
       </Title3>
 
-      <Cloud1 ref={cloud1Ref} src={CloudPNG} alt="cloud"/>
-      <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
-      <Cloud3 ref={cloud3Ref} src={CloudPNG} alt="cloud"/>
+      <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud3 ref={ref => setCloud3Ref(ref)} src={CloudPNG} alt="cloud"/>
 
     </Wrapper>
   )

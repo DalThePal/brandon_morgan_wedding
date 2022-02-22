@@ -15,6 +15,7 @@ import Wedlocked  from './sections/06-Wedlocked'
 import PathFiller from './sections/07-PathFiller'
 
 import Animation from 'components/AppearAnimation'
+import Footer from 'components/Footer'
 
 import DiamondMP4 from 'videos/diamond.mp4'
 
@@ -82,6 +83,7 @@ const Home = () => {
       <Snuggle/>
       <Wedlocked/>
       <PathFiller/>
+      <Footer/>
     </>
   )
 }

@@ -1,23 +1,36 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
+import { Link, useLocation } from 'react-router-dom'
 
 import { useMedia } from 'utils/hooks'
 
 import colors from 'styles/colors'
-import text from 'styles/text'
-import media from 'styles/media'
+import text   from 'styles/text'
+import media  from 'styles/media'
 
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
+import DiamondMP4 from 'videos/diamond.mp4'
 
-const Footer = () => {
+const Footer = ({ diamond }) => {
+
+  const {pathname} = useLocation()
+
+  const diamondRef = useRef(null)
 
   const x1 = useMedia("57%", "57%", "57%", "65%")
   const x2 = useMedia("43%", "43%", "43%", "35%")
 
+  useEffect(() => {
+    if (diamondRef.current) {
+      diamondRef.current.play()
+    }
+  }, [])
+
   return (
     <Wrapper data-scroll-section>
+      {diamond && <Diamond ref={diamondRef} muted controls={false} loop src={DiamondMP4}/>}
       <Arc/>
-      <SVG viewBox='0 0 100% 100%'>
+      <SVG>
         <Line x1={"0%"}   x2={"0%"}   y1={"0%"}   y2={'100%'}/>
         <Line x1={"100%"} x2={"100%"} y1={"0%"}   y2={'100%'}/>
         <Line x1={"0%"}   x2={"100%"} y1={"100%"} y2={"100%"}/>
@@ -29,7 +42,8 @@ const Footer = () => {
         <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
         <Links>
           {/* <Link>Registry</Link> */}
-          {/* <Link>Travel</Link> */}
+          {pathname === "/" && <StyledLink to="/travel">Travel</StyledLink>}
+          {pathname === "/travel" && <StyledLink to="/">Home</StyledLink>}
         </Links>
       </Right>
     </Wrapper>
@@ -50,6 +64,10 @@ const Wrapper = styled.footer`
   padding-top: 6.944vw;
   padding-left: 8.333vw;
   padding-right: 8.333vw;
+
+  .vsc-controller {
+    display: none;
+  }
 
   ${media.mobile} {
     flex-direction: column;
@@ -112,19 +130,19 @@ const Links = styled.div`
   justify-content: flex-start;
 `
 
-// const Link = styled.a`
-//   ${text.desktop.body}
-//   color: ${colors.roseIvory};
-//   text-decoration: underline;
-//   cursor: pointer;
+const StyledLink = styled(Link)`
+  ${text.desktop.body}
+  color: ${colors.roseIvory};
+  text-decoration: underline;
+  cursor: pointer;
 
-//   margin-right: 5.208vw;
+  margin-right: 5.208vw;
 
-//   ${media.mobile} {
-//     ${text.mobile.body}
-//     margin-right: 9.6vw;
-//   }
-// `
+  ${media.mobile} {
+    ${text.mobile.body}
+    margin-right: 9.6vw;
+  }
+`
 
 const SVG = styled.svg`
   position: absolute;
@@ -165,5 +183,21 @@ const Arc = styled(ArcSVG)`
     width: 21.333vw;
     height: 21.333vw;
     top: 13.867vw;
+  }
+`
+
+const Diamond = styled.video`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  top: 0.5vw;
+  width: 4.514vw;
+  height: 5.25vw;
+
+  ${media.mobile} {
+    width: 27vw;
+    height: 27vw;
+    top: -3.5vw;
   }
 `

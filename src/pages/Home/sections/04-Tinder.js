@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-import { useMedia } from 'utils/hooks'
+import { useMedia, useCloudMovement } from 'utils/hooks'
 
-import colors, { gradients } from 'styles/colors'
+import { VR } from 'components/Styled'
+
+import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
 
@@ -16,9 +18,15 @@ const Tinder = () => {
   const wrapperRef  = useRef(null)
   const vrRef       = useRef(null)
 
-  const cloud1Ref = useRef(null)
-  const cloud2Ref = useRef(null)
-  const cloud3Ref = useRef(null)
+  const [cloud1Ref, setCloud1Ref] = useState(null) 
+  const [cloud2Ref, setCloud2Ref] = useState(null) 
+  const [cloud3Ref, setCloud3Ref] = useState(null) 
+ 
+  useCloudMovement([
+    cloud1Ref,
+    cloud2Ref,
+    cloud3Ref
+  ])
 
   const scrollStart = useMedia(
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
@@ -33,14 +41,6 @@ const Tinder = () => {
     `bottom bottom+=${(window.innerWidth / 100) * 25}`,
     `bottom bottom+=${(window.innerWidth / 100) * 115}`
   )
-
-  const mouseMove = (e) => {
-    gsap.to([cloud1Ref.current, cloud2Ref.current, cloud3Ref.current], {
-      stagger: 0.02,
-      x: -e.clientX / 50,
-      y: -e.clientY / 50
-    })
-  }
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -63,22 +63,14 @@ const Tinder = () => {
     }
   }, [scrollStart, scrollEnd])
 
-  useEffect(() => {
-    window.addEventListener('mousemove', mouseMove)
-
-    return () => {
-      window.removeEventListener('mousemove', mouseMove)
-    }
-  }, [])
-
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
 
-      <VR ref={vrRef}/>
+      <StyledVR ref={vrRef}/>
 
-      <Cloud1 ref={cloud1Ref} src={CloudPNG} alt="cloud"/>
-      <Cloud2 ref={cloud2Ref} src={CloudPNG} alt="cloud"/>
-      <Cloud3 ref={cloud3Ref} src={CloudPNG} alt="cloud"/>
+      <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud3 ref={ref => setCloud3Ref(ref)} src={CloudPNG} alt="cloud"/>
 
       <Title>Love at first swipe</Title>
       <Text>
@@ -201,7 +193,7 @@ const Text = styled.p`
 
 const ImgWrapper = styled.div`
   position: absolute;
-  background: ${gradients.imageSequence};
+  background: ${colors.background};
 
   width: 29.514vw;
   height: 55.556vw;
@@ -226,18 +218,14 @@ const Img = styled.img`
   height: 100%;
 `
 
-const VR = styled.div`
-  background-color: ${colors.roseIvory};
-  position: absolute;
+const StyledVR = styled(VR)`
   left: 50%;
   transform: translateX(-50%);
 
-  width: 0.069vw;
   height: 89.514vw;
   bottom: 46.181vw;
 
   ${media.mobile} {
-    width: 0.267vw;
     height: 200vw;
     bottom: 284.533vw;
   }

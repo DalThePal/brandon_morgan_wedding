@@ -4,7 +4,9 @@ import gsap from 'gsap'
 
 import { useMedia } from 'utils/hooks'
 
-import colors, { gradients } from 'styles/colors'
+import { VR } from 'components/Styled'
+
+import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
 
@@ -53,7 +55,7 @@ const Meet = () => {
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>
 
-      <VR ref={vrRef}/>
+      <StyledVR ref={vrRef}/>
 
       <Title>The meet cute</Title>
       <Text>
@@ -126,7 +128,7 @@ const ImageWrapper = styled.div`
   position: absolute;
   z-index: 1;
   opacity: 0.75;
-  background: ${gradients.imageSequence};
+  background: ${colors.background};
 
   width: 40.278vw;
   height: 52.083vw;
@@ -150,18 +152,14 @@ const Img = styled.img`
   height: 100%;
 `
 
-const VR = styled.div`
-  background-color: ${colors.roseIvory};
-  position: absolute;
+const StyledVR = styled(VR)`
   left: 50%;
   transform: translate(-50%);
 
-  width: 0.069vw;
   height: 32.639vw;
   bottom: 52.639vw;
 
   ${media.mobile} {
-    width: 0.267vw;
     height: 66.667vw;
     bottom: 294.133vw;
   }

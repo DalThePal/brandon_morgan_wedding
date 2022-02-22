@@ -1,19 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
-// import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { useMedia } from 'utils/hooks'
 
 import colors from 'styles/colors'
-import text from 'styles/text'
-import media from 'styles/media'
+import text   from 'styles/text'
+import media  from 'styles/media'
 
 import LinkWrapper from './Link'
 import Button from 'components/Button'
 import Animation from 'components/AppearAnimation'
 
 const Header = () => {
+  const { pathname } = useLocation()
 
   const wrapperRef    = useRef(null)
   const line1Ref      = useRef(null)
@@ -223,10 +224,9 @@ const Header = () => {
         </Toggle>
       </Top>
       <Content ref={contentRef}>
-        <LinkWrapper width={"40.833vw"} disabled>
-          {/* <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink> */}
-          <p>Travel</p>
-          <Soon>Coming Soon...</Soon>
+        <LinkWrapper width={"40.833vw"}>
+          {pathname === "/" && <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink>}
+          {pathname === "/travel" && <StyledLink onClick={() => setOpen(false)} to="/">Home</StyledLink>}
         </LinkWrapper>
         <LinkWrapper width={"52.569vw"}>
           <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
@@ -399,7 +399,7 @@ const ButtonRow = styled.div`
   }
 `
 
-// const StyledLink = styled(Link)`
-//   color: inherit;
-//   text-decoration: none;
-// `
+const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+`
