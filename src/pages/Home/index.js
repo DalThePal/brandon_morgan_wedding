@@ -80,7 +80,9 @@ const Home = () => {
       <Snuggle/>
       <Wedlocked/>
       <PathFiller/>
-      <Footer/>
+      <Footer
+        leftText={"We're getting married. You're getting a hangover."}
+      />
     </>
   )
 }
