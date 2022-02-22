@@ -11,7 +11,7 @@ import media  from 'styles/media'
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondGIF from 'videos/diamond.gif'
 
-const Footer = ({ diamond }) => {
+const Footer = ({ diamond, leftText }) => {
 
   const {pathname} = useLocation()
 
@@ -31,7 +31,7 @@ const Footer = ({ diamond }) => {
         <Line x1={"0%"}   x2={x2}     y1={"0%"}   y2={"0%"}/>
         <Line x1={x1}     x2={"100%"} y1={"0%"}   y2={"0%"}/>
       </SVG> 
-      <Left>Morgan & Brandon are getting married. You’re getting a hangover.</Left>
+      <Left>{leftText}</Left>
       <Right>
         <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
         <Links>

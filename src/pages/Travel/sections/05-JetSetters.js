@@ -8,7 +8,7 @@ import media  from 'styles/media'
 const JetSetters = () => {
   return (
     <Wrapper data-scroll-section>
-      <P>FOR YOU JET-SETTERS</P>
+      <P>IF YOU PLAN TO JET SET</P>
       <H6>
         Fly into Salt Lake City International Airport, 
         just 5-10 minutes from downtown SLC!
