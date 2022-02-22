@@ -18,9 +18,9 @@ const Meet = () => {
   const vrRef       = useRef(null)
 
   const scrollStart = useMedia(
-    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 10}`,
+    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 10}`,
+    `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 10}`,
     `top-=${(window.innerWidth / 100) * 30} bottom-=${(window.innerWidth / 100) * 166}`
   )
 
@@ -80,7 +80,7 @@ const Wrapper = styled.section`
   z-index: 3;
   width: 100%;
 
-  height: 74.861vw;
+  height: 63.861vw;
 
   ${media.mobile} {
     height: 334.133vw;

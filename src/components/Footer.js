@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { useMedia } from 'utils/hooks'
 
@@ -12,8 +12,6 @@ import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondGIF from 'videos/diamond.gif'
 
 const Footer = ({ diamond, leftText }) => {
-
-  const {pathname} = useLocation()
 
   const diamondRef = useRef(null)
 
