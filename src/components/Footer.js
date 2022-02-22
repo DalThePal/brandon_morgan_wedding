@@ -31,12 +31,12 @@ const Footer = ({ diamond }) => {
         <Line x1={"0%"}   x2={x2}     y1={"0%"}   y2={"0%"}/>
         <Line x1={x1}     x2={"100%"} y1={"0%"}   y2={"0%"}/>
       </SVG> 
-      <Left>Morgan & Brandon are getting married. You’re getting a hangover.</Left>
+      <Left>We're getting married. You’re getting a hangover.</Left>
       <Right>
-        <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
+        <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
         <Links>
           {/* <Link>Registry</Link> */}
-          {pathname === "/" && <StyledLink to="/travel">Travel</StyledLink>}
+          {pathname === "/" && <StyledLink to="/" disabled>Details</StyledLink>}
           {pathname === "/travel" && <StyledLink to="/">Home</StyledLink>}
         </Links>
       </Right>
@@ -129,6 +129,7 @@ const StyledLink = styled(Link)`
   color: ${colors.roseIvory};
   text-decoration: underline;
   cursor: pointer;
+  opacity: ${props => props.disabled ? 0.5 : 1};
 
   margin-right: 5.208vw;
 

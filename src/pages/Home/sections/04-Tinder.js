@@ -74,7 +74,7 @@ const Tinder = () => {
 
       <Title>Love at first swipe</Title>
       <Text>
-        One summer night in 2018, the connection was rekindled by a 
+        One summer night in 2018, their connection was rekindled by a 
         Tinder “super-like” and an impulsive Facebook Message. After 
         a few laughter-filled dinner dates, the two realized their 
         “match” just might really be perfect.
