@@ -205,9 +205,9 @@ const Header = () => {
   return (
     <Wrapper ref={wrapperRef} >
       <Top>
-        <LogoWrapper>
+        <LogoWrapper to="/" onClick={() => setOpen(false)}>
           <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
-            <Logo viewBox="0 0 60 60" fill="none" onClick={() => window.locomotiveScroll.scrollTo(0)}>
+            <Logo viewBox="0 0 60 60" fill="none">
               <circle ref={circleRef} cx="30" cy="30" r="29.5" stroke="#F9F2F7"/>
               <path 
                 ref={pathRef} 
@@ -263,9 +263,8 @@ const Header = () => {
         </Toggle>
       </Top>
       <Content ref={contentRef}>
-        <LinkWrapper width={"40.833vw"}>
-          {pathname === "/" && <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink>}
-          {pathname === "/travel" && <StyledLink onClick={() => setOpen(false)} to="/">Home</StyledLink>}
+        <LinkWrapper disabled={pathname === "/travel"} width={"40.833vw"}>
+          <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink>
         </LinkWrapper>
         <LinkWrapper width={"52.569vw"}>
           <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
@@ -314,7 +313,7 @@ const Top = styled.div`
   }
 `
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled(Link)`
   height: 4.167vw;
   width: 4.167vw;
 
