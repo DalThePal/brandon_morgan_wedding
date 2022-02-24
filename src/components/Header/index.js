@@ -24,17 +24,45 @@ const Header = () => {
   const textRef       = useRef(null)
   const closeTextRef  = useRef(null)
   const contentRef    = useRef(null)
+  const initDone      = useRef(false)
 
   const [open, setOpen] = useState(false)
-  const [btn1Trigger, setBtn1Trigger] = useState(false)
-  const [btn2Trigger, setBtn2Trigger] = useState(false)
+
+  const [btn1Trigger, setBtn1Trigger]     = useState(false)
+  const [btn2Trigger, setBtn2Trigger]     = useState(false)
+  const [logoTrigger, setLogoTrigger]     = useState(false)
+  const [toggleTrigger, setToggleTrigger] = useState(false)
+
   const [tl, setTl] = useState(gsap.timeline())
   
   const duration = 0.5
 
   const animationHeight = useMedia("4.931vw", "4.931vw", "4.931vw", "18.933vw")
+  const logoAnimHeight  = useMedia("4.167vw", "4.167vw", "4.167vw", "16vw")
+  const toggleHeight    = useMedia('1.042vw', '1.042vw', '1.042vw', '1.042vw')
 
   useEffect(() => {
+    const initTl = gsap.timeline({
+      delay: 1.2,
+      onComplete: () => {
+        initDone.current = true
+      }
+    })
+    initTl.call(setLogoTrigger, [true], 0)
+    initTl.call(setToggleTrigger, [true], 0)
+    initTl.to(line1Ref.current, {
+      duration: 0.5,
+      attr: {
+        x2: '100%'
+      }
+    }, 0)
+    initTl.to(line2Ref.current, {
+      duration: 0.3,
+      attr: {
+        x2: '100%'
+      }
+    }, 0.2)
+
     const tl = gsap.timeline({
       paused: true
     })
@@ -45,6 +73,7 @@ const Header = () => {
 
     return () => {
       tl.kill()
+      initTl.kill()
     }
 
   }, [])
@@ -104,60 +133,62 @@ const Header = () => {
       })
 
     } else {
-      window.locomotiveScroll.start()
-
-      gsap.to(contentRef.current, {
-        duration,
-        opacity: 0,
-        onComplete: () => {
-          gsap.set(contentRef.current, {
-            display: 'none'
-          })
-        }
-      })
-
-      gsap.to(line1Ref.current, {
-        duration,
-        attr: {
-          x1: '0%',
-          x2: '100%',
-          y1: "40%",
-          y2: "40%"
-        },
-        stroke: colors.roseIvory
-      })
-
-      gsap.to(line2Ref.current, {
-        duration,
-        attr: {
-          x1: '0%',
-          x2: '100%',
-          y1: "55%",
-          y2: "55%"
-        },
-        stroke: colors.roseIvory
-      })
-
-      gsap.to(circleRef.current, {
-        duration,
-        stroke: colors.roseIvory
-      })
-
-      gsap.to(pathRef.current, {
-        duration,
-        fill: colors.roseIvory,
-        stroke: colors.roseIvory
-      })
-
-      gsap.to(textRef.current, {
-        duration,
-        opacity: 1
-      })
-
-      gsap.to(closeTextRef.current, {
-        duration,
-        opacity: 0
-      })
+      if (initDone.current) {
+        window.locomotiveScroll.start()
+  
+        gsap.to(contentRef.current, {
+          duration,
+          opacity: 0,
+          onComplete: () => {
+            gsap.set(contentRef.current, {
+              display: 'none'
+            })
+          }
+        })
+  
+        gsap.to(line1Ref.current, {
+          duration,
+          attr: {
+            x1: '0%',
+            x2: '100%',
+            y1: "40%",
+            y2: "40%"
+          },
+          stroke: colors.roseIvory
+        })
+  
+        gsap.to(line2Ref.current, {
+          duration,
+          attr: {
+            x1: '0%',
+            x2: '100%',
+            y1: "55%",
+            y2: "55%"
+          },
+          stroke: colors.roseIvory
+        })
+  
+        gsap.to(circleRef.current, {
+          duration,
+          stroke: colors.roseIvory
+        })
+  
+        gsap.to(pathRef.current, {
+          duration,
+          fill: colors.roseIvory,
+          stroke: colors.roseIvory
+        })
+  
+        gsap.to(textRef.current, {
+          duration,
+          opacity: 1
+        })
+  
+        gsap.to(closeTextRef.current, {
+          duration,
+          opacity: 0
+        })
+      }
     }
   }, [open])
 
@@ -174,52 +205,60 @@ const Header = () => {
   return (
     <Wrapper ref={wrapperRef} >
       <Top>
-        <Logo viewBox="0 0 60 60" fill="none" onClick={() => window.locomotiveScroll.scrollTo(0)}>
-          <circle ref={circleRef} cx="30" cy="30" r="29.5" stroke="#F9F2F7"/>
-          <path 
-            ref={pathRef} 
-            fillRule="evenodd" 
-            clipRule="evenodd" 
-            fill={colors.roseIvory}
-            d={`M31.3787 16.1943C31.0166 15.3309 31.8796 
-                15.1637 32.3343 15.1637V15H28.6784V15.1649C29.2627 
-                15.1649 29.6711 15.4134 30.0887 16.3099L23.8414 
-                32.6015L16.9415 16.1943C16.5794 15.3309 17.4425 
-                15.1637 17.8971 15.1637V15H14.2401V15.1649C14.8255 
-                15.1649 15.2339 15.4134 15.6504 16.3099L11.0667 
-                28.2515C10.1481 30.6309 10 32.2008 10 33.1008C10 
-                37.4267 13.7854 40.7141 18.5184 40.7141H20.3833L21.2927 
-                38.7023H21.1249C20.1508 40.5137 18.5681 40.5114 18.0799 
-                40.5114H18.0545C14.5745 40.5114 10.1666 37.7931 10.1666 
-                33.063C10.1666 32.1996 10.3158 30.6756 11.2344 
-                28.2882L15.7348 16.5607L25.4587 39.6492C25.8208 40.5126 
-                24.8004 40.5492 24.6697 
-                40.5492V40.7141H28.0849V40.5492H28.0479C27.8478 
-                40.5607 27.1929 40.5973 26.7984 39.6481L23.9409 
-                32.8248L30.1755 16.5653L35.9959 30.3893V43.8057C35.9959 
-                44.8363 35.0403 44.8363 34.8737 44.8363V45H43.2336C47.5142 
-                45 51 41.6302 51 37.4691C51 33.2725 47.5119 29.9382 43.2336 
-                29.9382H42.9374C44.1418 29.6661 45.2171 28.9974 45.9874 
-                28.0416C46.7577 27.0857 47.1773 25.8994 47.1775 
-                24.6767C47.1775 21.7099 44.6913 19.2859 41.6105 
-                19.2859H34.8737V19.4508C35.0403 19.4508 35.9959 19.4874 
-                35.9959 20.5168V27.1855L31.3787 16.1943ZM41.6105 
-                29.9347C44.1429 29.9347 46.1386 27.5473 46.1386 
-                24.6733C46.1386 21.7992 44.1059 19.4508 41.5734 
-                19.4508H38.326C38.0379 19.4508 37.2489 19.5653 37.2489 
-                20.5168V29.9382L41.6105 29.9347ZM37.2489 43.8023C37.2489 
-                44.7481 38.1212 44.8328 38.3722 44.8328H43.1503C46.6859 
-                44.8328 49.5527 41.4985 49.5527 37.4668C49.5527 33.3985 
-                46.6859 30.1019 43.1503 30.1019H37.25L37.2489 43.8023Z
-              `} 
-          />
-        </Logo>
+        <LogoWrapper>
+          <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
+            <Logo viewBox="0 0 60 60" fill="none" onClick={() => window.locomotiveScroll.scrollTo(0)}>
+              <circle ref={circleRef} cx="30" cy="30" r="29.5" stroke="#F9F2F7"/>
+              <path 
+                ref={pathRef} 
+                fillRule="evenodd" 
+                clipRule="evenodd" 
+                fill={colors.roseIvory}
+                d={`M31.3787 16.1943C31.0166 15.3309 31.8796 
+                    15.1637 32.3343 15.1637V15H28.6784V15.1649C29.2627 
+                    15.1649 29.6711 15.4134 30.0887 16.3099L23.8414 
+                    32.6015L16.9415 16.1943C16.5794 15.3309 17.4425 
+                    15.1637 17.8971 15.1637V15H14.2401V15.1649C14.8255 
+                    15.1649 15.2339 15.4134 15.6504 16.3099L11.0667 
+                    28.2515C10.1481 30.6309 10 32.2008 10 33.1008C10 
+                    37.4267 13.7854 40.7141 18.5184 40.7141H20.3833L21.2927 
+                    38.7023H21.1249C20.1508 40.5137 18.5681 40.5114 18.0799 
+                    40.5114H18.0545C14.5745 40.5114 10.1666 37.7931 10.1666 
+                    33.063C10.1666 32.1996 10.3158 30.6756 11.2344 
+                    28.2882L15.7348 16.5607L25.4587 39.6492C25.8208 40.5126 
+                    24.8004 40.5492 24.6697 
+                    40.5492V40.7141H28.0849V40.5492H28.0479C27.8478 
+                    40.5607 27.1929 40.5973 26.7984 39.6481L23.9409 
+                    32.8248L30.1755 16.5653L35.9959 30.3893V43.8057C35.9959 
+                    44.8363 35.0403 44.8363 34.8737 44.8363V45H43.2336C47.5142 
+                    45 51 41.6302 51 37.4691C51 33.2725 47.5119 29.9382 43.2336 
+                    29.9382H42.9374C44.1418 29.6661 45.2171 28.9974 45.9874 
+                    28.0416C46.7577 27.0857 47.1773 25.8994 47.1775 
+                    24.6767C47.1775 21.7099 44.6913 19.2859 41.6105 
+                    19.2859H34.8737V19.4508C35.0403 19.4508 35.9959 19.4874 
+                    35.9959 20.5168V27.1855L31.3787 16.1943ZM41.6105 
+                    29.9347C44.1429 29.9347 46.1386 27.5473 46.1386 
+                    24.6733C46.1386 21.7992 44.1059 19.4508 41.5734 
+                    19.4508H38.326C38.0379 19.4508 37.2489 19.5653 37.2489 
+                    20.5168V29.9382L41.6105 29.9347ZM37.2489 43.8023C37.2489 
+                    44.7481 38.1212 44.8328 38.3722 44.8328H43.1503C46.6859 
+                    44.8328 49.5527 41.4985 49.5527 37.4668C49.5527 33.3985 
+                    46.6859 30.1019 43.1503 30.1019H37.25L37.2489 43.8023Z
+                  `} 
+              />
+            </Logo>
+          </Animation>
+        </LogoWrapper>
         <Toggle onClick={() => setOpen(!open)}>
-          <ToggleText ref={textRef}>Menu</ToggleText>
+          <ToggleText ref={textRef}>
+            <Animation trigger={toggleTrigger} height={toggleHeight} duration={0.5}>
+              Menu
+            </Animation>
+          </ToggleText>
           <CloseText ref={closeTextRef}>Close</CloseText>
           <ToggleSvg>
-            <Line ref={line1Ref} x1={"0%"} x2={'100%'} y1={'40%'} y2={'40%'}/>
-            <Line ref={line2Ref} x1={"0%"} x2={'100%'} y1={'55%'} y2={'55%'}/>
+            <Line ref={line1Ref} x1={"0%"} x2={'0%'} y1={'40%'} y2={'40%'}/>
+            <Line ref={line2Ref} x1={"0%"} x2={'0%'} y1={'55%'} y2={'55%'}/>
           </ToggleSvg>
         </Toggle>
       </Top>
@@ -275,9 +314,7 @@ const Top = styled.div`
   }
 `
 
-const Logo = styled.svg`
-  cursor: pointer;
-
+const LogoWrapper = styled.div`
   height: 4.167vw;
   width: 4.167vw;
 
@@ -285,6 +322,13 @@ const Logo = styled.svg`
     height: 16vw;
     width: 16vw;
   }
+`
+
+const Logo = styled.svg`
+  cursor: pointer;
+
+  height: 100%;
+  width: 100%;
 `
 
 const Toggle = styled.div`
@@ -303,12 +347,12 @@ const Toggle = styled.div`
   }
 `
 
-const ToggleText = styled.p`
+const ToggleText = styled.span`
   ${text.desktop.nav}
   color: ${colors.roseIvory};
-  text-decoration: underline;
 
   margin-right: 0.694vw;
+  width: 2.917vw;
 
   ${media.mobile} {
     display: none;

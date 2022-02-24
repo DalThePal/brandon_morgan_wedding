@@ -29,6 +29,23 @@ const Date = () => {
     `bottom bottom+=${(window.innerWidth / 100) * -69}`
   )
 
+  const vrHeight = useMedia("34.236vw", "34.236vw", "34.236vw", "131.467vw")
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      delay: 1.2
+    })
+
+    tl.to(vrRef.current, {
+      duration: 1.4,
+      height: vrHeight
+    }, 0)
+
+    return () => {
+      tl.kill()
+    }
+  }, [vrHeight])
+
   useEffect(() => {
     const scrollTl = gsap.timeline({
       scrollTrigger: {
@@ -111,11 +128,10 @@ const StyledVR = styled(VR)`
   left: 50%;
   transform: translate(-50%);
 
-  height: 34.236vw;
+  height: 0vw;
   bottom: 47.778vw;
 
   ${media.mobile} {
-    height: 131.467vw;
     bottom: 98.4vw;
   }
 `

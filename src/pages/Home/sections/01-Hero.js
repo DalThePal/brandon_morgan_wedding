@@ -38,7 +38,7 @@ const Hero = () => {
       tl.fromTo([cloud1Ref, cloud2Ref, cloud3Ref], {
         y: '100%'
       }, {
-        duration: 1,
+        duration: 1.5,
         ease: 'circ.out',
         opacity: 1,
         y: '0%'
