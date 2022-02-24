@@ -405,7 +405,7 @@ const Content = styled.div`
   padding-top: 6.944vw;
 
   ${media.mobile} {
-    padding-top: 53.333vw;
+    padding-top: 40.333vw;
   }
 `
 
