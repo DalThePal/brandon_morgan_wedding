@@ -126,7 +126,7 @@ const Links = styled.div`
 const LinkStyles = `
   ${text.desktop.body}
   color: ${colors.roseIvory};
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
 
   margin-right: 5.208vw;
