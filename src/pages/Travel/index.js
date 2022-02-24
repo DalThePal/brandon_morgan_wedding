@@ -20,7 +20,10 @@ const Travel = () => {
       <JetSetters/>
       <Hotels/>
       <RSVP/>
-      <Footer diamond/>
+      <Footer 
+        diamond
+        leftText={"We Can't Say I Do Without You!"}
+      />
     </>
   )
 }

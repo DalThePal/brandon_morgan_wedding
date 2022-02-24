@@ -18,7 +18,7 @@ const scrollOptions = {
   getSpeed: true,
   resetNativeScroll: true,
   smartphone: {
-    smooth: false
+    smooth: true
   },
   tablet: {
     smooth: true

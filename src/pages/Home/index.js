@@ -17,7 +17,7 @@ import PathFiller from './sections/07-PathFiller'
 import Animation from 'components/AppearAnimation'
 import Footer from 'components/Footer'
 
-import DiamondMP4 from 'videos/diamond.mp4'
+import DiamondGIF from 'videos/diamond.gif'
 
 const Home = () => {
 
@@ -31,11 +31,7 @@ const Home = () => {
   const diamondScrollBottom = useMedia('21.8vw', '21.8vw', '21.8vw', '166vw')
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: () => {
-        diamondRef.current.play()
-      }
-    })
+    const tl = gsap.timeline()
 
     tl.call(setDiamondTrigger, [true], 1)
     tl.to(diamondRef.current, {
@@ -57,6 +53,7 @@ const Home = () => {
       position: 'fixed',
       top: 'unset'
     })
+    
     scrollTl.to(diamondRef.current, {
       height: diamondScrollHeight,
       bottom: diamondScrollBottom
@@ -72,7 +69,7 @@ const Home = () => {
     <>
       <AnimationWrapper>
         <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <Diamond ref={diamondRef} muted controls={false} loop src={DiamondMP4}/>
+          <Diamond ref={diamondRef} src={DiamondGIF}/>
         </Animation>
       </AnimationWrapper>
 
@@ -83,19 +80,19 @@ const Home = () => {
       <Snuggle/>
       <Wedlocked/>
       <PathFiller/>
-      <Footer/>
+      <Footer
+        leftText={"We're getting married. You're getting a hangover."}
+      />
     </>
   )
 }
 
 export default Home
 
-const Diamond = styled.video`
-  width: 100vw;
+const Diamond = styled.img`
   height: 5.25vw;
 
   ${media.mobile} {
-    width: 100vw;
     height: 112vw;
   }
 `

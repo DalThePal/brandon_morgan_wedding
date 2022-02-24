@@ -112,8 +112,8 @@ const Snuggle = () => {
       <Text>
         Morgan and Brandon spent the next 3 years 
         snuggling their two large hound dogs, taking 
-        trips, making new friends while enjoying old 
-        ones, 
+        trips, and making new friends while enjoying old 
+        ones.
       </Text>
     </Wrapper>
   )

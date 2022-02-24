@@ -29,9 +29,9 @@ const Tinder = () => {
   ])
 
   const scrollStart = useMedia(
-    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 20}`,
+    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 32}`,
+    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 32}`,
+    `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 32}`,
     `top-=${(window.innerWidth / 100) * 40} bottom-=${(window.innerWidth / 100) * 166}`
   )
 
@@ -74,7 +74,7 @@ const Tinder = () => {
 
       <Title>Love at first swipe</Title>
       <Text>
-        One summer night in 2018, the connection was rekindled by a 
+        One summer night in 2018, their connection was rekindled by a 
         Tinder “super-like” and an impulsive Facebook Message. After 
         a few laughter-filled dinner dates, the two realized their 
         “match” just might really be perfect.
@@ -222,7 +222,7 @@ const StyledVR = styled(VR)`
   left: 50%;
   transform: translateX(-50%);
 
-  height: 89.514vw;
+  height: 79.514vw;
   bottom: 46.181vw;
 
   ${media.mobile} {

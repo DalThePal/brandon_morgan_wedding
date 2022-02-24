@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { useMedia } from 'utils/hooks'
 
@@ -9,28 +9,18 @@ import text   from 'styles/text'
 import media  from 'styles/media'
 
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
-import DiamondMP4 from 'videos/diamond.mp4'
+import DiamondGIF from 'videos/diamond.gif'
 
-import Registry from ''
-
-const Footer = ({ diamond }) => {
-
-  const {pathname} = useLocation()
+const Footer = ({ diamond, leftText }) => {
 
   const diamondRef = useRef(null)
 
   const x1 = useMedia("57%", "57%", "57%", "65%")
   const x2 = useMedia("43%", "43%", "43%", "35%")
 
-  useEffect(() => {
-    if (diamondRef.current) {
-      diamondRef.current.play()
-    }
-  }, [])
-
   return (
     <Wrapper data-scroll-section>
-      {diamond && <Diamond ref={diamondRef} muted controls={false} loop src={DiamondMP4}/>}
+      {diamond && <Diamond ref={diamondRef} src={DiamondGIF}/>}
       <Arc/>
       <SVG>
         <Line x1={"0%"}   x2={"0%"}   y1={"0%"}   y2={'100%'}/>
@@ -39,13 +29,11 @@ const Footer = ({ diamond }) => {
         <Line x1={"0%"}   x2={x2}     y1={"0%"}   y2={"0%"}/>
         <Line x1={x1}     x2={"100%"} y1={"0%"}   y2={"0%"}/>
       </SVG> 
-      <Left>Morgan & Brandon are getting married. You’re getting a hangover.</Left>
+      <Left>{leftText}</Left>
       <Right>
-        <Text>Please come back on March 15th for more details on travel information and agenda details.</Text>
+        <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
         <Links>
-          {/* <Link>Registry</Link> */}
-          {pathname === "/" && <StyledLink to="/travel">Travel</StyledLink>}
-          {pathname === "/travel" && <StyledLink to="/">Home</StyledLink>}
+          <StyledLink to="/" disabled>Details</StyledLink>
         </Links>
       </Right>
     </Wrapper>
@@ -137,6 +125,7 @@ const StyledLink = styled(Link)`
   color: ${colors.roseIvory};
   text-decoration: underline;
   cursor: pointer;
+  opacity: ${props => props.disabled ? 0.5 : 1};
 
   margin-right: 5.208vw;
 
@@ -188,17 +177,15 @@ const Arc = styled(ArcSVG)`
   }
 `
 
-const Diamond = styled.video`
+const Diamond = styled.img`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   
   top: 0.5vw;
-  width: 4.514vw;
   height: 5.25vw;
 
   ${media.mobile} {
-    width: 27vw;
     height: 27vw;
     top: -3.5vw;
   }
