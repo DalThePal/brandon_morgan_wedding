@@ -72,4 +72,6 @@ const Wrapper = styled.section`
 const StyledVR = styled(VR)`
   height: 100%;
   bottom: 0vw;
+  left: 50%;
+  transform: translateX(-50%);
 `
