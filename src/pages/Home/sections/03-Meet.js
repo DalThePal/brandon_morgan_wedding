@@ -21,14 +21,14 @@ const Meet = () => {
     `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 10}`,
     `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 10}`,
     `top-=${(window.innerWidth / 100) * 10.4} bottom-=${(window.innerWidth / 100) * 10}`,
-    `top-=${(window.innerWidth / 100) * 30} bottom-=${(window.innerWidth / 100) * 166}`
+    `top-=${(window.innerWidth / 100) * 30} bottom-=${(window.innerWidth / 100) * 140}`
   )
 
   const scrollEnd = useMedia(
     `bottom bottom+=${(window.innerWidth / 100) * 32}`,
     `bottom bottom+=${(window.innerWidth / 100) * 32}`,
     `bottom bottom+=${(window.innerWidth / 100) * 32}`,
-    `bottom bottom+=${(window.innerWidth / 100) * 125}`
+    `bottom bottom+=${(window.innerWidth / 100) * 150}`
   )
 
   useEffect(() => {

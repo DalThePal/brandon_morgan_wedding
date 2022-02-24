@@ -25,14 +25,14 @@ const Snuggle = () => {
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
-    `top-=${(window.innerWidth / 100) * 12} bottom-=${(window.innerWidth / 100) * 166}`
+    `top-=${(window.innerWidth / 100) * 12} bottom-=${(window.innerWidth / 100) * 140}`
   )
 
   const scrollEnd = useMedia(
     `bottom+=${(window.innerWidth / 100) * 35} bottom`,
     `bottom+=${(window.innerWidth / 100) * 35} bottom`,
     `bottom+=${(window.innerWidth / 100) * 35} bottom`,
-    `bottom+=${(window.innerWidth / 100) * 205} bottom`
+    `bottom+=${(window.innerWidth / 100) * 175} bottom`
   )
 
   useEffect(() => {

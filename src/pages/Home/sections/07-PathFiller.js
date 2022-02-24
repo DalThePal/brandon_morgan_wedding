@@ -17,14 +17,14 @@ const PathFiller = () => {
     `top bottom-=${(window.innerWidth / 100) * 20}`,
     `top bottom-=${(window.innerWidth / 100) * 20}`,
     `top bottom-=${(window.innerWidth / 100) * 20}`,
-    `top bottom-=${(window.innerWidth / 100) * 166}`
+    `top bottom-=${(window.innerWidth / 100) * 140}`
   )
 
   const scrollEnd = useMedia(
     `bottom+=${(window.innerWidth / 100) * 20} bottom`,
     `bottom+=${(window.innerWidth / 100) * 20} bottom`,
     `bottom+=${(window.innerWidth / 100) * 20} bottom`,
-    `bottom+=${(window.innerWidth / 100) * 165} bottom`
+    `bottom+=${(window.innerWidth / 100) * 138} bottom`
   )
 
   useEffect(() => {

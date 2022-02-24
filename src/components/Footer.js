@@ -36,7 +36,7 @@ const Footer = ({ diamond, leftText }) => {
         <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
         <Links>
           <P onClick={() => registry.setState(true)}>Registry</P>
-          <StyledLink to="/" disabled>Details</StyledLink>
+          <StyledLink to="/travel" >Travel</StyledLink>
         </Links>
       </Right>
     </Wrapper>
@@ -66,7 +66,7 @@ const Wrapper = styled.footer`
     flex-direction: column;
     justify-content: flex-start;
 
-    height: 188.267vw;
+    height: 163.733vw;
     padding-top: 48.533vw;
     padding-left: 11.733vw;
     padding-right: 11.733vw;
@@ -158,7 +158,7 @@ const SVG = styled.svg`
 
   ${media.mobile} {
     top: 11.733vw;
-    height: 156vw;
+    height: 138.133vw;
     width: 88.8vw;
   }
 `
