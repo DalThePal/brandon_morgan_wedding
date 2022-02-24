@@ -35,9 +35,9 @@ const Home = () => {
 
     tl.call(setDiamondTrigger, [true], 1)
     tl.to(diamondRef.current, {
-      duration: 0.8,
+      duration: 0.5,
       height: diamondHeight
-    }, 0.2)
+    }, 1.4)
 
     const scrollTl = gsap.timeline({
       scrollTrigger: {
