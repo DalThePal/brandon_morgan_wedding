@@ -172,7 +172,7 @@ const Header = () => {
   }
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-sticky data-scroll-target=".smooth-scroll">
+    <Wrapper ref={wrapperRef} >
       <Top>
         <Logo viewBox="0 0 60 60" fill="none" onClick={() => window.locomotiveScroll.scrollTo(0)}>
           <circle ref={circleRef} cx="30" cy="30" r="29.5" stroke="#F9F2F7"/>
@@ -251,8 +251,9 @@ export default Header
 
 const Wrapper = styled.header`
   width: 100%;
-  position: absolute;
-  z-index: 70;
+  position: fixed;
+  transform:translate3d(0,0,0);
+  z-index: 5;
   top: 0;
   left: 0;
 `

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react'
 import { desktop, tablet, mobile } from 'styles/media'
 
-export const ScreenContext = createContext(null)
+export const ScreenContext    = createContext(null)
+export const RegistryContext  = createContext(null)
 
 const Providers = ({ children }) => {
 
@@ -11,6 +12,8 @@ const Providers = ({ children }) => {
     desktop: false,
     fullWidth: false
   })
+
+  const [registryOpen, setRegistryOpen] = useState(false)
 
   useEffect(() => {
     const resize = () => {
@@ -33,7 +36,9 @@ const Providers = ({ children }) => {
 
   return (
     <ScreenContext.Provider value={screen}>
-      {children}
+      <RegistryContext.Provider value={{state: registryOpen, setState: setRegistryOpen}}>
+        {children}
+      </RegistryContext.Provider>
     </ScreenContext.Provider>
   )
 }

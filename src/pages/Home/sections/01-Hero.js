@@ -75,8 +75,9 @@ export default Hero
 
 const Wrapper = styled.section`
   position: relative;
-  z-index: 69;
+
   width: 100%;
+  will-change: transform;
 
   height: 56.25vw;
 
@@ -90,6 +91,7 @@ const Title1 = styled.h1`
   position: absolute;
   z-index: 4;
   color: ${colors.roseIvory};
+  will-change: transform;
 
   width: 46.181vw;
   top: 10.417vw;
