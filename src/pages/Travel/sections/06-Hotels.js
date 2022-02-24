@@ -19,11 +19,11 @@ const Hotels = () => {
         "The Marriott Hotel, Salt Lake City",
         "The Marriott Hotel, SLC"
       ),
-      href: ""
+      href: "https://www.marriott.com/en-us/hotels/slcut-salt-lake-marriott-downtown-at-city-creek/overview/"
     },
     {
       title: "The Hotel Monaco",
-      href: ""
+      href: "https://www.monaco-saltlakecity.com/"
     },
     {
       title: useMedia(
@@ -32,17 +32,21 @@ const Hotels = () => {
         "The Hilton at Salt Lake City Center",
         "The Hilton at SLC Center",
       ),
-      href: ""
+      href: "https://www.hilton.com/en/hotels/slccchh-hilton-salt-lake-city-center/?cid=&WT.mc_id=&dclid=&gclid=&AWC="
     },
     {
       title: "Hyatt House Pleasant Grove",
-      href: ""
+      href: "https://www.hyatt.com/en-US/hotel/utah/hyatt-house-provo-pleasant-grove/pvuxp"
     },
   ]
 
+  const handleClick = (href) => {
+    window.open(href, '__blank')
+  }
+
   const listItems = HOTEL_DATA.map((item, index) => {
     return (
-      <ListItem key={index}>
+      <ListItem key={index} onClick={() => handleClick(item.href)}>
         <P>{item.title}</P>
       </ListItem>
     )

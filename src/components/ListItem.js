@@ -6,12 +6,16 @@ import media  from 'styles/media'
 
 import Arrows from 'components/Arrows'
 
-const ListItem = ({ children }) => {
+const ListItem = ({ children, onClick }) => {
 
   const [arrowsTrigger, setArrowsTrigger] = useState(false)
 
   return (
-    <Wrapper onMouseEnter={() => setArrowsTrigger(true)} onMouseLeave={() => setArrowsTrigger(false)}>
+    <Wrapper 
+      onMouseEnter={() => setArrowsTrigger(true)} 
+      onMouseLeave={() => setArrowsTrigger(false)}
+      onClick={onClick}
+    >
       <Arrows left color={colors.roseIvory} trigger={arrowsTrigger}/>
         {children}
       <Arrows color={colors.roseIvory} trigger={arrowsTrigger}/>
