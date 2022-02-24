@@ -10,7 +10,7 @@ import text   from 'styles/text'
 import media  from 'styles/media'
 
 import LinkWrapper from './Link'
-import Button from 'components/Button'
+import PrimaryButton from 'components/buttons/Primary'
 import Animation from 'components/AppearAnimation'
 
 const Header = () => {
@@ -172,7 +172,7 @@ const Header = () => {
   }
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-sticky data-scroll-target=".smooth-scroll">
+    <Wrapper ref={wrapperRef} >
       <Top>
         <Logo viewBox="0 0 60 60" fill="none" onClick={() => window.locomotiveScroll.scrollTo(0)}>
           <circle ref={circleRef} cx="30" cy="30" r="29.5" stroke="#F9F2F7"/>
@@ -233,10 +233,10 @@ const Header = () => {
             Registry
             <ButtonRow >
               <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
-                <Button onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</Button>
+                <PrimaryButton onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</PrimaryButton>
               </Animation>
               <Animation height={animationHeight} trigger={btn2Trigger} duration={0.3}>
-                <Button onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</Button>
+                <PrimaryButton onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</PrimaryButton>
               </Animation>
             </ButtonRow>
           </Registry>
@@ -251,8 +251,9 @@ export default Header
 
 const Wrapper = styled.header`
   width: 100%;
-  position: absolute;
-  z-index: 70;
+  position: fixed;
+  transform:translate3d(0,0,0);
+  z-index: 5;
   top: 0;
   left: 0;
 `

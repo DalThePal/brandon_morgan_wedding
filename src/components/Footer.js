@@ -1,6 +1,7 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { RegistryContext } from './Providers'
 
 import { useMedia } from 'utils/hooks'
 
@@ -12,6 +13,7 @@ import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondGIF from 'videos/diamond.gif'
 
 const Footer = ({ diamond, leftText }) => {
+  const registry = useContext(RegistryContext)
 
   const diamondRef = useRef(null)
 
@@ -33,6 +35,7 @@ const Footer = ({ diamond, leftText }) => {
       <Right>
         <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
         <Links>
+          <P onClick={() => registry.setState(true)}>Registry</P>
           <StyledLink to="/" disabled>Details</StyledLink>
         </Links>
       </Right>
@@ -120,12 +123,11 @@ const Links = styled.div`
   justify-content: flex-start;
 `
 
-const StyledLink = styled(Link)`
+const LinkStyles = `
   ${text.desktop.body}
   color: ${colors.roseIvory};
   text-decoration: underline;
   cursor: pointer;
-  opacity: ${props => props.disabled ? 0.5 : 1};
 
   margin-right: 5.208vw;
 
@@ -133,6 +135,15 @@ const StyledLink = styled(Link)`
     ${text.mobile.body}
     margin-right: 9.6vw;
   }
+`
+
+const StyledLink = styled(Link)`
+  ${LinkStyles}
+  opacity: ${props => props.disabled ? 0.5 : 1};
+`
+
+const P = styled.p`
+  ${LinkStyles}
 `
 
 const SVG = styled.svg`

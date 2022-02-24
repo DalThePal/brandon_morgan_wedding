@@ -7,6 +7,7 @@ import colors from 'styles/colors'
 import Providers  from 'components/Providers'
 import Scroll     from 'components/Scroll'
 import Header     from 'components/Header'
+import Registry   from 'components/RegistryModal'
 
 import Home   from 'pages/Home'
 import Travel from 'pages/Travel'
@@ -14,7 +15,7 @@ import Travel from 'pages/Travel'
 const App = () => {
   return (
     <Providers>
-      <Wrapper className='smooth-scroll'>
+      <Wrapper className='smooth-scroll' data-scroll-container>
         <Scroll/>
         <Header/>
 
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/travel" element={<Travel/>} />
         </Routes>
 
+        <Registry/>
       </Wrapper>
     </Providers>
   );
