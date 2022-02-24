@@ -11,6 +11,8 @@ import media  from 'styles/media'
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondMP4 from 'videos/diamond.mp4'
 
+import Registry from ''
+
 const Footer = ({ diamond }) => {
 
   const {pathname} = useLocation()

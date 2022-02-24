@@ -10,7 +10,7 @@ import text   from 'styles/text'
 import media  from 'styles/media'
 
 import LinkWrapper from './Link'
-import Button from 'components/Button'
+import PrimaryButton from 'components/buttons/Primary'
 import Animation from 'components/AppearAnimation'
 
 const Header = () => {
@@ -233,10 +233,10 @@ const Header = () => {
             Registry
             <ButtonRow >
               <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
-                <Button onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</Button>
+                <PrimaryButton onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</PrimaryButton>
               </Animation>
               <Animation height={animationHeight} trigger={btn2Trigger} duration={0.3}>
-                <Button onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</Button>
+                <PrimaryButton onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</PrimaryButton>
               </Animation>
             </ButtonRow>
           </Registry>

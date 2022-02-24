@@ -7,7 +7,7 @@ import media  from 'styles/media'
 
 import Arrows from 'components/Arrows'
 
-const Button = ({ children, onClick }) => {
+const Primary = ({ children, onClick }) => {
 
   const [trigger, setTrigger] = useState(false)
 
@@ -20,7 +20,7 @@ const Button = ({ children, onClick }) => {
   )
 }
 
-export default Button
+export default Primary
 
 const Wrapper = styled.div`
   ${text.desktop.nav}
