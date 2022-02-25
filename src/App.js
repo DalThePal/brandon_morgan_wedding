@@ -8,6 +8,7 @@ import Providers  from 'components/Providers'
 import Scroll     from 'components/Scroll'
 import Header     from 'components/Header'
 import Registry   from 'components/RegistryModal'
+import Transition from 'components/Transition'
 
 import Home   from 'pages/Home'
 import Travel from 'pages/Travel'
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/travel" element={<Travel/>} />
         </Routes>
 
+        <Transition/>
         <Registry/>
       </Wrapper>
     </Providers>
