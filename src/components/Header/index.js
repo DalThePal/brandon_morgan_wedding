@@ -271,7 +271,7 @@ const Header = () => {
             Registry
             <ButtonRow >
               <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
-                <PrimaryButton onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</PrimaryButton>
+                <PrimaryButton onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver?registryId=92b30ba0-8888-11ec-8308-8da450f277d4&type=WEDDING")}>Target</PrimaryButton>
               </Animation>
               <Animation height={animationHeight} trigger={btn2Trigger} duration={0.3}>
                 <PrimaryButton onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</PrimaryButton>
