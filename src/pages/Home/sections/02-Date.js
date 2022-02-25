@@ -19,14 +19,14 @@ const Date = () => {
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
-    `top-=${(window.innerWidth / 100) * 90.4} bottom-=${(window.innerWidth / 100) * 140}`
+    `top-=${(window.innerWidth / 100) * 90.4} bottom-=${(window.innerWidth / 100) * 132}`
   )
 
   const scrollTlEnd = useMedia(
     `bottom bottom+=${(window.innerWidth / 100) * 27}`,
     `bottom bottom+=${(window.innerWidth / 100) * 27}`,
     `bottom bottom+=${(window.innerWidth / 100) * 27}`,
-    `bottom bottom+=${(window.innerWidth / 100) * -45}`
+    `bottom bottom-=${(window.innerWidth / 100) * 37}`
   )
 
   const vrHeight = useMedia("34.236vw", "34.236vw", "34.236vw", "131.467vw")

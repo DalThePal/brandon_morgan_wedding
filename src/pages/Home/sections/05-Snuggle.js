@@ -25,14 +25,14 @@ const Snuggle = () => {
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
     `top-=${(window.innerWidth / 100) * 9} bottom-=${(window.innerWidth / 100) * 20}`, 
-    `top-=${(window.innerWidth / 100) * 12} bottom-=${(window.innerWidth / 100) * 140}`
+    `top-=${(window.innerWidth / 100) * 12} bottom-=${(window.innerWidth / 100) * 132}`
   )
 
   const scrollEnd = useMedia(
     `bottom+=${(window.innerWidth / 100) * 35} bottom`,
     `bottom+=${(window.innerWidth / 100) * 35} bottom`,
     `bottom+=${(window.innerWidth / 100) * 35} bottom`,
-    `bottom+=${(window.innerWidth / 100) * 175} bottom`
+    `bottom+=${(window.innerWidth / 100) * 120} bottom`
   )
 
   useEffect(() => {
@@ -129,7 +129,7 @@ const Wrapper = styled.section`
   height: 66.944vw;
 
   ${media.mobile} {
-    height: 243.2vw;
+    height: 300vw;
   }
 `
 
@@ -185,7 +185,7 @@ const VR1 = styled(VR)`
 
   ${media.mobile} {
     height: 53.333vw;
-    bottom: 203.2vw;
+    bottom: 259.9vw;
   }
 `
 
@@ -195,6 +195,6 @@ const VR2 = styled(VR1)`
 
   ${media.mobile} {
     height: 80vw;
-    bottom: -40vw;
+    bottom: 17vw;
   }
 `

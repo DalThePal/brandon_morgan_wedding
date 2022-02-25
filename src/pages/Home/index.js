@@ -28,7 +28,7 @@ const Home = () => {
   const animationHeight = useMedia('45vw', '45vw', '45vw', '112vw')
   const diamondHeight = useMedia('56.25vw', '56.25vw', '56.25vw', '112vw')
   const diamondScrollHeight = useMedia('5.125vw', '5.125vw', '5.125vw', '25vw')
-  const diamondScrollBottom = useMedia('21.8vw', '21.8vw', '21.8vw', '140vw')
+  const diamondScrollBottom = useMedia('21.8vw', '21.8vw', '21.8vw', '132vw')
 
   useEffect(() => {
     const tl = gsap.timeline()

@@ -157,7 +157,8 @@ const SVG = styled.svg`
   height: 20.833vw;
 
   ${media.mobile} {
-    top: 11.733vw;
+    top: unset;
+    bottom: 5.73vw;
     height: 138.133vw;
     width: 88.8vw;
   }
@@ -184,7 +185,8 @@ const Arc = styled(ArcSVG)`
   ${media.mobile} {
     width: 21.333vw;
     height: 21.333vw;
-    top: 13.867vw;
+    bottom: 120.867vw;
+    top: unset;
   }
 `
 

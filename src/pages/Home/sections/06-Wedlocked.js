@@ -30,7 +30,7 @@ const Wedlocked = () => {
     `bottom bottom+=${(window.innerWidth / 100) * 21}`,
     `bottom bottom+=${(window.innerWidth / 100) * 21}`,
     `bottom bottom+=${(window.innerWidth / 100) * 21}`,
-    `bottom-=${(window.innerWidth / 100) * 50} bottom`
+    `top top-=${(window.innerWidth / 100) * 200}`
   )
 
   const scrollOffset = useMedia(

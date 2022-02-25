@@ -32,14 +32,14 @@ const Tinder = () => {
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 32}`,
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 32}`,
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 32}`,
-    `top-=${(window.innerWidth / 100) * 40} bottom-=${(window.innerWidth / 100) * 140}`
+    `top-=${(window.innerWidth / 100) * 40} bottom-=${(window.innerWidth / 100) * 132}`
   )
 
   const scrollEnd = useMedia(
     `bottom bottom+=${(window.innerWidth / 100) * 25}`,
     `bottom bottom+=${(window.innerWidth / 100) * 25}`,
     `bottom bottom+=${(window.innerWidth / 100) * 25}`,
-    `bottom bottom+=${(window.innerWidth / 100) * 142}`
+    `bottom bottom+=${(window.innerWidth / 100) * 150}`
   )
 
   useEffect(() => {
