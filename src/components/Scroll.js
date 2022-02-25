@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap/all";
 import { useLocation } from 'react-router-dom'
 
+import { tablet, mobile } from 'styles/media'
+
 import 'locomotive-scroll/dist/locomotive-scroll.css'
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,9 +20,11 @@ const scrollOptions = {
   getSpeed: true,
   resetNativeScroll: true,
   smartphone: {
+    breakpoint: mobile,
     smooth: true
   },
   tablet: {
+    breakpoint: tablet,
     smooth: true
   }
 };
