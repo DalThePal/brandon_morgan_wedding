@@ -36,7 +36,7 @@ const Clouds = () => {
     `bottom bottom-=${(window.innerWidth / 100) * 36}`,
     `bottom bottom-=${(window.innerWidth / 100) * 36}`,
     `bottom bottom-=${(window.innerWidth / 100) * 36}`,
-    `bottom+=${(window.innerWidth / 100) * 150} bottom`
+    `bottom top+=${(window.innerWidth / 100) * 10}`
   )
 
   const planeBottom = useMedia('-13.889vw', '-13.889vw', '-13.889vw', '-77.867vw')
@@ -45,14 +45,14 @@ const Clouds = () => {
     `top top+=${(window.innerWidth / 100) * 7}`,
     `top top+=${(window.innerWidth / 100) * 7}`,
     `top top+=${(window.innerWidth / 100) * 7}`,
-    `top top+=${(window.innerWidth / 100) * 40}`
+    `top top+=${(window.innerWidth / 100) * 35}`
   )
 
   const vrEnd = useMedia(
     `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
     `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
     `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
-    `bottom+=${(window.innerWidth / 100) * 130} bottom`
+    `bottom top+=${(window.innerWidth / 100) * 50}`
   )
  
   useCloudMovement([
