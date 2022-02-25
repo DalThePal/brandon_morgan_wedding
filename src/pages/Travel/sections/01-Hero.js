@@ -5,12 +5,12 @@ import text   from 'styles/text'
 import colors from 'styles/colors'
 import media  from 'styles/media'
 
-import PlanePNG from 'images/plane.png'
+import PlaneGIF from 'videos/plane.gif'
 
 const Hero = () => {
   return (
     <Wrapper data-scroll-section>
-      <Plane src={PlanePNG} alt="plane"/>
+      <Plane src={PlaneGIF} alt="plane"/>
       <Container>
         <H1>Travel</H1>
       </Container>
@@ -72,7 +72,7 @@ const H1 = styled.h1`
 const Plane = styled.img`
   position: absolute;
   z-index: 1;
-  transform: scaleX(-1);
+  transform: scaleX(1);
 
   height: 27.708vw;
   width: 28.472vw;
@@ -80,7 +80,7 @@ const Plane = styled.img`
   right: 1.389vw;
 
   ${media.mobile} {
-    transform: scaleX(1);
+    transform: scaleX(-1);
     height: 134.133vw;
     width: 138.4vw;
     top 48.267vw;
