@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const scrollOptions = {
   smooth: true,
   getDirection: true,
-  touchMultiplier: 3,
+  touchMultiplier: 1.5,
   multiplier: 1.2,
   lerp: 0.1,
   firefoxMultiplier: 100,
