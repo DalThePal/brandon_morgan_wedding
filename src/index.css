@@ -57,7 +57,7 @@ table {
 	border-spacing: 0;
 }
 
-[data-load-container] {
+html {
 	position: fixed;
 	top: 0;
 	right: 0;
