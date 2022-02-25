@@ -37,7 +37,7 @@ const Wedlocked = () => {
     `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
     `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
     `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `-${(window.innerWidth / 100) * 30}, ${(window.innerWidth / 100) * 30}`
+    `-${(window.innerWidth / 100) * 30}, ${(window.innerWidth / 100) * 35}`
   )
 
   const innerLeft = useMedia('-50%', '-50%', '-50%', '-205%')
