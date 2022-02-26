@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { RegistryContext } from './Providers'
+
+import { RegistryContext, RouteContext } from './Providers'
 
 import { useMedia } from 'utils/hooks'
 
@@ -13,12 +13,17 @@ import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondGIF from 'videos/diamond.gif'
 
 const Footer = ({ diamond, leftText }) => {
-  const registry = useContext(RegistryContext)
+  const registry  = useContext(RegistryContext)
+  const route     = useContext(RouteContext)
 
   const diamondRef = useRef(null)
 
   const x1 = useMedia("57%", "57%", "57%", "65%")
   const x2 = useMedia("43%", "43%", "43%", "35%")
+
+  const linkClick = (path) => {
+    route.setState(path)
+  }
 
   return (
     <Wrapper data-scroll-section>
@@ -36,7 +41,7 @@ const Footer = ({ diamond, leftText }) => {
         <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
         <Links>
           <P onClick={() => registry.setState(true)}>Registry</P>
-          <StyledLink to="/travel" >Travel</StyledLink>
+          <P onClick={() => linkClick('/travel')} >Travel</P>
         </Links>
       </Right>
     </Wrapper>
@@ -123,11 +128,12 @@ const Links = styled.div`
   justify-content: flex-start;
 `
 
-const LinkStyles = `
+const P = styled.p`
   ${text.desktop.body}
   color: ${colors.roseIvory};
   text-decoration: none;
   cursor: pointer;
+  opacity: ${props => props.disabled ? 0.5 : 1};
 
   margin-right: 5.208vw;
 
@@ -135,15 +141,6 @@ const LinkStyles = `
     ${text.mobile.body}
     margin-right: 9.6vw;
   }
-`
-
-const StyledLink = styled(Link)`
-  ${LinkStyles}
-  opacity: ${props => props.disabled ? 0.5 : 1};
-`
-
-const P = styled.p`
-  ${LinkStyles}
 `
 
 const SVG = styled.svg`

@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { RouteContext } from 'components/Providers'
 
 import { useMedia } from 'utils/hooks'
 
@@ -15,6 +16,8 @@ import Animation from 'components/AppearAnimation'
 
 const Header = () => {
   const { pathname } = useLocation()
+
+  const route = useContext(RouteContext)
 
   const wrapperRef    = useRef(null)
   const line1Ref      = useRef(null)
@@ -202,10 +205,15 @@ const Header = () => {
     window.open(href, '__blank')
   }
 
+  const linkClick = (path) => {
+    route.setState(path)
+    setOpen(false)
+  }
+
   return (
     <Wrapper ref={wrapperRef} >
       <Top>
-        <LogoWrapper to="/" onClick={() => setOpen(false)}>
+        <LogoWrapper onClick={() => linkClick('/')}>
           <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
             <Logo viewBox="0 0 60 60" fill="none">
               <circle ref={circleRef} cx="30" cy="30" r="29.5" stroke="#F9F2F7"/>
@@ -264,7 +272,7 @@ const Header = () => {
       </Top>
       <Content ref={contentRef}>
         <LinkWrapper disabled={pathname === "/travel"} width={"40.833vw"}>
-          <StyledLink onClick={() => setOpen(false)} to="/travel">Travel</StyledLink>
+          <StyledLink onClick={() => linkClick("/travel")} >Travel</StyledLink>
         </LinkWrapper>
         <LinkWrapper width={"52.569vw"}>
           <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
@@ -313,7 +321,7 @@ const Top = styled.div`
   }
 `
 
-const LogoWrapper = styled(Link)`
+const LogoWrapper = styled.div`
   height: 4.167vw;
   width: 4.167vw;
 
@@ -443,7 +451,7 @@ const ButtonRow = styled.div`
   }
 `
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.p`
   color: inherit;
   text-decoration: none;
 `
