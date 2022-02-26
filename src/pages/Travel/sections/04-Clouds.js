@@ -158,6 +158,7 @@ const Cloud2 = styled.img`
   left: -18.47vw;
 
   ${media.mobile} {
+    transform: scaleX(-1);
     width: 112.267vw;
     height: 64vw;
     top: 74.933vw;
@@ -191,6 +192,14 @@ const Cloud4 = styled.img`
   height: 33.26vw;
   top: 25.42vw;
   left: 49.17vw;
+
+  ${media.mobile} {
+    transform: rotate(15deg);
+    width: 171.2vw;
+    height: 97.87vw;
+    top: 9.02vw;
+    left: -78.25vw
+  }
 `
 
 const Plane = styled.img`
