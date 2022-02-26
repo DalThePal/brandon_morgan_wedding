@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { RouteContext } from './Providers'
 
 import colors from 'styles/colors'
+import media  from 'styles/media'
 
 import CloudPNG from 'images/cloud.png'
 
@@ -116,6 +117,13 @@ const Cloud1 = styled.img`
   height: 21.32vw;
   top: 40.556vw;
   left: 67.639vw
+
+  ${media.mobile} {
+    width: 340.8vw;
+    height: 194.93vw;
+    top: 73.07vw;
+    left: -70.93vw;
+  }
 `
 
 const Cloud2 = styled.img`
@@ -125,6 +133,14 @@ const Cloud2 = styled.img`
   height: 50.764vw;
   top: 19.028vw;
   left: -18.472vw;
+
+  ${media.mobile} {
+    transform: scaleX(-1);
+    width: 223.73vw;
+    height: 127.73vw;
+    top: 66.67vw;
+    left: -31.73vw;
+  }
 `
 
 const Cloud3 = styled.img`
@@ -135,6 +151,13 @@ const Cloud3 = styled.img`
   height: 33.264vw;
   top: 11.111vw;
   left: -8.264vw;
+
+  ${media.mobile} {
+    width: 340.8vw;
+    height: 194.93vw;
+    top: -134.93vw;
+    left: -70.93vw;
+  }
 `
 
 const Cloud4 = styled.img`
@@ -145,6 +168,13 @@ const Cloud4 = styled.img`
   height: 50.764vw;
   top: 11.111vw;
   left: 29.028vw;
+
+  ${media.mobile} {
+    width: 143.2vw;
+    height: 81.87vw;
+    top: 28.27vw;
+    left: 22.13vw;
+  }
 `
 
 const Cloud5 = styled.img`
@@ -154,6 +184,13 @@ const Cloud5 = styled.img`
   height: 21.319vw;
   top: -13.611vw;
   left: 67.639vw;
+
+  ${media.mobile} {
+    width: 340.8vw;
+    height: 194.93vw;
+    left: -70.93vw;
+    top: -57.27vw;
+  }
 `
 
 const Cloud6 = styled.img`
@@ -163,6 +200,10 @@ const Cloud6 = styled.img`
   height: 50.764vw;
   left: -18.472vw;
   top: -35.139vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud9 = styled.img`
@@ -173,6 +214,10 @@ const Cloud9 = styled.img`
   height: 21.319vw;
   top: -7.361vw;
   left: -5.764vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud10 = styled.img`
@@ -183,6 +228,10 @@ const Cloud10 = styled.img`
   height: 50.764vw;
   top: -15.278vw;
   left: 28.889vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud11 = styled.img`
@@ -193,6 +242,10 @@ const Cloud11 = styled.img`
   height: 33.264vw;
   top: 10.139vw;
   left: 49.167vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud12 = styled.img`
@@ -202,6 +255,10 @@ const Cloud12 = styled.img`
   height: 50.764vw;
   top: -7.361vw;
   left: -18.472vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud13 = styled.img`
@@ -211,6 +268,10 @@ const Cloud13 = styled.img`
   height: 33.264vw;
   top: 40.139vw;
   left: 30.167vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud14 = styled.img`
@@ -221,6 +282,10 @@ const Cloud14 = styled.img`
   height: 50.764vw;
   top: 44.361vw;
   left: -18.472vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud15 = styled.img`
@@ -230,4 +295,8 @@ const Cloud15 = styled.img`
   height: 50.764vw;
   left: 50.472vw;
   top: 45.139vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `

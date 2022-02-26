@@ -8,10 +8,10 @@ export const RouteContext     = createContext(null)
 const Providers = ({ children }) => {
 
   const [screen, setScreen] = useState({
-    mobile: false,
-    tablet: false,
-    desktop: false,
-    fullWidth: false
+    mobile    : false,
+    tablet    : false,
+    desktop   : false,
+    fullWidth : false
   })
 
   const [registryOpen, setRegistryOpen] = useState(false)

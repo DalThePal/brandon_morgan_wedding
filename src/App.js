@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 
 import colors from 'styles/colors'
 
-import Providers  from 'components/Providers'
 import Scroll     from 'components/Scroll'
 import Header     from 'components/Header'
 import Registry   from 'components/RegistryModal'
@@ -15,20 +14,18 @@ import Travel from 'pages/Travel'
 
 const App = () => {
   return (
-    <Providers>
-      <Wrapper className='smooth-scroll' data-scroll-container>
-        <Scroll/>
-        <Header/>
+    <Wrapper className='smooth-scroll' data-scroll-container>
+      <Scroll/>
+      <Header/>
 
-        <Routes>
-          <Route path="/"       element={<Home/>}   />
-          <Route path="/travel" element={<Travel/>} />
-        </Routes>
+      <Routes>
+        <Route path="/"       element={<Home/>}   />
+        <Route path="/travel" element={<Travel/>} />
+      </Routes>
 
-        <Transition/>
-        <Registry/>
-      </Wrapper>
-    </Providers>
+      <Transition/>
+      <Registry/>
+    </Wrapper>
   );
 }
 
