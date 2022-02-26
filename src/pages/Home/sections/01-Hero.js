@@ -16,6 +16,9 @@ const Hero = () => {
   const [cloud1Ref, setCloud1Ref] = useState(null) 
   const [cloud2Ref, setCloud2Ref] = useState(null) 
   const [cloud3Ref, setCloud3Ref] = useState(null) 
+  const [cloud4Ref, setCloud4Ref] = useState(null) 
+  const [cloud5Ref, setCloud5Ref] = useState(null) 
+  const [cloud6Ref, setCloud6Ref] = useState(null) 
 
   const [title1Trigger, setTitle1Trigger] = useState(false)
   const [title2Trigger, setTitle2Trigger] = useState(false)
@@ -24,18 +27,35 @@ const Hero = () => {
   useCloudMovement([
     cloud1Ref,
     cloud2Ref,
-    cloud3Ref
+    cloud3Ref,
+    cloud4Ref,
+    cloud5Ref,
+    cloud6Ref
   ])
 
   useEffect(() => {
-    if (cloud1Ref && cloud2Ref && cloud3Ref) {
+    if (
+      cloud1Ref && 
+      cloud2Ref && 
+      cloud3Ref && 
+      cloud4Ref && 
+      cloud5Ref &&
+      cloud6Ref
+    ) {
       const tl = gsap.timeline()
   
       tl.call(setTitle2Trigger, [true], 1.2)
       tl.call(setTitle1Trigger, [true], 1.4)
       tl.call(setTitle3Trigger, [true], 1.5)
   
-      tl.fromTo([cloud1Ref, cloud2Ref, cloud3Ref], {
+      tl.fromTo([
+        cloud1Ref, 
+        cloud2Ref, 
+        cloud3Ref, 
+        cloud4Ref, 
+        cloud5Ref,
+        cloud6Ref
+      ], {
         y: '100%'
       }, {
         duration: 1.5,
@@ -48,7 +68,7 @@ const Hero = () => {
         tl.kill()
       }
     }
-  }, [cloud1Ref, cloud2Ref, cloud3Ref])
+  }, [cloud1Ref, cloud2Ref, cloud3Ref, cloud4Ref, cloud5Ref, cloud6Ref])
 
   return (
     <Wrapper data-scroll-section>
@@ -66,6 +86,9 @@ const Hero = () => {
       <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={ref => setCloud3Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud4 ref={ref => setCloud4Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud5 ref={ref => setCloud5Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud6 ref={ref => setCloud6Ref(ref)} src={CloudPNG} alt="cloud"/>
 
     </Wrapper>
   )
@@ -144,10 +167,14 @@ const Title3 = styled.h2`
   }
 `
 
-const Cloud1 = styled.img`
+const Cloud = styled.img`
+  will-change: transform;
   position: absolute;
   z-index: 1;
   opacity: 0;
+`
+
+const Cloud1 = styled(Cloud)`
 
   right: -0.625vw;
   top: 54.444vw;
@@ -162,11 +189,8 @@ const Cloud1 = styled.img`
   }
 `
 
-const Cloud2 = styled.img`
-  position: absolute;
-  transform: rotate(180deg);
-  z-index: 1;
-  opacity: 0;
+const Cloud2 = styled(Cloud)`
+  transform: scaleY(-1);
 
   top: 37.778vw;
   left: -19.167vw;
@@ -181,11 +205,8 @@ const Cloud2 = styled.img`
   }
 `
 
-const Cloud3 = styled.img`
-  position: absolute;
+const Cloud3 = styled(Cloud)`
   transform: rotate(180deg);
-  z-index: 1;
-  opacity: 0;
 
   right: -5.833vw;
   top: 45.556vw;
@@ -198,4 +219,31 @@ const Cloud3 = styled.img`
     width: 170.4vw;
     height: 97.333vw;
   }
+`
+
+const Cloud4 = styled(Cloud)`
+  transform: scale(-1);
+
+  left: -2.29vw;
+  top: 64.86vw;
+  width: 37.29vw;
+  height: 21.32vw;
+`
+
+const Cloud5 = styled(Cloud)`
+  transform: scaleY(-1);
+
+  left: 28.96vw;
+  top: 46.46vw;
+  width: 58.26vw;
+  height: 33.26vw;
+`
+
+const Cloud6 = styled(Cloud)`
+  transform: scaleY(-1);
+
+  left: 44.17vw;
+  top: 52.92vw;
+  width: 88.75vw;
+  height: 50.76vw;
 `
