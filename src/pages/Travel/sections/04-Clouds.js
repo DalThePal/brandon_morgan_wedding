@@ -24,6 +24,7 @@ const Clouds = () => {
   const [cloud1Ref, setCloud1Ref] = useState(null) 
   const [cloud2Ref, setCloud2Ref] = useState(null) 
   const [cloud3Ref, setCloud3Ref] = useState(null) 
+  const [cloud4Ref, setCloud4Ref] = useState(null) 
 
   const planeStart = useMedia(
     `top top+=${(window.innerWidth / 100) * 7}`,
@@ -58,7 +59,8 @@ const Clouds = () => {
   useCloudMovement([
     cloud1Ref,
     cloud2Ref,
-    cloud3Ref
+    cloud3Ref,
+    cloud4Ref
   ])
 
   useEffect(() => {
@@ -103,6 +105,7 @@ const Clouds = () => {
       <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={ref => setCloud3Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud4 ref={ref => setCloud4Ref(ref)} src={CloudPNG} alt="cloud"/>
 
       <Plane src={PlanePNG} ref={planeRef} alt="plane"/>
       <VR1 ref={vr1Ref}/>
@@ -148,12 +151,11 @@ const Cloud1 = styled.img`
 const Cloud2 = styled.img`
   position: absolute;
   z-index: 2;
-  transform: scaleX(-1);
 
-  width: 58.264vw;
-  height: 33.264vw;
-  top: 16.667vw;
-  left: -2.083vw;
+  width: 88.75vw;
+  height: 50.76vw;
+  top: 7.92vw;
+  left: -18.47vw;
 
   ${media.mobile} {
     width: 112.267vw;
@@ -179,6 +181,16 @@ const Cloud3 = styled.img`
     top: 26.667vw;
     left: 1.867vw;
   }
+`
+
+const Cloud4 = styled.img`
+  position: absolute;
+  transform: scaleX(-1);
+
+  width: 58.26vw;
+  height: 33.26vw;
+  top: 25.42vw;
+  left: 49.17vw;
 `
 
 const Plane = styled.img`
