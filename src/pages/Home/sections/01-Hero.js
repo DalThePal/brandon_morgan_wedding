@@ -198,6 +198,7 @@ const Cloud2 = styled(Cloud)`
   height: 50.764vw;
   
   ${media.mobile} {
+    transform: scale(-1);
     top: 168.533vw;
     left: 55.2vw;
     width: 71.467vw;
@@ -214,6 +215,7 @@ const Cloud3 = styled(Cloud)`
   height: 21.319vw;
 
   ${media.mobile} {
+    transform: scaleY(-1);
     right: -15.733vw;
     top: 153.6vw;
     width: 170.4vw;
@@ -228,6 +230,14 @@ const Cloud4 = styled(Cloud)`
   top: 64.86vw;
   width: 37.29vw;
   height: 21.32vw;
+
+  ${media.mobile} {
+    transform: rotate(135deg) scaleY(-1);
+    width: 170.4vw;
+    height: 97.33vw;
+    top: 167.27vw;
+    left: -1.6vw;
+  }
 `
 
 const Cloud5 = styled(Cloud)`
@@ -237,6 +247,10 @@ const Cloud5 = styled(Cloud)`
   top: 46.46vw;
   width: 58.26vw;
   height: 33.26vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
 
 const Cloud6 = styled(Cloud)`
@@ -246,4 +260,8 @@ const Cloud6 = styled(Cloud)`
   top: 52.92vw;
   width: 88.75vw;
   height: 50.76vw;
+
+  ${media.mobile} {
+    display: none;
+  }
 `
