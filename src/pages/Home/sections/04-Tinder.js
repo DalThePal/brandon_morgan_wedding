@@ -148,7 +148,7 @@ const Cloud3 = styled.img`
   height: 50.764vw;
 
   ${media.mobile} {
-    transform: rotate(0deg);
+    transform: scaleX(-1);
     right: -2.667vw;
     top: 48.267vw;
     width: 112.267vw;
@@ -164,6 +164,14 @@ const Cloud4 = styled.img`
   top: 32.36vw;
   width: 58.26vw;
   height: 33.26vw;
+
+  ${media.mobile} {
+    transform: rotate(-15deg) scaleY(-1);
+    left: -24.83vw;
+    top: -9.76vw;
+    width: 112.27vw;
+    height: 64vw;
+  }
 `
 
 const Title = styled.h2`
