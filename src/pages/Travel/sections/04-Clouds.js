@@ -9,7 +9,7 @@ import { VR } from 'components/Styled'
 import media from 'styles/media'
 
 import CloudPNG from 'images/cloud.png'
-import PlanePNG from 'images/plane2.png'
+import PlanePNG from 'images/plane.png'
 
 const Clouds = () => {
 
@@ -49,7 +49,7 @@ const Clouds = () => {
   )
 
   const vrEnd = useMedia(
-    `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
+    `bottom bottom-=${(window.innerWidth / 100) * 30}`,
     `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
     `bottom bottom-=${(window.innerWidth / 100) * 32.5}`,
     `bottom top+=${(window.innerWidth / 100) * 50}`

@@ -92,7 +92,7 @@ const Registry = () => {
 
         <TargetWrapper>
           <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
-            <Primary onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver")}>Target</Primary>
+            <Primary onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver?registryId=92b30ba0-8888-11ec-8308-8da450f277d4&type=WEDDING")}>Target</Primary>
           </Animation>
         </TargetWrapper>
 
