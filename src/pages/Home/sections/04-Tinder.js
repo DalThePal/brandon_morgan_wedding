@@ -21,11 +21,13 @@ const Tinder = () => {
   const [cloud1Ref, setCloud1Ref] = useState(null) 
   const [cloud2Ref, setCloud2Ref] = useState(null) 
   const [cloud3Ref, setCloud3Ref] = useState(null) 
+  const [cloud4Ref, setCloud4Ref] = useState(null) 
  
   useCloudMovement([
     cloud1Ref,
     cloud2Ref,
-    cloud3Ref
+    cloud3Ref,
+    cloud4Ref
   ])
 
   const scrollStart = useMedia(
@@ -71,6 +73,7 @@ const Tinder = () => {
       <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={ref => setCloud3Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud4 ref={ref => setCloud4Ref(ref)} src={CloudPNG} alt="cloud"/>
 
       <Title>Love at first swipe</Title>
       <Text>
@@ -120,12 +123,11 @@ const Cloud1 = styled.img`
 
 const Cloud2 = styled.img`
   position: absolute;
-  transform: scaleX(-1);
 
-  left -2.153vw;
-  top: 23.611vw;
-  height: 33.264vw;
-  width: 58.264vw;
+  left -18.47vw;
+  top: 14.86vw;
+  height: 50.76vw;
+  width: 88.75vw;
 
   ${media.mobile} {
     transform: rotate(180deg);
@@ -146,10 +148,28 @@ const Cloud3 = styled.img`
   height: 50.764vw;
 
   ${media.mobile} {
-    transform: rotate(0deg);
+    transform: scaleX(-1);
     right: -2.667vw;
     top: 48.267vw;
     width: 112.267vw;
+    height: 64vw;
+  }
+`
+
+const Cloud4 = styled.img`
+  position: absolute;
+  transform: scaleX(-1);
+
+  left: 49.17vw;
+  top: 32.36vw;
+  width: 58.26vw;
+  height: 33.26vw;
+
+  ${media.mobile} {
+    transform: rotate(-15deg) scaleY(-1);
+    left: -24.83vw;
+    top: -9.76vw;
+    width: 112.27vw;
     height: 64vw;
   }
 `

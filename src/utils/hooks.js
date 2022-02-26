@@ -8,9 +8,9 @@ export const useCloudMovement = (refs) => {
     if (refs) {
       const mouseMove = (e) => {
         gsap.to(refs, {
-          stagger: 0.02,
-          x: -e.clientX / 50,
-          y: -e.clientY / 50
+          stagger: 0.03,
+          x: -e.clientX / 30,
+          y: -e.clientY / 30
         })
       }
   
