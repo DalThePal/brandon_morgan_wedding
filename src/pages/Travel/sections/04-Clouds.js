@@ -9,7 +9,7 @@ import { VR } from 'components/Styled'
 import media from 'styles/media'
 
 import CloudPNG from 'images/cloud.png'
-import PlanePNG from 'images/plane.png'
+import PlanePNG from 'images/travel/plane.png'
 
 const Clouds = () => {
 

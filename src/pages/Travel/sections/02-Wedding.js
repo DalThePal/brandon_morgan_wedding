@@ -6,8 +6,8 @@ import colors from 'styles/colors'
 import text   from 'styles/text'
 import media  from 'styles/media'
 
-import WeddingPNG           from 'images/wedding.png'
-import WeddingMobilePNG     from 'images/wedding_mobile.png'
+import WeddingPNG           from 'images/travel/wedding.png'
+import WeddingMobilePNG     from 'images/travel/wedding_mobile.png'
 
 const Wedding = () => {
 

@@ -10,7 +10,7 @@ import text   from 'styles/text'
 import media  from 'styles/media'
 
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
-import DiamondGIF from 'videos/diamond.gif'
+import DiamondGIF from 'images/diamond.gif'
 
 const Footer = ({ diamond, leftText }) => {
   const registry  = useContext(RegistryContext)

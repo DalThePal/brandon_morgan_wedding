@@ -11,7 +11,7 @@ import text from 'styles/text'
 import media from 'styles/media'
 
 import CloudPNG from 'images/cloud.png'
-import TinderPNG from 'images/tinder.png'
+import TinderJPG from 'images/home/tinder.jpg'
 
 const Tinder = () => {
 
@@ -83,9 +83,7 @@ const Tinder = () => {
         “match” just might really be perfect.
       </Text>
 
-      <ImgWrapper>
-        <Img src={TinderPNG} alt="a rekindled tinder"/>
-      </ImgWrapper>
+      <Img src={TinderJPG} alt="a rekindled tinder"/>
     </Wrapper>
   )
 }
@@ -211,9 +209,9 @@ const Text = styled.p`
   }
 `
 
-const ImgWrapper = styled.div`
+const Img = styled.img`
+  object-fit: cover;
   position: absolute;
-  background: ${colors.background};
 
   width: 29.514vw;
   height: 55.556vw;
@@ -228,14 +226,6 @@ const ImgWrapper = styled.div`
     transform: translateX(-50%);
     top: 173.333vw;
   }
-`
-
-const Img = styled.img`
-  object-fit: cover;
-  mix-blend-mode: screen;
-
-  width: 100%;
-  height: 100%;
 `
 
 const StyledVR = styled(VR)`

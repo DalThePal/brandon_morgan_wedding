@@ -5,7 +5,7 @@ import colors from 'styles/colors'
 import text   from 'styles/text'
 import media  from 'styles/media'
 
-import WeekendPNG from 'images/weekend.png'
+import WeekendJPG from 'images/travel/weekend.jpg'
 
 const Weekend = () => {
   return (
@@ -21,7 +21,7 @@ const Weekend = () => {
           more information on transportation!
         </P>
       </Content>
-      <Img src={WeekendPNG} alt='Salt Lake City is for lovers'/>
+      <Img src={WeekendJPG} alt='Salt Lake City is for lovers'/>
     </Wrapper>
   )
 }
@@ -84,7 +84,6 @@ const P = styled.p`
 
 const Img = styled.img`
   position: absolute;
-  mix-blend-mode: screen;
   z-index: 1;
   right: 0vw;
   

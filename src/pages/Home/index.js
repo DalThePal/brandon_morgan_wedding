@@ -17,7 +17,7 @@ import PathFiller from './sections/07-PathFiller'
 import Animation from 'components/AppearAnimation'
 import Footer from 'components/Footer'
 
-import DiamondGIF from 'videos/diamond.gif'
+import DiamondGIF from 'images/diamond.gif'
 
 const Home = () => {
 
