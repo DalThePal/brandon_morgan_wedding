@@ -8,11 +8,11 @@ import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
 
-import Wedlocked1PNG from 'images/wedlocked1.png'
-import Wedlocked2PNG from 'images/wedlocked2.png'
-import Wedlocked3PNG from 'images/wedlocked3.png'
-import Wedlocked4PNG from 'images/wedlocked4.png'
-import Wedlocked5PNG from 'images/wedlocked5.png'
+import Wedlocked1PNG from 'images/home/wedlocked1.jpg'
+import Wedlocked2PNG from 'images/home/wedlocked2.jpg'
+import Wedlocked3PNG from 'images/home/wedlocked3.jpg'
+import Wedlocked4PNG from 'images/home/wedlocked4.jpg'
+import Wedlocked5PNG from 'images/home/wedlocked5.jpg'
 
 const Wedlocked = () => {
 
@@ -70,21 +70,11 @@ const Wedlocked = () => {
         <Title2>&</Title2>
         <Title3>Loaded</Title3>
 
-        <ImageWrapper1>
-          <Img src={Wedlocked1PNG} alt="Brandon in New York"/>
-        </ImageWrapper1>
-        <ImageWrapper2>
-          <Img src={Wedlocked2PNG} alt="Brandon and Morgan"/>
-        </ImageWrapper2>
-        <ImageWrapper3>
-          <Img src={Wedlocked3PNG} alt="Brandon and Morgan showing ring"/>
-        </ImageWrapper3>
-        <ImageWrapper4>
-          <Img src={Wedlocked4PNG} alt="Morgan showing ring"/>
-        </ImageWrapper4>
-        <ImageWrapper5>
-          <Img src={Wedlocked5PNG} alt="Morgan showing off her ring"/>
-        </ImageWrapper5>
+        <Img1 src={Wedlocked1PNG} alt="Brandon in New York"/>
+        <Img2 src={Wedlocked2PNG} alt="Brandon and Morgan"/>
+        <Img3 src={Wedlocked3PNG} alt="Brandon and Morgan showing ring"/>
+        <Img4 src={Wedlocked4PNG} alt="Morgan showing ring"/>
+        <Img5 src={Wedlocked5PNG} alt="Morgan showing off her ring"/>
 
         <Text>
           In May of 2021, Brandon surprised Morgan with a birthday trip 
@@ -180,13 +170,12 @@ const Title3 = styled.h2`
   }
 `
 
-const ImageWrapper = styled.div`
+const Img = styled.img`
   position: absolute;
   opacity: 0.75;
-  background: ${colors.background};
 `
 
-const ImageWrapper1 = styled(ImageWrapper)`
+const Img1 = styled(Img)`
   left: 8.333vw;
   top: 24.306vw;
   width: 18.75vw;
@@ -200,7 +189,7 @@ const ImageWrapper1 = styled(ImageWrapper)`
   }
 `
 
-const ImageWrapper2 = styled(ImageWrapper)`
+const Img2 = styled(Img)`
   width: 29.583vw;
   height: 22.292vw;
   top: 38.056vw;
@@ -214,7 +203,7 @@ const ImageWrapper2 = styled(ImageWrapper)`
   }
 `
 
-const ImageWrapper3 = styled(ImageWrapper)`
+const Img3 = styled(Img)`
   width: 18.75vw;
   height: 25vw;
   top: 28.681vw;
@@ -228,7 +217,7 @@ const ImageWrapper3 = styled(ImageWrapper)`
   }
 `
 
-const ImageWrapper4 = styled(ImageWrapper)`
+const Img4 = styled(Img)`
   width: 18.681vw;
   height: 24.861vw;
   top: 46.528vw;
@@ -242,7 +231,7 @@ const ImageWrapper4 = styled(ImageWrapper)`
   }
 `
 
-const ImageWrapper5 = styled(ImageWrapper)`
+const Img5 = styled(Img)`
   width: 18.75vw;
   height: 24.972vw;
   top: 27.014vw;
@@ -254,12 +243,6 @@ const ImageWrapper5 = styled(ImageWrapper)`
     top: 32vw;
     left: 260.8vw;
   }
-`
-
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  mix-blend-mode: screen;
 `
 
 const Text = styled.p`

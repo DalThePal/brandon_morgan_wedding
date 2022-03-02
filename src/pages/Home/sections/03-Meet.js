@@ -10,7 +10,7 @@ import colors from 'styles/colors'
 import text from 'styles/text'
 import media from 'styles/media'
 
-import MeetPNG from 'images/meet.png'
+import MeetJPG from 'images/home/meet.jpg'
 
 const Meet = () => {
 
@@ -66,9 +66,7 @@ const Meet = () => {
         touch as years passed.
       </Text>
 
-      <ImageWrapper>
-        <Img src={MeetPNG} alt="Morgan meets Brandon"/>
-      </ImageWrapper>
+      <Img src={MeetJPG} alt="Morgan meets Brandon"/>
     </Wrapper>
   )
 }
@@ -124,11 +122,11 @@ const Text = styled.p`
   }
 `
 
-const ImageWrapper = styled.div`
+const Img = styled.img`
+  object-fit: cover;
   position: absolute;
   z-index: 1;
   opacity: 0.75;
-  background: ${colors.background};
 
   width: 40.278vw;
   height: 52.083vw;
@@ -142,14 +140,6 @@ const ImageWrapper = styled.div`
     right: 50%;
     transform: translateX(50%);
   }
-`
-
-const Img = styled.img`
-  mix-blend-mode: screen;
-  object-fit: cover;
-
-  width: 100%;
-  height: 100%;
 `
 
 const StyledVR = styled(VR)`

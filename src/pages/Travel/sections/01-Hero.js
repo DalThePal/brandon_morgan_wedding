@@ -5,7 +5,7 @@ import text   from 'styles/text'
 import colors from 'styles/colors'
 import media  from 'styles/media'
 
-import PlaneGIF from 'videos/plane.gif'
+import PlaneGIF from 'images/travel/plane.gif'
 
 const Hero = () => {
   return (
