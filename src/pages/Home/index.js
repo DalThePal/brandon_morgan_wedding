@@ -70,7 +70,7 @@ const Home = () => {
     <>
       <AnimationWrapper>
         <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <Diamond ref={diamondRef} src={DiamondGIF}/>
+          <Diamond ref={diamondRef} src={DiamondGIF} alt="rotating diamond"/>
         </Animation>
       </AnimationWrapper>
 
