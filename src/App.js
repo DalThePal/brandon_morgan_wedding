@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import styled from 'styled-components'
 import { Routes, Route } from 'react-router-dom'
 
@@ -9,8 +9,8 @@ import Header     from 'components/Header'
 import Registry   from 'components/RegistryModal'
 import Transition from 'components/Transition'
 
-import Home   from 'pages/Home'
-import Travel from 'pages/Travel'
+const Home   = lazy(() => import('pages/Home'))
+const Travel = lazy(() => import('pages/Travel'))
 
 const App = () => {
   return (
@@ -19,8 +19,8 @@ const App = () => {
       <Header/>
 
       <Routes>
-        <Route path="/"       element={<Home/>}   />
-        <Route path="/travel" element={<Travel/>} />
+          <Route path="/"       element={<Suspense fallback={<div/>}><Home/></Suspense>}   />
+          <Route path="/travel" element={<Suspense fallback={<div/>}><Travel/></Suspense>} />
       </Routes>
 
       <Transition/>

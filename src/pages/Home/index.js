@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, lazy, Suspense } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
@@ -10,15 +10,14 @@ import Animation from 'components/AppearAnimation'
 
 import DiamondGIF from 'images/diamond.gif'
 
-import Hero from './sections/01-Hero'
-import Date from './sections/02-Date'
-const Meet       = lazy(() => import('./sections/03-Meet'))
-const Tinder     = lazy(() => import('./sections/04-Tinder'))
-const Snuggle    = lazy(() => import('./sections/05-Snuggle'))
-const Wedlocked  = lazy(() => import('./sections/06-Wedlocked'))
-const PathFiller = lazy(() => import('./sections/07-PathFiller'))
-const Footer     = lazy(() => import('components/Footer'))
-
+import Hero       from './sections/01-Hero'
+import Date       from './sections/02-Date'
+import Meet       from  './sections/03-Meet'
+import Tinder     from  './sections/04-Tinder'
+import Snuggle    from  './sections/05-Snuggle'
+import Wedlocked  from  './sections/06-Wedlocked'
+import PathFiller from  './sections/07-PathFiller'
+import Footer     from  'components/Footer'
 
 const Home = () => {
 
@@ -76,16 +75,14 @@ const Home = () => {
 
       <Hero/>
       <Date/>
-      <Suspense fallback={<div/>}>
-        <Meet/>
-        <Tinder/>
-        <Snuggle/>
-        <Wedlocked/>
-        <PathFiller/>
-        <Footer
-          leftText={"We're getting married. You're getting a hangover."}
-        />
-      </Suspense>
+      <Meet/>
+      <Tinder/>
+      <Snuggle/>
+      <Wedlocked/>
+      <PathFiller/>
+      <Footer
+        leftText={"We're getting married. You're getting a hangover."}
+      />
     </>
   )
 }
