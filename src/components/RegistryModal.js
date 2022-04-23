@@ -29,7 +29,7 @@ const Registry = () => {
     const tl = gsap.timeline({
       paused: true,
       onReverseComplete: () => {
-        window.locomotiveScroll.start()
+        window.scroller.paused(false)
       }
     })
 
@@ -69,7 +69,7 @@ const Registry = () => {
 
   useEffect(() => {
     if (registry.state) {
-      window.locomotiveScroll.stop()
+      window.scroller.paused(true)
       openTl.current.play()
     } else {
       setBtn1Trigger(false)

@@ -106,7 +106,7 @@ const text = {
       font-family: Love;
       font-style: normal;
       font-weight: normal;
-      font-size: 150px;
+      font-size: 10.42vw;
       line-height: 90%;      
       letter-spacing: -0.03em;
     `,

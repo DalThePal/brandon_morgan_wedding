@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 
 import colors from 'styles/colors'
 
-import Scroll     from 'components/Scroll'
 import Header     from 'components/Header'
 import Registry   from 'components/RegistryModal'
 import Transition from 'components/Transition'
@@ -13,9 +12,9 @@ import  Home   from 'pages/Home'
 import  Travel from 'pages/Travel'
 
 const App = () => {
+
   return (
-    <Wrapper className='smooth-scroll' data-scroll-container>
-      <Scroll/>
+    <Wrapper>
       <Header/>
 
       <Routes>
@@ -25,6 +24,7 @@ const App = () => {
 
       <Transition/>
       <Registry/>
+      
     </Wrapper>
   );
 }
@@ -34,5 +34,6 @@ export default App;
 const Wrapper = styled.main`
   width: 100%;
   background: ${colors.background};
-  overflow: hidden;
+  overflow-x: hidden;
 `
+

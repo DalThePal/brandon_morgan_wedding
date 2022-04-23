@@ -66,7 +66,6 @@ const Clouds = () => {
   useEffect(() => {
     const planeTl = gsap.timeline({
       scrollTrigger: {
-        scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
         scrub: true,
         start: planeStart,
@@ -81,7 +80,6 @@ const Clouds = () => {
 
     const vrTl = gsap.timeline({
       scrollTrigger: {
-        scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
         scrub: true,
         start: vrStart,

@@ -47,7 +47,6 @@ const Tinder = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        scroller: ".smooth-scroll",
         trigger: wrapperRef.current,
         start: scrollStart,
         end: scrollEnd,
@@ -122,7 +121,7 @@ const Cloud1 = styled.img`
 const Cloud2 = styled.img`
   position: absolute;
 
-  left -18.47vw;
+  left: -18.47vw;
   top: 14.86vw;
   height: 50.76vw;
   width: 88.75vw;

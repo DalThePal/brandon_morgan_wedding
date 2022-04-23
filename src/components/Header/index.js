@@ -83,7 +83,7 @@ const Header = () => {
 
   useEffect(() => {
     if (open) {
-      window.locomotiveScroll.stop()
+      window.scroller.paused(true)
 
       gsap.fromTo(contentRef.current, {
         display: 'flex'
@@ -137,7 +137,7 @@ const Header = () => {
 
     } else {
       if (initDone.current) {
-        window.locomotiveScroll.start()
+        window.scroller.paused(false)
   
         gsap.to(contentRef.current, {
           duration,

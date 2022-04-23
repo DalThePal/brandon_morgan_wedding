@@ -33,22 +33,15 @@ const Wedlocked = () => {
     `top top-=${(window.innerWidth / 100) * 200}`
   )
 
-  const scrollOffset = useMedia(
-    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `-${(window.innerWidth / 100) * 30}, ${(window.innerWidth / 100) * 35}`
-  )
-
-  const innerLeft = useMedia('-50%', '-50%', '-50%', '-205%')
+  const innerLeft = useMedia('-25%', '-25%', '-50%', '-205%')
 
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: wrapperRef.current,
-        scroller: '.smooth-scroll',
         start: scrollStart,
         end: scrollEnd,
+        pin: innerRef.current,
         scrub: true,
       }
     })
@@ -64,8 +57,8 @@ const Wedlocked = () => {
   }, [scrollStart, scrollEnd, innerLeft])
 
   return (
-    <Wrapper id="wedlocked" ref={wrapperRef} data-scroll data-scroll-section>
-      <Inner ref={innerRef} data-scroll data-scroll-sticky data-scroll-target="#wedlocked" data-scroll-offset={scrollOffset}>
+    <Wrapper id="wedlocked" ref={wrapperRef} >
+      <Inner ref={innerRef} >
         <Title1>Wedlocked</Title1>
         <Title2>&</Title2>
         <Title3>Loaded</Title3>

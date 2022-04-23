@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
@@ -14,6 +14,8 @@ const Date = () => {
 
   const wrapperRef = useRef(null)
   const vrRef = useRef(null)
+
+  const [initAnim, setInitAnim] = useState(false)
 
   const scrollTlStart = useMedia(
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
@@ -33,7 +35,10 @@ const Date = () => {
 
   useEffect(() => {
     const tl = gsap.timeline({
-      delay: 1.2
+      delay: 1.2,
+      onComplete: () => {
+        setInitAnim(true)
+      }
     })
 
     tl.to(vrRef.current, {
@@ -44,28 +49,32 @@ const Date = () => {
     return () => {
       tl.kill()
     }
-  }, [vrHeight])
+  }, [vrHeight, setInitAnim])
 
   useEffect(() => {
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        scroller: '.smooth-scroll',
-        trigger: wrapperRef.current,
-        start: scrollTlStart,
-        end: scrollTlEnd,
-        scrub: true,
+    if (initAnim) {
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: scrollTlStart,
+          end: scrollTlEnd,
+          scrub: true,
+        }
+      })
+  
+      scrollTl.fromTo(vrRef.current, {
+        height: vrHeight
+      }, {
+        duration: 1,
+        height: '0vw',
+        ease: 'none'
+      }, 0)
+  
+      return () => {
+        scrollTl.kill()
       }
-    })
-
-    scrollTl.to(vrRef.current, {
-      height: '0vw',
-      ease: 'none'
-    })
-
-    return () => {
-      scrollTl.kill()
     }
-  }, [scrollTlStart, scrollTlEnd])
+  }, [scrollTlStart, scrollTlEnd, vrHeight, initAnim])
 
   return (
     <Wrapper ref={wrapperRef} data-scroll-section>

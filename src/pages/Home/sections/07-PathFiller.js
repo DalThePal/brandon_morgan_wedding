@@ -30,7 +30,6 @@ const PathFiller = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
         start: scrollStart,
         end: scrollEnd,

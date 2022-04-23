@@ -7,6 +7,7 @@ import media from 'styles/media'
 import { useMedia } from 'utils/hooks'
 
 import Animation from 'components/AppearAnimation'
+import Scroll from 'components/Scroll'
 
 import DiamondGIF from 'images/diamond.gif'
 
@@ -41,8 +42,7 @@ const Home = () => {
 
     const scrollTl = gsap.timeline({
       scrollTrigger: {
-        scroller: ".smooth-scroll",
-        trigger: ".smooth-scroll",
+        trigger: "#smooth-content",
         start: "top top",
         end: "top+=500 top",
         scrub: true
@@ -73,16 +73,18 @@ const Home = () => {
         </Animation>
       </AnimationWrapper>
 
-      <Hero/>
-      <Date/>
-      <Meet/>
-      <Tinder/>
-      <Snuggle/>
-      <Wedlocked/>
-      <PathFiller/>
-      <Footer
-        leftText={"We're getting married. You're getting a hangover."}
-      />
+      <Scroll>
+        <Hero/>
+        <Date/>
+        <Meet/>
+        <Tinder/>
+        <Snuggle/>
+        <Wedlocked/>
+        <PathFiller/>
+        <Footer
+          leftText={"We're getting married. You're getting a hangover."}
+        />
+      </Scroll>
     </>
   )
 }
