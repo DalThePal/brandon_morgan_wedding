@@ -22,9 +22,11 @@ import Footer     from  'components/Footer'
 
 const Home = () => {
 
+  const diamondWrapperRef = useRef(null)
   const diamondRef = useRef(null)
 
   const [diamondTrigger, setDiamondTrigger] = useState(false)
+  const [initComplete, setInitComplete] = useState(false)
 
   const animationHeight = useMedia('45vw', '45vw', '45vw', '112vw')
   const diamondHeight = useMedia('56.25vw', '56.25vw', '56.25vw', '112vw')
@@ -32,7 +34,11 @@ const Home = () => {
   const diamondScrollBottom = useMedia('21.8vw', '21.8vw', '21.8vw', '132vw')
 
   useEffect(() => {
-    const tl = gsap.timeline()
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setInitComplete(true)
+      }
+    })
 
     tl.call(setDiamondTrigger, [true], 1)
     tl.to(diamondRef.current, {
@@ -40,40 +46,71 @@ const Home = () => {
       height: diamondHeight
     }, 1.4)
 
-    const scrollTl = gsap.timeline({
+    return () => {
+      tl.kill()
+    }
+  }, [diamondHeight, diamondScrollHeight, diamondScrollBottom, setInitComplete])
+
+  useEffect(() => {
+    const pinTl = gsap.timeline({
       scrollTrigger: {
         trigger: "#smooth-content",
         start: "top top",
-        end: "top+=500 top",
+        end: "bottom bottom",
+        pin: diamondWrapperRef.current,
         scrub: true
       }
     })
 
-    scrollTl.set(diamondRef.current, {
-      position: 'fixed',
-      top: 'unset'
-    })
-    
-    scrollTl.to(diamondRef.current, {
-      height: diamondScrollHeight,
-      bottom: diamondScrollBottom
-    })
-
     return () => {
-      tl.kill()
-      scrollTl.kill()
+      pinTl.kill()
     }
-  }, [diamondHeight, diamondScrollHeight, diamondScrollBottom])
+  }, [])
+
+  useEffect(() => {
+    if (initComplete) {
+
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#smooth-content",
+          start: "top-=1 top",
+          end: "top+=500 top",
+          pin: diamondWrapperRef.current,
+          scrub: true
+        }
+      })
+
+      scrollTl.set(diamondRef.current, {
+        top: 'unset'
+      })
+      
+      scrollTl.fromTo(diamondRef.current, {
+        height: diamondHeight,
+      }, {
+        duration: 1,
+        height: diamondScrollHeight,
+      }, 0)
+
+      scrollTl.to(diamondWrapperRef.current, {
+        duration: 1,
+        top: diamondScrollBottom
+      }, 0)
+
+      return () => {
+        scrollTl.kill()
+      }
+    }
+  }, [diamondHeight, diamondScrollHeight, diamondScrollBottom, initComplete])
 
   return (
     <>
-      <AnimationWrapper>
-        <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <Diamond ref={diamondRef} src={DiamondGIF} alt="rotating diamond"/>
-        </Animation>
-      </AnimationWrapper>
 
       <Scroll>
+        <AnimationWrapper ref={diamondWrapperRef}>
+          <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
+            <Diamond ref={diamondRef} src={DiamondGIF} alt="rotating diamond"/>
+          </Animation>
+        </AnimationWrapper>
         <Hero/>
         <Date/>
         <Meet/>
@@ -103,7 +140,7 @@ const AnimationWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 45vw;
 
   .vsc-controller {
