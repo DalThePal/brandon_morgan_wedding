@@ -70,10 +70,10 @@ const Tinder = () => {
 
       <StyledVR ref={vrRef}/>
 
-      <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
+      {/* <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={ref => setCloud3Ref(ref)} src={CloudPNG} alt="cloud"/>
-      <Cloud4 ref={ref => setCloud4Ref(ref)} src={CloudPNG} alt="cloud"/>
+      <Cloud4 ref={ref => setCloud4Ref(ref)} src={CloudPNG} alt="cloud"/> */}
 
       <Title>Love at first swipe</Title>
       <Text>

@@ -7,6 +7,7 @@ import media from 'styles/media'
 import { useMedia } from 'utils/hooks'
 
 import Animation from 'components/AppearAnimation'
+import Clouds from 'components/Clouds'
 
 import DiamondGIF from 'images/diamond.gif'
 
@@ -72,6 +73,10 @@ const Home = () => {
           <Diamond ref={diamondRef} src={DiamondGIF} alt="rotating diamond"/>
         </Animation>
       </AnimationWrapper>
+      
+      <CloudsWrapper>
+        <Clouds/>
+      </CloudsWrapper>
 
       <Hero/>
       <Date/>
@@ -95,6 +100,14 @@ const Diamond = styled.img`
   ${media.mobile} {
     height: 112vw;
   }
+`
+
+const CloudsWrapper = styled.div`
+  top: 0;
+  left: 0;
+  width: 100vw;
+  position: fixed;
+  height: 100vh;
 `
 
 const AnimationWrapper = styled.div`
