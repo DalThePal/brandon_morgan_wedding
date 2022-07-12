@@ -10,8 +10,8 @@ const Transportation = () => {
   return (
     <Wrapper data-scroll-section>
       <Image src={TransportJPG} alt="venue"/>
-      <Title>TRANSPORTATION</Title>
-      <TitleClipped>TRANSPORTATION</TitleClipped>
+      <Title>transportation</Title>
+      <TitleClipped>transportation</TitleClipped>
       <Text>
         Transportation information will be sent out to guests 
         once we receive all RSVPs. Guests are welcome to drive 
