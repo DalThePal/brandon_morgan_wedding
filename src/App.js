@@ -9,8 +9,9 @@ import Header     from 'components/Header'
 import Registry   from 'components/RegistryModal'
 import Transition from 'components/Transition'
 
-import  Home   from 'pages/Home'
-import  Travel from 'pages/Travel'
+import  Home    from 'pages/Home'
+import  Travel  from 'pages/Travel'
+import  Details from 'pages/Details'
 
 const App = () => {
   return (
@@ -19,8 +20,9 @@ const App = () => {
       <Header/>
 
       <Routes>
-        <Route path="/"       element={<Home/>}   />
-        <Route path="/travel" element={<Travel/>} />
+        <Route path="/"         element={<Home/>}   />
+        <Route path="/travel"   element={<Travel/>} />
+        <Route path="/details"  element={<Details/>}/>
       </Routes>
 
       <Transition/>
