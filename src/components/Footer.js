@@ -15,7 +15,7 @@ import media  from 'styles/media'
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondGIF from 'images/diamond.gif'
 
-const Footer = ({ diamond, leftText }) => {
+const Footer = ({ diamond }) => {
   const route = useContext(RouteContext)
   const { mobile } = useContext(ScreenContext)
   const { pathname } = useLocation()
@@ -42,7 +42,7 @@ const Footer = ({ diamond, leftText }) => {
         <Line x1={x1}     x2={"100%"} y1={"0%"}   y2={"0%"}/>
       </SVG> 
       <Left>
-        {leftText}
+        Get ready to party!
         {pathname !== '/rsvp' && <SmallButton 
           width={mobile ? '100%' : 'fit-content'}
           onClick={() => linkClick("/rsvp")}
