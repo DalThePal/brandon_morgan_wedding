@@ -67,6 +67,13 @@ const text = {
       font-weight: normal;
       font-size: 15px;
       line-height: 90%;
+    `,
+    navSmall: `
+      font-family: SangBleu Sunrise, sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 90%;
     `
   },
   desktop: {
@@ -137,6 +144,13 @@ const text = {
       font-weight: normal;
       font-size: 1.042vw;
       line-height: 90%;
+    `,
+    navSmall: `
+      font-family: SangBleu Sunrise, sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.83vw;
+      line-height: 90%;
     `
   },
   mobile: {
@@ -206,6 +220,13 @@ const text = {
       font-style: normal;
       font-weight: normal;
       font-size: 4vw;
+      line-height: 90%;
+    `,
+    navSmall: `
+      font-family: SangBleu Sunrise, sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 3.2vw;
       line-height: 90%;
     `
   },

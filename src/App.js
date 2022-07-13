@@ -7,7 +7,6 @@ import colors from 'styles/colors'
 
 import Scroll     from 'components/Scroll'
 import Header     from 'components/Header'
-import Registry   from 'components/RegistryModal'
 import Transition from 'components/Transition'
 
 import  Home    from 'pages/Home'
@@ -32,7 +31,6 @@ const App = () => {
       </Routes>
 
       <Transition/>
-      <Registry/>
     </Wrapper>
   );
 }

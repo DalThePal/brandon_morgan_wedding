@@ -1,9 +1,12 @@
 import React, { useRef, useContext } from 'react'
 import styled from 'styled-components'
+import { useLocation } from 'react-router-dom'
 
-import { RegistryContext, RouteContext } from './Providers'
+import { RouteContext, ScreenContext } from './Providers'
 
 import { useMedia } from 'utils/hooks'
+
+import SmallButton from 'components/buttons/Small'
 
 import colors from 'styles/colors'
 import text   from 'styles/text'
@@ -13,8 +16,10 @@ import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondGIF from 'images/diamond.gif'
 
 const Footer = ({ diamond, leftText }) => {
-  const registry  = useContext(RegistryContext)
-  const route     = useContext(RouteContext)
+  const route = useContext(RouteContext)
+  const { mobile } = useContext(ScreenContext)
+  const { pathname } = useLocation()
+
 
   const diamondRef = useRef(null)
 
@@ -36,13 +41,26 @@ const Footer = ({ diamond, leftText }) => {
         <Line x1={"0%"}   x2={x2}     y1={"0%"}   y2={"0%"}/>
         <Line x1={x1}     x2={"100%"} y1={"0%"}   y2={"0%"}/>
       </SVG> 
-      <Left>{leftText}</Left>
+      <Left>
+        {leftText}
+        {pathname !== '/rsvp' && <SmallButton 
+          width={mobile ? '100%' : 'fit-content'}
+          onClick={() => linkClick("/rsvp")}
+          backgroundColor={colors.roseIvory}
+          color={colors.mauve800}
+        >RSVP</SmallButton>}
+      </Left>
       <Right>
-        <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
+        <Text>Please submit your RSVP before August 13th to allow for accurate head count for food & dinner.</Text>
         <Links>
-          <P onClick={() => registry.setState(true)}>Registry</P>
+          <P onClick={() => linkClick('/')} >Home</P>
           <P onClick={() => linkClick('/travel')} >Travel</P>
+          <P onClick={() => linkClick('/details')} >Details</P>
         </Links>
+        <RegistryLinks>
+          <Registry>Target Registry</Registry>
+          <Registry>Crate & Barrel Registry</Registry>
+        </RegistryLinks>
       </Right>
     </Wrapper>
   )
@@ -79,12 +97,15 @@ const Wrapper = styled.footer`
 `
 
 const Left = styled.p`
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index: 2;
   ${text.desktop.h7}
   color: ${colors.roseIvory};
 
   width: 35.069vw;
+  gap: 1.74vw;
 
   ${media.mobile} {
     ${text.mobile.body}
@@ -126,6 +147,9 @@ const Links = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  gap: 3.47vw;
+  margin-bottom: 1.74vw;
 `
 
 const P = styled.p`
@@ -133,13 +157,11 @@ const P = styled.p`
   color: ${colors.roseIvory};
   text-decoration: none;
   cursor: pointer;
+  width: fit-content;
   opacity: ${props => props.disabled ? 0.5 : 1};
-
-  margin-right: 5.208vw;
 
   ${media.mobile} {
     ${text.mobile.body}
-    margin-right: 9.6vw;
   }
 `
 
@@ -198,5 +220,25 @@ const Diamond = styled.img`
   ${media.mobile} {
     height: 27vw;
     top: -3.5vw;
+  }
+`
+
+const RegistryLinks = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  gap: 3.47vw;
+`
+
+const Registry = styled.a`
+  cursor: pointer;
+  ${text.desktop.navSmall}
+  color: ${colors.roseIvory};
+
+
+  ${media.mobile} {
+
   }
 `

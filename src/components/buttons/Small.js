@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import text from 'styles/text'
 import media from 'styles/media'
 
-const Small = ({children, color, backgroundColor, onClick}) => {
+const Small = ({children, color, backgroundColor, onClick, width}) => {
   return (
-    <Wrapper color={color} backgroundColor={backgroundColor} onClick={onClick}>
+    <Wrapper color={color} backgroundColor={backgroundColor} onClick={onClick} width={width}>
       {children}
     </Wrapper>
   )
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: ${props => props.width ? props.width : 'fit-content'};
   transition: 500ms;
   background: ${props => props.backgroundColor};
   color: ${props => props.color};
