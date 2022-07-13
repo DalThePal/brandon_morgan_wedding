@@ -274,7 +274,7 @@ const Header = () => {
         </LinkWrapper>
 
         <LinkWrapper width={"52.569vw"}>
-          <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
+          <Registry onMouseLeave={registryMouseLeave} onMouseEnter={() => tl.play(0)}>
             Registry
             <ButtonRow >
               <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
