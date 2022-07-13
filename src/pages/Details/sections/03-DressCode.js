@@ -33,8 +33,6 @@ const DressCode = () => {
     `-${(window.innerWidth / 100) * 30}, ${(window.innerWidth / 100) * 35}`
   )
 
-  
-
   const titleLeft = useMedia('-30%', '-30%', '-30%', '-205%')
 
   useEffect(() => {
