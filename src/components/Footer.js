@@ -138,7 +138,7 @@ const Text = styled.p`
 
   ${media.mobile} {
     ${text.mobile.body}
-    margin-bottom: 13.333vw;
+    margin-bottom: 8vw;
   }
 `
 
@@ -150,6 +150,11 @@ const Links = styled.div`
 
   gap: 3.47vw;
   margin-bottom: 1.74vw;
+
+  ${media.mobile} {
+    gap: 13.33vw;
+    margin-bottom: 6.67vw;
+  }
 `
 
 const P = styled.p`
@@ -230,6 +235,10 @@ const RegistryLinks = styled.div`
   width: 100%;
 
   gap: 3.47vw;
+
+  ${media.mobile} {
+    gap: 13.33vw;
+  }
 `
 
 const Registry = styled.a`
@@ -239,6 +248,6 @@ const Registry = styled.a`
 
 
   ${media.mobile} {
-
+    ${text.mobile.navSmall}
   }
 `
