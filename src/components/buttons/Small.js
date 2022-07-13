@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import text from 'styles/text'
+import media from 'styles/media'
 
 const Small = ({children, color, backgroundColor, onClick}) => {
   return (
@@ -25,8 +26,14 @@ const Wrapper = styled.div`
   ${text.desktop.nav}
   vertical-align: middle;
 
-  line-height: 0.9vw;
   height: 3.4vw;
   padding: 1.20vw 3.47vw;
   border-radius: 3.47vw;
+
+  ${media.mobile} {
+    height: 13.07vw;
+    padding: 4.8vw 13.33vw;
+    border-radius: 13.33vw;
+    ${text.mobile.nav}
+  }
 `
