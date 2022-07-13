@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import gsap from 'gsap'
 
 import colors from 'styles/colors'
+import text from 'styles/text'
+
+import { useCloudMovement } from 'utils/hooks'
 
 import Label from 'components/formElements/Label'
 import Input from 'components/formElements/Input'
@@ -10,8 +14,23 @@ import Checkbox from 'components/formElements/Checkbox'
 import Button from 'components/formElements/Button'
 
 import { ReactComponent as ErrorSVG } from 'images/error.svg'
+import DiamondGif from 'images/diamond.gif'
+import CloudPNG from 'images/cloud.png'
 
 const Form = () => {
+
+  const stateOneRef = useRef()
+  const stateTwoRef = useRef()
+
+  const [cloud1, setCloud1] = useState()
+  const [cloud2, setCloud2] = useState()
+  const [cloud3, setCloud3] = useState()
+
+  useCloudMovement([
+    cloud1,
+    cloud2,
+    cloud3
+  ])
 
   const [name, setName] = useState(null)
   const [email, setEmail] = useState(null)
@@ -26,6 +45,9 @@ const Form = () => {
   const [presentError, setPresentError] = useState(false)
   const [plusOneError, setPlusOneError] = useState(false)
   const [busError, setBusError] = useState(false)
+
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
     setNameError(false)
@@ -61,6 +83,7 @@ const Form = () => {
 
   const submit = (e) => {
     e.preventDefault()
+    setSubmitting(true)
 
     let plusNameError = false
     const nameError = validate(name, setNameError)
@@ -79,7 +102,8 @@ const Form = () => {
       presentError || 
       plusOneError || 
       busError
-      ) {
+    ) {
+      setSubmitting(false)
       return
     }
 
@@ -97,48 +121,78 @@ const Form = () => {
         plusName: plusName,
         bus: bus
       }
-    }).then((response) => { console.log(response); })
+    }).then((res) => { 
+      setSubmitting(false) 
+      setSubmitted(true)
+    })
   }
+
+  useEffect(() => {
+    if (submitted) {
+      const tl = gsap.timeline()
+
+      tl.to(stateOneRef.current, {
+        opacity: 0
+      }, 0)
+
+      tl.set(stateOneRef.current, {
+        zIndex: 0
+      }, 1)
+
+      tl.to(stateTwoRef.current, {
+        opacity: 1
+      }, 0)
+    }
+  }, [submitted])
 
   return (
     <Wrapper>
-      <Group >
-        <Label>Please enter your full name:</Label>
-        <Input error={nameError} type="text" value={name} setValue={setName}/>
-      </Group>
-      <Group >
-        <Label>Your email:</Label>
-        <Input error={emailError} type="email" value={email} setValue={setEmail}/>
-      </Group>
-      <Group >
-        <Label>Will we see you there?</Label>
-        {presentError && <Error/>}
-        <CheckGroup>
-          <Checkbox label="Yes" selected={present} setSelected={() => setPresent(true)}/>
-          <Checkbox label="No" selected={present === false} setSelected={() => setPresent(false)}/>
-        </CheckGroup>
-      </Group>
-      <Group >
-        <Label>Will you be bringing a plus-one?</Label>
-        {plusOneError && <Error/>}
-        <CheckGroup>
-          <Checkbox label="Yes" selected={plusOne} setSelected={() => setPlusOne(true)}/>
-          <Checkbox label="No" selected={plusOne === false} setSelected={() => setPlusOne(false)}/>
-        </CheckGroup>
-      </Group>
-      <Group visible={plusOne === true ? true : false}>
-        <Label>Your plus-one's full name (if applicable):</Label>
-        <Input error={plusNameError} type="text" value={plusName} disabled={!plusOne} setValue={setPlusName}/>
-      </Group>
-      <Group >
-        <Label>Would you use bus transportation between SLC and the wedding venue?</Label>
-        {busError && <Error/>}
-        <CheckGroup>
-          <Checkbox label="Yes" selected={bus} setSelected={() => setBus(true)}/>
-          <Checkbox label="No" selected={bus === false} setSelected={() => setBus(false)}/>
-        </CheckGroup>
-      </Group>
-      <Button disabled={false} onClick={submit}>Submit RSVP</Button>
+      <State ref={stateOneRef}>
+        <Group >
+          <Label>Please enter your full name:</Label>
+          <Input error={nameError} type="text" value={name} setValue={setName}/>
+        </Group>
+        <Group >
+          <Label>Your email:</Label>
+          <Input error={emailError} type="email" value={email} setValue={setEmail}/>
+        </Group>
+        <Group >
+          <Label>Will we see you there?</Label>
+          {presentError && <Error/>}
+          <CheckGroup>
+            <Checkbox label="Yes" selected={present} setSelected={() => setPresent(true)}/>
+            <Checkbox label="No" selected={present === false} setSelected={() => setPresent(false)}/>
+          </CheckGroup>
+        </Group>
+        <Group >
+          <Label>Will you be bringing a plus-one?</Label>
+          {plusOneError && <Error/>}
+          <CheckGroup>
+            <Checkbox label="Yes" selected={plusOne} setSelected={() => setPlusOne(true)}/>
+            <Checkbox label="No" selected={plusOne === false} setSelected={() => setPlusOne(false)}/>
+          </CheckGroup>
+        </Group>
+        <Group visible={plusOne === true ? true : false}>
+          <Label>Your plus-one's full name (if applicable):</Label>
+          <Input error={plusNameError} type="text" value={plusName} disabled={!plusOne} setValue={setPlusName}/>
+        </Group>
+        <Group >
+          <Label>Would you use bus transportation between SLC and the wedding venue?</Label>
+          {busError && <Error/>}
+          <CheckGroup>
+            <Checkbox label="Yes" selected={bus} setSelected={() => setBus(true)}/>
+            <Checkbox label="No" selected={bus === false} setSelected={() => setBus(false)}/>
+          </CheckGroup>
+        </Group>
+        <Button disabled={submitting} onClick={submit}>Submit RSVP</Button>
+      </State>
+      <StateTwo ref={stateTwoRef}>
+        <Title>thanks for your reply!</Title>
+        <Diamond src={DiamondGif} alt="diamond"/>
+        <Cloud1 ref={ref => setCloud1(ref)} src={CloudPNG} alt="cloud"/>
+        <Cloud2 ref={ref => setCloud2(ref)} src={CloudPNG} alt="cloud"/>
+        <Cloud3 ref={ref => setCloud3(ref)} src={CloudPNG} alt="cloud"/>
+      </StateTwo>
     </Wrapper>
   )
 }
@@ -147,14 +201,10 @@ export default Form
 
 const Wrapper = styled.div`
   position: relative;
-  background-color: #C78E98;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   border: 1px solid ${colors.roseIvory};
 
   width: 45.83vw;
-  padding: 2.78vw 2.78vw 3.47vw;
+  height: 43.61vw;
 `
 
 const Group = styled.div`
@@ -188,4 +238,79 @@ const Error = styled(ErrorSVG)`
 
   width: 1.67vw;
   height: 1.67vw;
+`
+
+const State = styled.div`
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: #C78E98;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+
+  padding: 2.78vw  3.47vw;
+`
+
+const StateTwo = styled(State)`
+  z-index: 1;
+  opacity: 0;
+`
+
+const Title = styled.h2`
+  position: absolute;
+  ${text.desktop.h6}
+  color: ${colors.roseIvory};
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 4.17vw;
+  width: 37.67vw;
+`
+
+const Diamond = styled.img`
+  position: absolute;
+  z-index: 1;
+
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
+const Cloud = styled.img`
+  position: absolute;
+  z-index: 2;
+`
+
+const Cloud1 = styled(Cloud)`
+  transform: rotate(180deg);
+
+  left: -10.9vw;
+  bottom: -1.67vw;
+  width: 37.29vw;
+  height: 21.32vw;
+`
+
+const Cloud2 = styled(Cloud)`
+  transform: rotate(180deg);
+
+  width: 37.29vw;
+  height: 21.32vw;
+  bottom: 7.99vw;
+  right: -9.03vw;
+`
+
+const Cloud3 = styled(Cloud)`
+  transform: rotate(180deg);
+
+  width: 58.26vw;
+  height: 33.26vw;
+  bottom: -1.81vw;
+  left: -6.04vw;
 `

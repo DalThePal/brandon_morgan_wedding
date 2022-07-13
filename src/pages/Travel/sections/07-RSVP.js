@@ -51,16 +51,3 @@ const H2 = styled.h2`
     margin-bottom: 2.667vw;
   }
 `
-
-const P = styled.p`
-  ${text.desktop.body}
-  color: ${colors.roseIvory};
-  text-align: center;
-
-  width: 45.833vw;
-
-  ${media.mobile} {
-    ${text.mobile.body}
-    width: 89.333vw;
-  }
-`
