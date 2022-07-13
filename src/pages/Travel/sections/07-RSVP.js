@@ -1,19 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import text   from 'styles/text'
 import colors from 'styles/colors'
 import media  from 'styles/media'
 
+import SmallButton from 'components/buttons/Small'
+import { RouteContext, ScreenContext } from 'components/Providers'
+
 const RSVP = () => {
+
+  const route = useContext(RouteContext)
+  const { mobile } = useContext(ScreenContext)
+
+  const linkClick = (path) => {
+    route.setState(path)
+  }
+
   return (
     <Wrapper data-scroll-section>
       <H2>rSVP</H2>
-      <P>
-        Check back once you recieve your formal invite. 
-        Options to RSVP will be available here after 
-        formal invitations are sent.
-      </P>
+      <SmallButton width={mobile ? '89.33vw' : 'fit-content'} backgroundColor={colors.roseIvory} color={colors.mauve800} onClick={() => linkClick('/rsvp')}>Submit your RSVP</SmallButton>
     </Wrapper>
   )
 }
