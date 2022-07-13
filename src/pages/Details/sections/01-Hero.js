@@ -25,6 +25,22 @@ const Hero = () => {
           parking is available on the north end of the 
           venue. 
         </Small>
+        <ScheduleWrapper>
+          <LargeTwo>Schedule</LargeTwo>
+          <Item>
+            <p>4:30 PM</p>
+            <p>Ceremony begins.</p>
+          </Item>
+          <Item>
+            <p>5:00 - 6:00 PM</p>
+            <p>Cocktail hour.</p>
+          </Item>
+          <Item>
+            <p>5:00 - 6:00 PM</p>
+            <p>Reception begins.</p>
+          </Item>
+          <SmallTwo>Dinner will be served and accompanied by an open bar. Dancing will follow.</SmallTwo>
+        </ScheduleWrapper>
         <Arrow src={ArrowSVG} alt="scroll arrow"/>
       </Content>
     </Wrapper>
@@ -43,8 +59,11 @@ const Wrapper = styled.section`
 `
 
 const Title = styled.h1`
-  color: ${colors.mauve800};
+  position: relative;
+  z-index: 1;
+  color: ${colors.mauve600};
   ${text.desktop.h3}
+  opacity: 0.2;
 `
 
 const Content = styled.div`
@@ -52,10 +71,10 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  position: relative;
+  position: absolute;
   color: ${colors.roseIvory};
 
-  top: -100px;
+  top: 12.5vw;
   width: 40.28vw;
   gap: 2.08vw;
 `
@@ -66,14 +85,59 @@ const Large = styled.p`
 
 const Medium = styled.p`
   ${text.desktop.body}
+  width: 61.94vw;
 `
 
 const Small = styled.p` 
   ${text.desktop.body}
   font-size: 1.04vw;
+  width: 51.94vw;
 `
 
 const Arrow = styled.img`
   width: 1.88vw;
   height: 3.47vw;
+`
+
+const ScheduleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 18.4vw;
+  width: 45.83vw;
+`
+
+const Item = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  ${text.desktop.body}
+  color: ${colors.roseIvory};
+  border-bottom: 1px solid rgba(249, 242, 247, 0.5);
+
+  height: 3.47vw;
+  gap: 5.21vw;
+
+  p {
+    text-align: left;
+    :nth-child(1) {
+      width: 10.56vw;
+    }
+
+    :nth-child(2) {
+      width: fit-content;
+    }
+  }
+`
+
+const LargeTwo = styled(Large)`
+  border-bottom: 1px solid ${colors.roseIvory};
+  width: 100%;
+`
+
+const SmallTwo = styled(Small)`
+  margin-top: 0.69vw;
+  width: 100%;
+  text-align: left;
 `

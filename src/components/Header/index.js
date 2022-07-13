@@ -7,7 +7,6 @@ import { RouteContext } from 'components/Providers'
 import { useMedia } from 'utils/hooks'
 
 import colors from 'styles/colors'
-import text   from 'styles/text'
 import media  from 'styles/media'
 
 import LinkWrapper      from './Link'
@@ -35,7 +34,6 @@ const Header = () => {
   const [btn1Trigger, setBtn1Trigger]     = useState(false)
   const [btn2Trigger, setBtn2Trigger]     = useState(false)
   const [logoTrigger, setLogoTrigger]     = useState(false)
-  const [toggleTrigger, setToggleTrigger] = useState(false)
 
   const [tl, setTl] = useState(gsap.timeline())
   
@@ -43,7 +41,6 @@ const Header = () => {
 
   const animationHeight = useMedia("4.931vw", "4.931vw", "4.931vw", "18.933vw")
   const logoAnimHeight  = useMedia("4.167vw", "4.167vw", "4.167vw", "16vw")
-  const toggleHeight    = useMedia('1.042vw', '1.042vw', '1.042vw', '1.042vw')
 
   useEffect(() => {
     const initTl = gsap.timeline({
@@ -53,7 +50,6 @@ const Header = () => {
       }
     })
     initTl.call(setLogoTrigger, [true], 0)
-    initTl.call(setToggleTrigger, [true], 0)
     initTl.to(line1Ref.current, {
       duration: 0.5,
       attr: {
@@ -259,13 +255,12 @@ const Header = () => {
             </Logo>
           </Animation>
         </LogoWrapper>
-        <Toggle >
-          <SmallButton 
+        {pathname !== "/rsvp" && <SmallButton 
             onClick={() => linkClick("/rsvp")}
             backgroundColor={open ? colors.mauve800 : colors.roseIvory}
             color={open ? colors.roseIvory : colors.mauve800}
-          >RSVP</SmallButton>
-          
+          >RSVP</SmallButton>}
+        <Toggle >
           <ToggleSvg onClick={() => setOpen(!open)}>
             <Line ref={line1Ref} x1={"0%"} x2={'0%'} y1={'40%'} y2={'40%'}/>
             <Line ref={line2Ref} x1={"0%"} x2={'0%'} y1={'55%'} y2={'55%'}/>
@@ -279,7 +274,7 @@ const Header = () => {
         </LinkWrapper>
 
         <LinkWrapper width={"52.569vw"}>
-          <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
+          <Registry onMouseLeave={registryMouseLeave} onMouseEnter={() => tl.play(0)}>
             Registry
             <ButtonRow >
               <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
@@ -360,31 +355,6 @@ const Toggle = styled.div`
   }
 `
 
-const ToggleText = styled.span`
-  ${text.desktop.nav}
-  color: ${colors.roseIvory};
-
-  margin-right: 0.694vw;
-  width: 2.917vw;
-
-  ${media.mobile} {
-    display: none;
-  }
-`
-
-const CloseText = styled(ToggleText)`
-  position: absolute;
-  opacity: 0;
-  color: ${colors.mauve800};
-
-  left: 0;
-  top: 35%;
-
-  ${media.mobile} {
-    display: none;
-  }
-`
-
 const ToggleSvg = styled.svg`
   width: 3.472vw;
   height: 3.472vw;
@@ -419,18 +389,6 @@ const Content = styled.div`
 
   ${media.mobile} {
     padding-top: 40.333vw;
-  }
-`
-
-const Soon = styled.p`
-  ${text.desktop.nav}
-  text-align: center;
-  color: ${colors.mauve50};
-  width: 100%;
-  letter-spacing: 0;
-
-  ${media.mobile} {
-    ${text.mobile.nav}
   }
 `
 
