@@ -10,9 +10,10 @@ import colors from 'styles/colors'
 import text   from 'styles/text'
 import media  from 'styles/media'
 
-import LinkWrapper from './Link'
-import PrimaryButton from 'components/buttons/Primary'
-import Animation from 'components/AppearAnimation'
+import LinkWrapper      from './Link'
+import PrimaryButton    from 'components/buttons/Primary'
+import SmallButton  from 'components/buttons/Small'
+import Animation        from 'components/AppearAnimation'
 
 const Header = () => {
   const { pathname } = useLocation()
@@ -212,6 +213,7 @@ const Header = () => {
 
   return (
     <Wrapper ref={wrapperRef} >
+
       <Top>
         <LogoWrapper onClick={() => linkClick('/')}>
           <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
@@ -257,23 +259,25 @@ const Header = () => {
             </Logo>
           </Animation>
         </LogoWrapper>
-        <Toggle onClick={() => setOpen(!open)}>
-          <ToggleText ref={textRef}>
-            <Animation trigger={toggleTrigger} height={toggleHeight} duration={0.5}>
-              Menu
-            </Animation>
-          </ToggleText>
-          <CloseText ref={closeTextRef}>Close</CloseText>
-          <ToggleSvg>
+        <Toggle >
+          <SmallButton 
+            onClick={() => linkClick("/rsvp")}
+            backgroundColor={open ? colors.mauve800 : colors.roseIvory}
+            color={open ? colors.roseIvory : colors.mauve800}
+          >RSVP</SmallButton>
+          
+          <ToggleSvg onClick={() => setOpen(!open)}>
             <Line ref={line1Ref} x1={"0%"} x2={'0%'} y1={'40%'} y2={'40%'}/>
             <Line ref={line2Ref} x1={"0%"} x2={'0%'} y1={'55%'} y2={'55%'}/>
           </ToggleSvg>
         </Toggle>
       </Top>
+
       <Content ref={contentRef}>
         <LinkWrapper disabled={pathname === "/travel"} width={"40.833vw"}>
           <StyledLink onClick={() => linkClick("/travel")} >Travel</StyledLink>
         </LinkWrapper>
+
         <LinkWrapper width={"52.569vw"}>
           <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
             Registry
@@ -287,8 +291,12 @@ const Header = () => {
             </ButtonRow>
           </Registry>
         </LinkWrapper>
-        <LinkWrapper width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></LinkWrapper>
+
+        <LinkWrapper width={"41.667vw"}>
+          <StyledLink onClick={() => linkClick('/details')}>Details</StyledLink>
+        </LinkWrapper>
       </Content>
+
     </Wrapper>
   )
 }
@@ -342,11 +350,9 @@ const Toggle = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
 
   height: 2.847vw;
-  width: 7.083vw;
+  gap: 1.39vw;
 
   ${media.mobile} {
     width: 13.333vw;
