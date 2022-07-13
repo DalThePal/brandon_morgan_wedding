@@ -287,7 +287,9 @@ const Header = () => {
             </ButtonRow>
           </Registry>
         </LinkWrapper>
-        <LinkWrapper width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></LinkWrapper>
+        <LinkWrapper width={"41.667vw"}>
+          <StyledLink onClick={() => linkClick('/details')}>Details</StyledLink>
+        </LinkWrapper>
       </Content>
     </Wrapper>
   )
