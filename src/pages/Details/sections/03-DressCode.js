@@ -1,65 +1,75 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useContext } from "react"
 import styled from 'styled-components'
-import gsap from 'gsap'
+import gsap from 'gsap/all'
 
 import text from "styles/text"
 import colors from "styles/colors"
+import media from 'styles/media'
 
 import { useMedia } from 'utils/hooks'
+
+import { ScreenContext } from "components/Providers"
 
 const DressCode = () => {
 
   const wrapperRef = useRef(null)
   const titleRef = useRef(null)
+  const { mobile } = useContext(ScreenContext)
 
   const scrollStart = useMedia(
     `top+=${(window.innerWidth / 100) * 5} top`,
     `top+=${(window.innerWidth / 100) * 5} top`,
     `top+=${(window.innerWidth / 100) * 5} top`,
-    `top top+=${(window.innerWidth / 100) * 30}`
+    `top top`
   )
 
   const scrollEnd = useMedia(
     `bottom bottom+=${(window.innerWidth / 100) * 5}`,
     `bottom bottom+=${(window.innerWidth / 100) * 5}`,
     `bottom bottom+=${(window.innerWidth / 100) * 5}`,
-    `top top-=${(window.innerWidth / 100) * 200}`
+    `bottom bottom+=${(window.innerWidth / 100) * 10}`
   )
 
   const scrollOffset = useMedia(
     `${(window.innerWidth / 100) * 10}, ${(window.innerWidth / 100) * 21}`,
     `${(window.innerWidth / 100) * 0}, ${(window.innerWidth / 100) * 21}`,
     `${(window.innerWidth / 100) * 0}, ${(window.innerWidth / 100) * 21}`,
-    `-${(window.innerWidth / 100) * 30}, ${(window.innerWidth / 100) * 35}`
+    `-${(window.innerWidth / 100) * 0}, ${(window.innerWidth / 100) * 50}`
   )
 
-  const titleLeft = useMedia('-30%', '-30%', '-30%', '-205%')
+  const titleLeft = useMedia('-30%', '-30%', '-30%', '-75%')
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: wrapperRef.current,
-        scroller: '.smooth-scroll',
-        start: scrollStart,
-        end: scrollEnd,
-        scrub: true,
+    if (titleRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          scroller: '.smooth-scroll',
+          start: scrollStart,
+          end: scrollEnd,
+          scrub: true,
+        }
+      })
+    
+      tl.to(titleRef.current, {
+        x: titleLeft,
+        ease: 'none'
+      }, 0)
+  
+      return () => {
+        tl.kill()
       }
-    })
-
-    tl.to(titleRef.current, {
-      x: titleLeft,
-      ease: 'none'
-    }, 0)
-
-    return () => {
-      tl.kill()
     }
-  }, [scrollStart, scrollEnd, titleLeft])
+  }, [scrollStart, scrollEnd, titleLeft, mobile])
 
   return (
     <Wrapper id="dress-code" ref={wrapperRef} data-scroll-section>
       <Inner data-scroll data-scroll-sticky data-scroll-target="#dress-code" data-scroll-offset={scrollOffset}>
-        <Title ref={titleRef}>DrESS COdE</Title>
+        {!mobile && <Title ref={titleRef}>DrESS COdE</Title>}
+        {mobile && <MobileTitleWrapper ref={titleRef}>
+          <Title>dress</Title>
+          <Title paddingLeft={'38.13vw'}>code</Title>
+        </MobileTitleWrapper>}
         <Content>
           <Kicker>Semi-Formal Attire</Kicker>
           <Text>
@@ -79,12 +89,27 @@ export default DressCode
 const Wrapper = styled.section`
   height: 200vw;
   padding-top: 17.36vw;
+
+  ${media.mobile} {
+    height: 200vh;
+    padding-top: 40vw;
+  }
 `
 
 const Inner = styled.div`
   position: relative;
 
   height: 41.81vw;
+
+  ${media.mobile} {
+    height: 187.73vw;
+  }
+`
+
+const MobileTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
 `
 
 const Title = styled.h3`
@@ -93,7 +118,12 @@ const Title = styled.h3`
   color: ${colors.roseIvory};
 
   width: 137.39vw;
-  top: 0vw;
+
+  ${media.mobile} {
+    ${text.mobile.h4}
+    padding-left: ${props => props.paddingLeft};
+    width: 134.67vw;
+  }
 `
 
 const Content = styled.div`
@@ -104,6 +134,12 @@ const Content = styled.div`
 
   top: 30.56vw;
   left: 40.63vw;
+
+  ${media.mobile} {
+    left: 5.33vw;
+    top: 110.33vw;
+    width: 89.33vw;
+  }
 `
 
 const Kicker = styled.p`
@@ -111,6 +147,11 @@ const Kicker = styled.p`
   color: ${colors.roseIvory};
 
   margin-bottom: 1.39vw;
+
+  ${media.mobile} {
+    ${text.mobile.h7}
+    margin-bottom: 2.67vw;
+  }
 `
 
 const Text = styled.p`
@@ -118,4 +159,9 @@ const Text = styled.p`
   color: ${colors.roseIvory};
 
   width: 40.28vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    width: 100%;
+  }
 `

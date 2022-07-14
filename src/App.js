@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Routes, Route } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 
 import colors from 'styles/colors'
 
@@ -17,9 +16,6 @@ import  RSVP    from 'pages/RSVP'
 const App = () => {
   return (
     <Wrapper className='smooth-scroll' data-scroll-container>
-      <Helmet>
-        
-      </Helmet>
       <Scroll/>
       <Header/>
 

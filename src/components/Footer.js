@@ -224,7 +224,7 @@ const Diamond = styled.img`
 
   ${media.mobile} {
     height: 27vw;
-    top: -3.5vw;
+    top: 6vw;
   }
 `
 
