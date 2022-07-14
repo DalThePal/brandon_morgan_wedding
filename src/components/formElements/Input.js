@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import text from 'styles/text'
 import colors from 'styles/colors'
+import media from 'styles/media'
 
 import { ReactComponent as ErrorSVG } from 'images/error.svg'
 
@@ -48,6 +49,11 @@ const StyledInput = styled.input`
 
   height: 2.78vw;
   padding: 0vw 0.69vw;
+
+  ${media.mobile} {
+    height: 10.67vw;
+    padding: 0vw 2.13vw;
+  }
 `
 
 const Error = styled(ErrorSVG)`
@@ -58,4 +64,9 @@ const Error = styled(ErrorSVG)`
 
   width: 1.67vw;
   height: 1.67vw;
+
+  ${media.mobile} {
+    width: 6.4vw;
+    height: 6.4vw;
+  }
 `

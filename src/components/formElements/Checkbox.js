@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import colors from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 import { ReactComponent as CheckSVG } from 'images/check.svg'
 
@@ -25,6 +26,10 @@ const Wrapper = styled.div`
   align-items: center;
 
   gap: 0.69vw;
+
+  ${media.mobile} {
+    gap: 2.67vw;
+  }
 `
 
 const Box = styled.div`
@@ -37,14 +42,28 @@ const Box = styled.div`
 
   width: 1.74vw;
   height: 1.74vw;
+
+  ${media.mobile} {
+    width: 6.67vw;
+    height: 6.67vw;
+  }
 `
 
 const Check = styled(CheckSVG)`
   width: 0.97vw;
   height: 0.63vw;
+
+  ${media.mobile} {
+    width: 3.73vw;
+    height: 2.4vw;
+  }
 `
 
 const Text = styled.p`
   color: ${colors.roseIvory};
   ${text.desktop.nav}
+
+  ${media.mobile} {
+    ${text.mobile.nav}
+  }
 `

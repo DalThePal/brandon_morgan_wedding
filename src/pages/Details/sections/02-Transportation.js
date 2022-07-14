@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import text   from 'styles/text'
 import colors from 'styles/colors'
+import media from 'styles/media'
 
+import { ScreenContext } from 'components/Providers'
 import TransportJPG from 'images/details/transportation.jpg'
+import TransportMobileJPG from 'images/details/transportationMobile.jpg'
+import TransportMobileRotateJPG from 'images/details/transportMobileRotate.jpg'
 
 const Transportation = () => {
+
+  const { mobile } = useContext(ScreenContext)
+
   return (
     <Wrapper data-scroll-section>
-      <Image src={TransportJPG} alt="venue"/>
+      <Image src={mobile ? TransportMobileJPG : TransportJPG} alt="venue"/>
       <Title>transportation</Title>
       <TitleClipped>transportation</TitleClipped>
       <Text>
@@ -30,6 +37,11 @@ const Wrapper = styled.section`
   align-items: center;
 
   height: 53.19vw;
+
+  ${media.mobile} {
+    height: 255.47vw;
+    padding-top: 26.67vw;
+  }
 `
 
 const Image = styled.img`
@@ -37,6 +49,13 @@ const Image = styled.img`
   height: 41.25vw;
   border-radius: 27.78vw 27.78vw 0vw 0vw;
   margin-bottom: 2.92vw;
+
+  ${media.mobile} {
+    width: 77.6vw;
+    height: 133.33vw;
+    border-radius: 53.33vw 53.33vw 0vw 0vw;
+    margin-bottom: 31.2vw;
+  }
 `
 
 const Title = styled.h2`
@@ -46,16 +65,28 @@ const Title = styled.h2`
   color: ${colors.roseIvory};
 
   top: 16.18vw;
+
+  ${media.mobile} {
+    font-size: 26.67vw;
+    transform: rotate(90deg);
+    top: 85.07vw;
+  }
 `
 
 const TitleClipped = styled(Title)`
   color: transparent;
-  background: url(${TransportJPG});
+  background-image: url(${TransportJPG});
   background-repeat: no-repeat;
   background-size: 40.42vw 41.25vw;
   background-position: 50%;
   -webkit-background-clip: text;
   filter: brightness(0) invert(0.3);
+
+  ${media.mobile} {
+    background-image: url(${TransportMobileRotateJPG});
+    background-size: 133.33vw 77.6vw;
+    background-position: 41.4% 50%;
+  }
 `
 
 const Text = styled.p`
@@ -64,4 +95,9 @@ const Text = styled.p`
   text-align: center;
 
   width: 42.01vw;
+
+  ${media.mobile} {
+    ${text.mobile.body}
+    width: 88.8vw;
+  }
 `

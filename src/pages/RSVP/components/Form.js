@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import gsap from 'gsap'
 
+import { ScreenContext } from 'components/Providers'
+
 import colors from 'styles/colors'
 import text from 'styles/text'
+import media from 'styles/media'
 
 import { useCloudMovement } from 'utils/hooks'
 
@@ -18,6 +21,8 @@ import DiamondGif from 'images/diamond.gif'
 import CloudPNG from 'images/cloud.png'
 
 const Form = () => {
+
+  const { mobile } = useContext(ScreenContext)
 
   const stateOneRef = useRef()
   const stateTwoRef = useRef()
@@ -158,7 +163,7 @@ const Form = () => {
         </Group>
         <Group >
           <Label>Will we see you there?</Label>
-          {presentError && <Error/>}
+          {presentError && <Error transform={mobile ? 'translate(-413%, 2%)' : 'translate(-1504%,5%)'}/>}
           <CheckGroup>
             <Checkbox label="Yes" selected={present} setSelected={() => setPresent(true)}/>
             <Checkbox label="No" selected={present === false} setSelected={() => setPresent(false)}/>
@@ -166,7 +171,7 @@ const Form = () => {
         </Group>
         <Group >
           <Label>Will you be bringing a plus-one?</Label>
-          {plusOneError && <Error/>}
+          {plusOneError && <Error transform={mobile ? 'translate(-413%, 2%)' : 'translate(-1504%,5%)'}/>}
           <CheckGroup>
             <Checkbox label="Yes" selected={plusOne} setSelected={() => setPlusOne(true)}/>
             <Checkbox label="No" selected={plusOne === false} setSelected={() => setPlusOne(false)}/>
@@ -178,7 +183,7 @@ const Form = () => {
         </Group>
         <Group >
           <Label>Would you use bus transportation between SLC and the wedding venue?</Label>
-          {busError && <Error/>}
+          {busError && <Error transform={mobile ? 'translate(-413%, 37%)' : 'translate(-1504%,5%)'}/>}
           <CheckGroup>
             <Checkbox label="Yes" selected={bus} setSelected={() => setBus(true)}/>
             <Checkbox label="No" selected={bus === false} setSelected={() => setBus(false)}/>
@@ -205,6 +210,11 @@ const Wrapper = styled.div`
 
   width: 45.83vw;
   height: 43.61vw;
+
+  ${media.mobile} {
+    height: 165.87vw;
+    width: 89.07vw;
+  }
 `
 
 const Group = styled.div`
@@ -221,6 +231,11 @@ const Group = styled.div`
   margin-bottom: ${props => props.visible === false ? 0 : '1.39vw'};
 
   gap: 0.69vw;
+
+  ${media.mobile} {
+    gap: 2.67vw;
+    margin-bottom: ${props => props.visible === false ? 0 : '5.33vw'};
+  }
 `
 
 const CheckGroup = styled.div`
@@ -228,16 +243,25 @@ const CheckGroup = styled.div`
   align-items: center;
 
   gap: 2.78vw;
+
+  ${media.mobile} {
+    gap: 10.67vw;
+  }
 `
 
 const Error = styled(ErrorSVG)`
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: ${props => props.transform};
 
   width: 1.67vw;
   height: 1.67vw;
+
+  ${media.mobile} {
+    width: 6.4vw;
+    height: 6.4vw;
+  }
 `
 
 const State = styled.div`
@@ -253,7 +277,11 @@ const State = styled.div`
   width: 100%;
   height: 100%;
 
-  padding: 2.78vw  3.47vw;
+  padding: 2.78vw 3.47vw;
+
+  ${media.mobile} {
+    padding: 8vw 5.33vw;
+  }
 `
 
 const StateTwo = styled(State)`
@@ -271,6 +299,12 @@ const Title = styled.h2`
 
   top: 4.17vw;
   width: 37.67vw;
+
+  ${media.mobile} {
+    top: 10.67vw;
+    width: 84.8vw;
+    ${text.mobile.h6}
+  }
 `
 
 const Diamond = styled.img`
@@ -281,6 +315,10 @@ const Diamond = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  ${media.mobile} {
+    width: 90%;
+  }
 `
 
 const Cloud = styled.img`
@@ -295,6 +333,13 @@ const Cloud1 = styled(Cloud)`
   bottom: -1.67vw;
   width: 37.29vw;
   height: 21.32vw;
+
+  ${media.mobile} {
+    width: 107.4vw;
+    height: 61.4vw;
+    left: -50.03vw;
+    bottom: -18.83vw;
+  }
 `
 
 const Cloud2 = styled(Cloud)`
@@ -304,6 +349,13 @@ const Cloud2 = styled(Cloud)`
   height: 21.32vw;
   bottom: 7.99vw;
   right: -9.03vw;
+
+  ${media.mobile} {
+    width: 107.4vw;
+    height: 61.4vw;
+    right: 50.3vw;
+    bottom: -8.97vw;
+  }
 `
 
 const Cloud3 = styled(Cloud)`
@@ -313,4 +365,11 @@ const Cloud3 = styled(Cloud)`
   height: 33.26vw;
   bottom: -1.81vw;
   left: -6.04vw;
+
+  ${media.mobile} {
+    width: 167.8vw;
+    height: 95.8vw;
+    bottom: 19.23vw;
+    left: 36.03vw;
+  }
 `
