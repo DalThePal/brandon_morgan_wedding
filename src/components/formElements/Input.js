@@ -38,6 +38,7 @@ const StyledInput = styled.input`
   border: 1px solid ${colors.roseIvory};
   ${text.desktop.nav}
   color: ${colors.roseIvory};
+  caret-color: ${colors.roseIvory};
   outline: none;
   background: #C78E98;
   background-color: #C78E98;
@@ -53,6 +54,7 @@ const StyledInput = styled.input`
   ${media.mobile} {
     height: 10.67vw;
     padding: 0vw 2.13vw;
+    font-size: 16px;
   }
 `
 
