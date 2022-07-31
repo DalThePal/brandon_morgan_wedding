@@ -33,7 +33,7 @@ const Wedlocked = () => {
     `top top-=${(window.innerWidth / 100) * 200}`
   )
 
-  const innerLeft = useMedia('-25%', '-25%', '-25%', '-205%')
+  const innerLeft = useMedia('-25%', '-25%', '-25%', '-58%')
 
   useEffect(() => {
     if (wrapperEl && innerEl) {

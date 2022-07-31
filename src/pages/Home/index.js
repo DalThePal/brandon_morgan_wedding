@@ -32,7 +32,7 @@ const Home = () => {
   const animationHeight = useMedia('45vw', '45vw', '45vw', '112vw')
   const diamondHeight = useMedia('56.25vw', '56.25vw', '56.25vw', '112vw')
   const diamondScrollHeight = useMedia('5.25vw', '5.25vw', '5.25vw', '25vw')
-  const diamondScrollBottom = useMedia('2vw', '2vw', '2vw', '132vw')
+  const diamondScrollBottom = useMedia('2vw', '2vw', '2vw', '90vw')
 
   useEffect(() => {
     const enterTl = gsap.timeline()
@@ -102,11 +102,7 @@ const Home = () => {
 
 export default Home
 
-const Diamond = styled.img`  
-  ${media.mobile} {
-    height: 112vw;
-  }
-`
+const Diamond = styled.img``
 
 const AnimationWrapper = styled.div`
   position: fixed;
