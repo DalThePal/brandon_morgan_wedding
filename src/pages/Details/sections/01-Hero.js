@@ -37,8 +37,8 @@ const Hero = () => {
             <p>Cocktail hour.</p>
           </Item>
           <Item>
-            <p>5:00 - 6:00 PM</p>
-            <p>Reception begins.</p>
+            <p>6:00 - 10:00 PM</p>
+            <p>Reception.</p>
           </Item>
           <SmallTwo>Dinner will be served and accompanied by an open bar. Dancing will follow.</SmallTwo>
         </ScheduleWrapper>
@@ -174,7 +174,7 @@ const Item = styled.div`
   p {
     text-align: left;
     :nth-child(1) {
-      width: 10.56vw;
+      width: 11.56vw;
 
       ${media.mobile} {
         width: fit-content;
