@@ -49,7 +49,9 @@ const Animation = ({children, height, trigger, duration}) => {
 
   return (
     <Wrapper ref={wrapperRef} height={height}>
-      <Inner ref={innerRef}>{children}</Inner>
+      <Inner ref={innerRef}>
+        {children}
+      </Inner>
     </Wrapper>
   )
 }

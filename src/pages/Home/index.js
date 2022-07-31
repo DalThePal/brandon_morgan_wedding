@@ -1,12 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import gsap from 'gsap'
+import gsap, { CSSPlugin, ScrollTrigger } from 'gsap/all'
 
 import media from 'styles/media'
 
 import { useMedia } from 'utils/hooks'
 
 import Animation from 'components/AppearAnimation'
+import Footer from  'components/Footer'
+import Scroll from 'components/Scroll'
 
 import DiamondGIF from 'images/diamond.gif'
 
@@ -17,91 +19,102 @@ import Tinder     from  './sections/04-Tinder'
 import Snuggle    from  './sections/05-Snuggle'
 import Wedlocked  from  './sections/06-Wedlocked'
 import PathFiller from  './sections/07-PathFiller'
-import Footer     from  'components/Footer'
+
+gsap.registerPlugin(CSSPlugin, ScrollTrigger)
 
 const Home = () => {
 
   const diamondRef = useRef(null)
+  const animationWrapperRef = useRef(null)
 
   const [diamondTrigger, setDiamondTrigger] = useState(false)
 
   const animationHeight = useMedia('45vw', '45vw', '45vw', '112vw')
   const diamondHeight = useMedia('56.25vw', '56.25vw', '56.25vw', '112vw')
-  const diamondScrollHeight = useMedia('5.125vw', '5.125vw', '5.125vw', '25vw')
-  const diamondScrollBottom = useMedia('21.8vw', '21.8vw', '21.8vw', '132vw')
+  const diamondScrollHeight = useMedia('5.25vw', '5.25vw', '5.25vw', '25vw')
+  const diamondScrollBottom = useMedia('2vw', '2vw', '2vw', '132vw')
 
   useEffect(() => {
-    const tl = gsap.timeline()
+    const enterTl = gsap.timeline()
 
-    tl.call(setDiamondTrigger, [true], 1)
-    tl.to(diamondRef.current, {
-      duration: 0.5,
-      height: diamondHeight
-    }, 1.4)
+    enterTl.call(setDiamondTrigger, [true], 1)
+    enterTl.fromTo(diamondRef.current, {
+      height: '5.25vw'
+    }, {
+      height: diamondHeight,
+      duration: 1
+    }, 1)
 
+    return () => {
+      enterTl.kill()
+    }
+    
+  }, [diamondHeight])
+
+  useEffect(() => {
     const scrollTl = gsap.timeline({
       scrollTrigger: {
-        scroller: ".smooth-scroll",
-        trigger: ".smooth-scroll",
+        trigger: "#scroll-wrapper",
         start: "top top",
         end: "top+=500 top",
-        scrub: true
+        scrub: true,
+        markers: true
       }
     })
 
-    scrollTl.set(diamondRef.current, {
-      position: 'fixed',
-      top: 'unset'
-    })
-    
-    scrollTl.to(diamondRef.current, {
-      height: diamondScrollHeight,
+    scrollTl.fromTo(diamondRef.current, {
+      height: diamondHeight
+    }, {
+      height: diamondScrollHeight
+    }, 0)
+
+    scrollTl.to(animationWrapperRef.current, {
       bottom: diamondScrollBottom
-    })
+    }, 0)
 
     return () => {
-      tl.kill()
       scrollTl.kill()
+      scrollTl.scrollTrigger.kill()
     }
-  }, [diamondHeight, diamondScrollHeight, diamondScrollBottom])
+  }, [diamondScrollBottom, diamondScrollHeight, diamondHeight])
 
   return (
     <>
-      <AnimationWrapper>
+      <AnimationWrapper ref={animationWrapperRef}>
         <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
           <Diamond ref={diamondRef} src={DiamondGIF} alt="rotating diamond"/>
         </Animation>
       </AnimationWrapper>
 
-      <Hero/>
-      <Date/>
-      <Meet/>
-      <Tinder/>
-      <Snuggle/>
-      <Wedlocked/>
-      <PathFiller/>
-      <Footer
-        leftText={"We're getting married. You're getting a hangover."}
-      />
+      <Scroll>
+        <Hero/>
+        <Date/>
+        <Meet/>
+        <Tinder/>
+        <Snuggle/>
+        <Wedlocked/>
+        <PathFiller/>
+        <Footer
+          leftText={"We're getting married. You're getting a hangover."}
+        />
+      </Scroll>
     </>
   )
 }
 
 export default Home
 
-const Diamond = styled.img`
-  height: 5.25vw;
-
+const Diamond = styled.img`  
   ${media.mobile} {
     height: 112vw;
   }
 `
 
 const AnimationWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   height: 45vw;
 
   .vsc-controller {

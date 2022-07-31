@@ -46,7 +46,6 @@ const Wedlocked = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: wrapperRef.current,
-        scroller: '.smooth-scroll',
         start: scrollStart,
         end: scrollEnd,
         scrub: true,
@@ -64,7 +63,7 @@ const Wedlocked = () => {
   }, [scrollStart, scrollEnd, innerLeft])
 
   return (
-    <Wrapper id="wedlocked" ref={wrapperRef} data-scroll data-scroll-section>
+    <Wrapper id="wedlocked" ref={wrapperRef}>
       <Inner ref={innerRef} data-scroll data-scroll-sticky data-scroll-target="#wedlocked" data-scroll-offset={scrollOffset}>
         <Title1>Wedlocked</Title1>
         <Title2>&</Title2>

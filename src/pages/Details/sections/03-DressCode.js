@@ -44,7 +44,6 @@ const DressCode = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: wrapperRef.current,
-          scroller: '.smooth-scroll',
           start: scrollStart,
           end: scrollEnd,
           scrub: true,

@@ -47,7 +47,6 @@ const Tinder = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        scroller: ".smooth-scroll",
         trigger: wrapperRef.current,
         start: scrollStart,
         end: scrollEnd,
@@ -66,7 +65,7 @@ const Tinder = () => {
   }, [scrollStart, scrollEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
 
       <StyledVR ref={vrRef}/>
 
