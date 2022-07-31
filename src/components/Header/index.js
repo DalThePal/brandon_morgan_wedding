@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { RouteContext } from 'components/Providers'
 
 import { useMedia } from 'utils/hooks'
+import { links } from 'utils/links'
 
 import colors from 'styles/colors'
 import media  from 'styles/media'
@@ -278,10 +279,10 @@ const Header = () => {
             Registry
             <ButtonRow >
               <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
-                <PrimaryButton onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver?registryId=92b30ba0-8888-11ec-8308-8da450f277d4&type=WEDDING")}>Target</PrimaryButton>
+                <PrimaryButton onClick={() => buttonClick(links.target)}>Target</PrimaryButton>
               </Animation>
               <Animation height={animationHeight} trigger={btn2Trigger} duration={0.3}>
-                <PrimaryButton onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</PrimaryButton>
+                <PrimaryButton onClick={() => buttonClick(links.crateAndBarrel)}>Crate & Barrell</PrimaryButton>
               </Animation>
             </ButtonRow>
           </Registry>

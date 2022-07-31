@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { RouteContext, ScreenContext } from './Providers'
 
 import { useMedia } from 'utils/hooks'
+import { links } from 'utils/links'
 
 import SmallButton from 'components/buttons/Small'
 
@@ -58,8 +59,8 @@ const Footer = ({ diamond }) => {
           <P onClick={() => linkClick('/details')} >Details</P>
         </Links>
         <RegistryLinks>
-          <Registry>Target Registry</Registry>
-          <Registry>Crate & Barrel Registry</Registry>
+          <Registry href={links.target} target="blank">Target Registry</Registry>
+          <Registry href={links.crateAndBarrel} target="blank">Crate & Barrel Registry</Registry>
         </RegistryLinks>
       </Right>
     </Wrapper>
@@ -245,7 +246,7 @@ const Registry = styled.a`
   cursor: pointer;
   ${text.desktop.navSmall}
   color: ${colors.roseIvory};
-
+  text-decoration: none;
 
   ${media.mobile} {
     ${text.mobile.navSmall}
