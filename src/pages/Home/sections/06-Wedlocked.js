@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
@@ -16,8 +16,8 @@ import Wedlocked5PNG from 'images/home/wedlocked5.jpg'
 
 const Wedlocked = () => {
 
-  const wrapperRef = useRef(null)
-  const innerRef = useRef(null)
+  const [wrapperEl, setWrapperEl] = useState(null)
+  const [innerEl, setInnerEl] = useState(null)
 
   const scrollStart = useMedia(
     `top+=${(window.innerWidth / 100) * 21} top`,
@@ -33,38 +33,34 @@ const Wedlocked = () => {
     `top top-=${(window.innerWidth / 100) * 200}`
   )
 
-  const scrollOffset = useMedia(
-    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `${(window.innerWidth / 100) * 21}, -${(window.innerWidth / 100) * 21}`,
-    `-${(window.innerWidth / 100) * 30}, ${(window.innerWidth / 100) * 35}`
-  )
-
-  const innerLeft = useMedia('-50%', '-50%', '-50%', '-205%')
+  const innerLeft = useMedia('-25%', '-25%', '-25%', '-205%')
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: wrapperRef.current,
-        start: scrollStart,
-        end: scrollEnd,
-        scrub: true,
+    if (wrapperEl && innerEl) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapperEl,
+          start: scrollStart,
+          end: scrollEnd,
+          scrub: true,
+          pin: innerEl
+        }
+      })
+  
+      tl.to(innerEl, {
+        left: innerLeft,
+        ease: 'none'
+      }, 0)
+  
+      return () => {
+        tl.kill()
       }
-    })
-
-    tl.to(innerRef.current, {
-      left: innerLeft,
-      ease: 'none'
-    }, 0)
-
-    return () => {
-      tl.kill()
     }
-  }, [scrollStart, scrollEnd, innerLeft])
+  }, [wrapperEl, innerEl, scrollStart, scrollEnd, innerLeft])
 
   return (
-    <Wrapper id="wedlocked" ref={wrapperRef}>
-      <Inner ref={innerRef} data-scroll data-scroll-sticky data-scroll-target="#wedlocked" data-scroll-offset={scrollOffset}>
+    <Wrapper ref={ref => setWrapperEl(ref)}>
+      <Inner ref={ref => setInnerEl(ref)} >
         <Title1>Wedlocked</Title1>
         <Title2>&</Title2>
         <Title3>Loaded</Title3>

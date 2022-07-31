@@ -58,7 +58,6 @@ const Home = () => {
         start: "top top",
         end: "top+=500 top",
         scrub: true,
-        markers: true
       }
     })
 
@@ -74,7 +73,6 @@ const Home = () => {
 
     return () => {
       scrollTl.kill()
-      scrollTl.scrollTrigger.kill()
     }
   }, [diamondScrollBottom, diamondScrollHeight, diamondHeight])
 
