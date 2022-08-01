@@ -62,7 +62,6 @@ const Date = () => {
           start: scrollTlStart,
           end: scrollTlEnd,
           scrub: true,
-          markers: true
         }
       })
   

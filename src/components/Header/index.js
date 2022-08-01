@@ -256,11 +256,13 @@ const Header = () => {
             </Logo>
           </Animation>
         </LogoWrapper>
-        {pathname !== "/rsvp" && <SmallButton 
+        {pathname !== "/rsvp" && <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
+          <SmallButton 
             onClick={() => linkClick("/rsvp")}
             backgroundColor={open ? colors.mauve800 : colors.roseIvory}
             color={open ? colors.roseIvory : colors.mauve800}
-          >RSVP</SmallButton>}
+          >RSVP</SmallButton>
+        </Animation>}
         <Toggle >
           <ToggleSvg onClick={() => setOpen(!open)}>
             <Line ref={line1Ref} x1={"0%"} x2={'0%'} y1={'40%'} y2={'40%'}/>
