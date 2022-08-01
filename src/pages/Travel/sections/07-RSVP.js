@@ -18,7 +18,7 @@ const RSVP = () => {
   }
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       <H2>rSVP</H2>
       <SmallButton width={mobile ? '89.33vw' : 'fit-content'} backgroundColor={colors.roseIvory} color={colors.mauve800} onClick={() => linkClick('/rsvp')}>Submit your RSVP</SmallButton>
     </Wrapper>

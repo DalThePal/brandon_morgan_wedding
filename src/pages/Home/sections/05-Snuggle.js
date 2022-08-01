@@ -169,11 +169,7 @@ const Border = styled.svg`
 const Line = styled.line`
   stroke: ${colors.roseIvory};
 
-  stroke-width: 0.069vw;
-
-  ${media.mobile} {
-    stroke-width: 0.267vw;
-  }
+  stroke-width: 1px;
 `
 
 const VR1 = styled(VR)`

@@ -15,7 +15,7 @@ const Transportation = () => {
   const { mobile } = useContext(ScreenContext)
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       <Image src={mobile ? TransportMobileJPG : TransportJPG} alt="venue"/>
       <Title>transportation</Title>
       <TitleClipped>transportation</TitleClipped>
@@ -32,6 +32,7 @@ const Transportation = () => {
 export default Transportation
 
 const Wrapper = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;

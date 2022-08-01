@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from 'react'
 import styled from 'styled-components'
-import gsap from 'gsap'
+import gsap, { ScrollSmoother } from 'gsap/all'
 import { useLocation } from 'react-router-dom'
 import { RouteContext } from 'components/Providers'
 
@@ -81,7 +81,7 @@ const Header = () => {
 
   useEffect(() => {
     if (open) {
-      window.locomotiveScroll.stop()
+      ScrollSmoother.get().paused(true)
 
       gsap.fromTo(contentRef.current, {
         display: 'flex'
@@ -135,7 +135,7 @@ const Header = () => {
 
     } else {
       if (initDone.current) {
-        window.locomotiveScroll.start()
+        ScrollSmoother.get().paused(false)
   
         gsap.to(contentRef.current, {
           duration,
@@ -346,6 +346,7 @@ const Toggle = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   height: 2.847vw;
   gap: 1.39vw;

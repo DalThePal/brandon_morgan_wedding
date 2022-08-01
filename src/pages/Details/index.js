@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Scroll from 'components/Scroll'
+
 import Hero           from './sections/01-Hero'
 import Transportation from './sections/02-Transportation'
 import DressCode      from './sections/03-DressCode'
@@ -8,7 +10,7 @@ import Footer         from  'components/Footer'
 
 const Details = () => {
   return (
-    <>
+    <Scroll>
       <Hero/>
       <Transportation/>
       <DressCode/>
@@ -17,7 +19,7 @@ const Details = () => {
         diamond 
         leftText={"We're getting married. You're getting a hangover."}
       />
-    </>
+    </Scroll>
   )
 }
 

@@ -9,7 +9,7 @@ import Form from '../components/Form'
 
 const Hero = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       <Title>RSVP bELOw</Title>
       <Text>We hope you can join us!</Text>
       <Form/>

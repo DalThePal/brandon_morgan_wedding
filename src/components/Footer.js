@@ -32,7 +32,7 @@ const Footer = ({ diamond }) => {
   }
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       {diamond && <Diamond ref={diamondRef} src={DiamondGIF}/>}
       <Arc/>
       <SVG>

@@ -99,7 +99,7 @@ const Clouds = () => {
   }, [planeBottom, planeEnd, planeStart, vrStart, vrEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
       <Cloud1 ref={ref => setCloud1Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud2 ref={ref => setCloud2Ref(ref)} src={CloudPNG} alt="cloud"/>
       <Cloud3 ref={ref => setCloud3Ref(ref)} src={CloudPNG} alt="cloud"/>
