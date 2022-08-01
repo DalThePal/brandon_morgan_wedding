@@ -10,13 +10,17 @@ const Scroll = ({ children }) => {
 
   useEffect(() => {
     if (wrapper && content) {
-      ScrollSmoother.create({
+      const scroller = ScrollSmoother.create({
         smooth: 1,
         effects: true,
         smoothTouch: 0.1,
         wrapper,
         content
       })
+
+      return () => {
+        scroller.kill()
+      }
     }
   }, [wrapper, content])
 

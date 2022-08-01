@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import gsap, { CSSPlugin, ScrollTrigger } from 'gsap/all'
 
@@ -24,8 +24,8 @@ gsap.registerPlugin(CSSPlugin, ScrollTrigger)
 
 const Home = () => {
 
-  const diamondRef = useRef(null)
-  const animationWrapperRef = useRef(null)
+  const [diamondEl, setDiamondEl] = useState(null)
+  const [animationWrapperEl, setAnimationWrapperEl] = useState(null)
 
   const [diamondTrigger, setDiamondTrigger] = useState(false)
 
@@ -35,52 +35,55 @@ const Home = () => {
   const diamondScrollBottom = useMedia('2vw', '2vw', '2vw', '90vw')
 
   useEffect(() => {
-    const enterTl = gsap.timeline()
-
-    enterTl.call(setDiamondTrigger, [true], 1)
-    enterTl.fromTo(diamondRef.current, {
-      height: '5.25vw'
-    }, {
-      height: diamondHeight,
-      duration: 1
-    }, 1)
-
-    return () => {
-      enterTl.kill()
+    if (diamondEl) {
+      const enterTl = gsap.timeline()
+  
+      enterTl.call(setDiamondTrigger, [true], 1)
+      enterTl.fromTo(diamondEl, {
+        height: '5.25vw'
+      }, {
+        height: diamondHeight,
+        duration: 1
+      }, 1)
+  
+      return () => {
+        enterTl.kill()
+      }
     }
-    
-  }, [diamondHeight])
+  }, [diamondHeight, diamondEl])
 
   useEffect(() => {
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#scroll-wrapper",
-        start: "top top",
-        end: "top+=500 top",
-        scrub: true,
+    if (diamondEl && animationWrapperEl) {
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#scroll-wrapper",
+          start: "top top",
+          end: "top+=500 top",
+          scrub: true,
+        }
+      })
+  
+      scrollTl.fromTo(diamondEl, {
+        height: diamondHeight
+      }, {
+        height: diamondScrollHeight
+      }, 0)
+  
+      scrollTl.to(animationWrapperEl, {
+        bottom: diamondScrollBottom
+      }, 0)
+  
+      return () => {
+        scrollTl.kill()
       }
-    })
-
-    scrollTl.fromTo(diamondRef.current, {
-      height: diamondHeight
-    }, {
-      height: diamondScrollHeight
-    }, 0)
-
-    scrollTl.to(animationWrapperRef.current, {
-      bottom: diamondScrollBottom
-    }, 0)
-
-    return () => {
-      scrollTl.kill()
     }
-  }, [diamondScrollBottom, diamondScrollHeight, diamondHeight])
+  }, [diamondScrollBottom, diamondScrollHeight, diamondHeight, diamondEl, animationWrapperEl])
 
   return (
     <>
-      <AnimationWrapper ref={animationWrapperRef}>
+      <AnimationWrapper ref={ref => setAnimationWrapperEl(ref)}>
         <Animation trigger={diamondTrigger} duration={0.65} height={animationHeight}>
-          <Diamond ref={diamondRef} src={DiamondGIF} alt="rotating diamond"/>
+          <Diamond ref={ref => setDiamondEl(ref)} src={DiamondGIF} alt="rotating diamond"/>
         </Animation>
       </AnimationWrapper>
 
