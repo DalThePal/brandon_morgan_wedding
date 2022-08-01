@@ -1,9 +1,13 @@
 import React, { useRef, useContext } from 'react'
 import styled from 'styled-components'
+import { useLocation } from 'react-router-dom'
 
-import { RegistryContext, RouteContext } from './Providers'
+import { RouteContext, ScreenContext } from './Providers'
 
 import { useMedia } from 'utils/hooks'
+import { links } from 'utils/links'
+
+import SmallButton from 'components/buttons/Small'
 
 import colors from 'styles/colors'
 import text   from 'styles/text'
@@ -12,9 +16,11 @@ import media  from 'styles/media'
 import { ReactComponent as ArcSVG } from 'images/arc.svg'
 import DiamondGIF from 'images/diamond.gif'
 
-const Footer = ({ diamond, leftText }) => {
-  const registry  = useContext(RegistryContext)
-  const route     = useContext(RouteContext)
+const Footer = ({ diamond }) => {
+  const route = useContext(RouteContext)
+  const { mobile } = useContext(ScreenContext)
+  const { pathname } = useLocation()
+
 
   const diamondRef = useRef(null)
 
@@ -26,7 +32,7 @@ const Footer = ({ diamond, leftText }) => {
   }
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       {diamond && <Diamond ref={diamondRef} src={DiamondGIF}/>}
       <Arc/>
       <SVG>
@@ -36,13 +42,26 @@ const Footer = ({ diamond, leftText }) => {
         <Line x1={"0%"}   x2={x2}     y1={"0%"}   y2={"0%"}/>
         <Line x1={x1}     x2={"100%"} y1={"0%"}   y2={"0%"}/>
       </SVG> 
-      <Left>{leftText}</Left>
+      <Left>
+        Get ready to party!
+        {pathname !== '/rsvp' && <SmallButton 
+          width={mobile ? '100%' : 'fit-content'}
+          onClick={() => linkClick("/rsvp")}
+          backgroundColor={colors.roseIvory}
+          color={colors.mauve800}
+        >RSVP</SmallButton>}
+      </Left>
       <Right>
-        <Text>Please come back after March 15th for a completed "Details" page and more information about the wedding weekend agenda.</Text>
+        <Text>Please submit your RSVP before August 13th to allow for accurate head count for food & dinner.</Text>
         <Links>
-          <P onClick={() => registry.setState(true)}>Registry</P>
+          <P onClick={() => linkClick('/')} >Home</P>
           <P onClick={() => linkClick('/travel')} >Travel</P>
+          <P onClick={() => linkClick('/details')} >Details</P>
         </Links>
+        <RegistryLinks>
+          <Registry href={links.target} target="blank">Target Registry</Registry>
+          <Registry href={links.crateAndBarrel} target="blank">Crate & Barrel Registry</Registry>
+        </RegistryLinks>
       </Right>
     </Wrapper>
   )
@@ -79,12 +98,15 @@ const Wrapper = styled.footer`
 `
 
 const Left = styled.p`
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index: 2;
   ${text.desktop.h7}
   color: ${colors.roseIvory};
 
   width: 35.069vw;
+  gap: 1.74vw;
 
   ${media.mobile} {
     ${text.mobile.body}
@@ -117,7 +139,7 @@ const Text = styled.p`
 
   ${media.mobile} {
     ${text.mobile.body}
-    margin-bottom: 13.333vw;
+    margin-bottom: 8vw;
   }
 `
 
@@ -126,6 +148,14 @@ const Links = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  gap: 3.47vw;
+  margin-bottom: 1.74vw;
+
+  ${media.mobile} {
+    gap: 13.33vw;
+    margin-bottom: 6.67vw;
+  }
 `
 
 const P = styled.p`
@@ -133,13 +163,11 @@ const P = styled.p`
   color: ${colors.roseIvory};
   text-decoration: none;
   cursor: pointer;
+  width: fit-content;
   opacity: ${props => props.disabled ? 0.5 : 1};
-
-  margin-right: 5.208vw;
 
   ${media.mobile} {
     ${text.mobile.body}
-    margin-right: 9.6vw;
   }
 `
 
@@ -197,6 +225,30 @@ const Diamond = styled.img`
 
   ${media.mobile} {
     height: 27vw;
-    top: -3.5vw;
+    top: 6vw;
+  }
+`
+
+const RegistryLinks = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  gap: 3.47vw;
+
+  ${media.mobile} {
+    gap: 13.33vw;
+  }
+`
+
+const Registry = styled.a`
+  cursor: pointer;
+  ${text.desktop.navSmall}
+  color: ${colors.roseIvory};
+  text-decoration: none;
+
+  ${media.mobile} {
+    ${text.mobile.navSmall}
   }
 `

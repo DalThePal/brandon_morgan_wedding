@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
@@ -12,8 +12,9 @@ import media from 'styles/media'
 
 const Date = () => {
 
-  const wrapperRef = useRef(null)
-  const vrRef = useRef(null)
+  const [wrapperEl, setWrapperEl] = useState(null)
+  const [vrEl, setVrEl] = useState(null)
+  const [initial, setInitial] = useState(false)
 
   const scrollTlStart = useMedia(
     `top-=${(window.innerWidth / 100) * 3} bottom-=${(window.innerWidth / 100) * 20}`,
@@ -32,45 +33,58 @@ const Date = () => {
   const vrHeight = useMedia("34.236vw", "34.236vw", "34.236vw", "131.467vw")
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      delay: 1.2
-    })
-
-    tl.to(vrRef.current, {
-      duration: 1.4,
-      height: vrHeight
-    }, 0)
-
-    return () => {
-      tl.kill()
+    if (vrEl) {
+      const tl = gsap.timeline({
+        delay: 1.2,
+        onComplete: () => {
+          setInitial(true)
+        }
+      })
+  
+      tl.fromTo(vrEl, {
+        height: '0vw'
+      }, {
+        duration: 1.4,
+        height: vrHeight
+      }, 0)
+  
+      return () => {
+        tl.kill()
+      }
     }
-  }, [vrHeight])
+  }, [vrHeight, vrEl])
 
   useEffect(() => {
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        scroller: '.smooth-scroll',
-        trigger: wrapperRef.current,
-        start: scrollTlStart,
-        end: scrollTlEnd,
-        scrub: true,
+    if (wrapperEl && vrEl && initial) {
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapperEl,
+          start: scrollTlStart,
+          end: scrollTlEnd,
+          scrub: true,
+        }
+      })
+  
+      scrollTl.fromTo(vrEl, {
+        height: vrHeight,
+        immediateRender: false,
+
+      }, {
+        immediateRender: false,
+        height: '0vw',
+        ease: 'none'
+      })
+  
+      return () => {
+        scrollTl.kill()
       }
-    })
-
-    scrollTl.to(vrRef.current, {
-      height: '0vw',
-      ease: 'none'
-    })
-
-    return () => {
-      scrollTl.kill()
     }
-  }, [scrollTlStart, scrollTlEnd])
+  }, [scrollTlStart, scrollTlEnd, wrapperEl, vrEl, vrHeight, initial])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={ref => setWrapperEl(ref)}>
 
-      <StyledVR ref={vrRef}/>
+      <StyledVR ref={ref => setVrEl(ref)}/>
 
       <SubText>WE'RE SAYING I DO</SubText>
       <Title>September 10th, 2022</Title>
@@ -127,7 +141,6 @@ const Title = styled.h2`
 const StyledVR = styled(VR)`
   left: 50%;
   transform: translate(-50%);
-
   height: 0vw;
   bottom: 47.778vw;
 

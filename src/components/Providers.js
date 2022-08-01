@@ -2,7 +2,6 @@ import React, { useState, useEffect, createContext } from 'react'
 import { desktop, tablet, mobile } from 'styles/media'
 
 export const ScreenContext    = createContext(null)
-export const RegistryContext  = createContext(null)
 export const RouteContext     = createContext(null)
 
 const Providers = ({ children }) => {
@@ -14,7 +13,6 @@ const Providers = ({ children }) => {
     fullWidth : false
   })
 
-  const [registryOpen, setRegistryOpen] = useState(false)
   const [route, setRoute] = useState(null)
 
   useEffect(() => {
@@ -39,9 +37,7 @@ const Providers = ({ children }) => {
   return (
     <RouteContext.Provider value={{state: route, setState: setRoute}}>
       <ScreenContext.Provider value={screen}>
-        <RegistryContext.Provider value={{state: registryOpen, setState: setRegistryOpen}}>
-          {children}
-        </RegistryContext.Provider>
+        {children}
       </ScreenContext.Provider>
     </RouteContext.Provider>
   )

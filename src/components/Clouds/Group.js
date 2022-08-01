@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap, { ScrollTrigger } from 'gsap/all'
-import { Cloud } from '@react-three/drei'
+// import { Cloud } from '@react-three/drei'
+import Cloud from './Cloud'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -10,6 +11,10 @@ const CLOUD_OPTIONS = {
   width: 10,
   depth: 0.3,
   segments: 25,
+  dimensions: {
+    width: 100,
+    height: 100
+  }
 }
 
 const Group = () => {
@@ -23,7 +28,7 @@ const Group = () => {
       }, {
         delay: 1,
         duration: 1,
-        y: '0'
+        y: 5
       })
     }
   }, [group])
@@ -32,10 +37,9 @@ const Group = () => {
     if (group) {
       const tl = gsap.timeline({
         scrollTrigger: {
-          scroller: '.smooth-scroll',
-          trigger: '.smooth-scroll',
+          trigger: '#scroll-wrapper',
           start: "top top",
-          end: "top+=1600 top",
+          end: `top+=${window.innerHeight * 2.5} top`,
           scrub: true
         }
       })
@@ -49,6 +53,35 @@ const Group = () => {
       }
     }
   }, [group])
+
+  // useEffect(() => {
+  //   if (group) {
+  //     setInterval(() => {
+  //       Array.from(group.children).forEach((cloud) => {
+  //         console.log(cloud)
+  //         if (cloud.position.z > 10) {
+  //           Array.from(cloud.children[0].children).forEach((segment) => {
+  //             gsap.to(segment.material, {
+  //               opacity: 0,
+  //               duration: 1,
+  //               onComplete: () => {
+  //                 gsap.set(cloud.position, {
+  //                   z: -5
+  //                 })
+  //               }
+  //             })
+  //           })
+  //         } else {
+  //           gsap.to(cloud.position, {
+  //             ease: "none",
+  //             duration: 1,
+  //             z: "+=1"
+  //           })
+  //         }
+  //       })
+  //     }, 1000)
+  //   }
+  // }, [group])
 
   return (
     <group ref={ref => setGroup(ref)}>

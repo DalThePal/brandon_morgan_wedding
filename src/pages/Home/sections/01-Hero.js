@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import gsap from 'gsap'
 
 import AppearAnimation from 'components/AppearAnimation'
-import Clouds from 'components/Clouds'
-
-import { useCloudMovement } from 'utils/hooks'
+// import Clouds from 'components/Clouds'
 
 import colors from 'styles/colors'
 import text from 'styles/text'
@@ -31,7 +29,7 @@ const Hero = () => {
   }, [])
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
 
       <Title1>
         <AppearAnimation trigger={title1Trigger} duration={0.5} height="12.5vw">Morgan</AppearAnimation>

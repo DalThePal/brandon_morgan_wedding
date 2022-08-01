@@ -14,7 +14,7 @@ const Wedding = () => {
   const { mobile } = useContext(ScreenContext)
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       <Img src={mobile ? WeddingMobilePNG : WeddingPNG} alt="venue"/>
       <H6>The wedding ceremony & reception will be held at The Castle at Wadley Farms in Lindon, Utah.</H6>
       <H6Clipped>The wedding ceremony & reception will be held at The Castle at Wadley Farms in Lindon, Utah.</H6Clipped>

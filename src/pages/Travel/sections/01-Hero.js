@@ -9,7 +9,7 @@ import PlaneGIF from 'images/travel/plane.gif'
 
 const Hero = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       <Plane src={PlaneGIF} alt="plane"/>
       <Container>
         <H1>Travel</H1>

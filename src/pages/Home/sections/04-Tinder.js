@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 
-import { useMedia, useCloudMovement } from 'utils/hooks'
+import { useMedia } from 'utils/hooks'
 
 import { VR } from 'components/Styled'
 
@@ -22,13 +22,6 @@ const Tinder = () => {
   const [cloud2Ref, setCloud2Ref] = useState(null) 
   const [cloud3Ref, setCloud3Ref] = useState(null) 
   const [cloud4Ref, setCloud4Ref] = useState(null) 
- 
-  useCloudMovement([
-    cloud1Ref,
-    cloud2Ref,
-    cloud3Ref,
-    cloud4Ref
-  ])
 
   const scrollStart = useMedia(
     `top-=${(window.innerWidth / 100) * 18.6} bottom-=${(window.innerWidth / 100) * 32}`,
@@ -47,7 +40,6 @@ const Tinder = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        scroller: ".smooth-scroll",
         trigger: wrapperRef.current,
         start: scrollStart,
         end: scrollEnd,
@@ -66,7 +58,7 @@ const Tinder = () => {
   }, [scrollStart, scrollEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
 
       <StyledVR ref={vrRef}/>
 

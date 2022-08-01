@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState, useContext } from 'react'
 import styled from 'styled-components'
-import gsap from 'gsap'
+import gsap, { ScrollSmoother } from 'gsap/all'
 import { useLocation } from 'react-router-dom'
 import { RouteContext } from 'components/Providers'
 
 import { useMedia } from 'utils/hooks'
+import { links } from 'utils/links'
 
 import colors from 'styles/colors'
-import text   from 'styles/text'
 import media  from 'styles/media'
 
-import LinkWrapper from './Link'
-import PrimaryButton from 'components/buttons/Primary'
-import Animation from 'components/AppearAnimation'
+import LinkWrapper      from './Link'
+import PrimaryButton    from 'components/buttons/Primary'
+import SmallButton  from 'components/buttons/Small'
+import Animation        from 'components/AppearAnimation'
 
 const Header = () => {
   const { pathname } = useLocation()
@@ -34,7 +35,6 @@ const Header = () => {
   const [btn1Trigger, setBtn1Trigger]     = useState(false)
   const [btn2Trigger, setBtn2Trigger]     = useState(false)
   const [logoTrigger, setLogoTrigger]     = useState(false)
-  const [toggleTrigger, setToggleTrigger] = useState(false)
 
   const [tl, setTl] = useState(gsap.timeline())
   
@@ -42,7 +42,6 @@ const Header = () => {
 
   const animationHeight = useMedia("4.931vw", "4.931vw", "4.931vw", "18.933vw")
   const logoAnimHeight  = useMedia("4.167vw", "4.167vw", "4.167vw", "16vw")
-  const toggleHeight    = useMedia('1.042vw', '1.042vw', '1.042vw', '1.042vw')
 
   useEffect(() => {
     const initTl = gsap.timeline({
@@ -52,7 +51,6 @@ const Header = () => {
       }
     })
     initTl.call(setLogoTrigger, [true], 0)
-    initTl.call(setToggleTrigger, [true], 0)
     initTl.to(line1Ref.current, {
       duration: 0.5,
       attr: {
@@ -83,7 +81,7 @@ const Header = () => {
 
   useEffect(() => {
     if (open) {
-      window.locomotiveScroll.stop()
+      ScrollSmoother.get().paused(true)
 
       gsap.fromTo(contentRef.current, {
         display: 'flex'
@@ -137,7 +135,7 @@ const Header = () => {
 
     } else {
       if (initDone.current) {
-        window.locomotiveScroll.start()
+        ScrollSmoother.get().paused(false)
   
         gsap.to(contentRef.current, {
           duration,
@@ -212,6 +210,7 @@ const Header = () => {
 
   return (
     <Wrapper ref={wrapperRef} >
+
       <Top>
         <LogoWrapper onClick={() => linkClick('/')}>
           <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
@@ -257,38 +256,45 @@ const Header = () => {
             </Logo>
           </Animation>
         </LogoWrapper>
-        <Toggle onClick={() => setOpen(!open)}>
-          <ToggleText ref={textRef}>
-            <Animation trigger={toggleTrigger} height={toggleHeight} duration={0.5}>
-              Menu
-            </Animation>
-          </ToggleText>
-          <CloseText ref={closeTextRef}>Close</CloseText>
-          <ToggleSvg>
+        {pathname !== "/rsvp" && <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
+          <SmallButton 
+            onClick={() => linkClick("/rsvp")}
+            backgroundColor={open ? colors.mauve800 : colors.roseIvory}
+            color={open ? colors.roseIvory : colors.mauve800}
+          >RSVP</SmallButton>
+        </Animation>}
+        <Toggle >
+          <ToggleSvg onClick={() => setOpen(!open)}>
             <Line ref={line1Ref} x1={"0%"} x2={'0%'} y1={'40%'} y2={'40%'}/>
             <Line ref={line2Ref} x1={"0%"} x2={'0%'} y1={'55%'} y2={'55%'}/>
           </ToggleSvg>
         </Toggle>
       </Top>
+
       <Content ref={contentRef}>
         <LinkWrapper disabled={pathname === "/travel"} width={"40.833vw"}>
           <StyledLink onClick={() => linkClick("/travel")} >Travel</StyledLink>
         </LinkWrapper>
+
         <LinkWrapper width={"52.569vw"}>
-          <Registry onMouseLeave={registryMouseLeave} onClick={() => tl.play(0)}>
+          <Registry onMouseLeave={registryMouseLeave} onMouseEnter={() => tl.play(0)}>
             Registry
             <ButtonRow >
               <Animation height={animationHeight} trigger={btn1Trigger} duration={0.3}>
-                <PrimaryButton onClick={() => buttonClick("https://www.target.com/gift-registry/gift-giver?registryId=92b30ba0-8888-11ec-8308-8da450f277d4&type=WEDDING")}>Target</PrimaryButton>
+                <PrimaryButton onClick={() => buttonClick(links.target)}>Target</PrimaryButton>
               </Animation>
               <Animation height={animationHeight} trigger={btn2Trigger} duration={0.3}>
-                <PrimaryButton onClick={() => buttonClick("https://www.crateandbarrel.com/gift-registry/morgan-vanderveen-and-brandon-zacharias/r6458225")}>Crate & Barrell</PrimaryButton>
+                <PrimaryButton onClick={() => buttonClick(links.crateAndBarrel)}>Crate & Barrell</PrimaryButton>
               </Animation>
             </ButtonRow>
           </Registry>
         </LinkWrapper>
-        <LinkWrapper width={"41.667vw"} disabled><p>Details</p><Soon>Coming Soon...</Soon></LinkWrapper>
+
+        <LinkWrapper width={"41.667vw"}>
+          <StyledLink onClick={() => linkClick('/details')}>Details</StyledLink>
+        </LinkWrapper>
       </Content>
+
     </Wrapper>
   )
 }
@@ -342,40 +348,14 @@ const Toggle = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   cursor: pointer;
 
   height: 2.847vw;
-  width: 7.083vw;
+  gap: 1.39vw;
 
   ${media.mobile} {
     width: 13.333vw;
     height: 13.333vw;
-  }
-`
-
-const ToggleText = styled.span`
-  ${text.desktop.nav}
-  color: ${colors.roseIvory};
-
-  margin-right: 0.694vw;
-  width: 2.917vw;
-
-  ${media.mobile} {
-    display: none;
-  }
-`
-
-const CloseText = styled(ToggleText)`
-  position: absolute;
-  opacity: 0;
-  color: ${colors.mauve800};
-
-  left: 0;
-  top: 35%;
-
-  ${media.mobile} {
-    display: none;
   }
 `
 
@@ -413,18 +393,6 @@ const Content = styled.div`
 
   ${media.mobile} {
     padding-top: 40.333vw;
-  }
-`
-
-const Soon = styled.p`
-  ${text.desktop.nav}
-  text-align: center;
-  color: ${colors.mauve50};
-  width: 100%;
-  letter-spacing: 0;
-
-  ${media.mobile} {
-    ${text.mobile.nav}
   }
 `
 

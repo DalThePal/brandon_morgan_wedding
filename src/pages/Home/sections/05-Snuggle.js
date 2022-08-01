@@ -38,7 +38,6 @@ const Snuggle = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        scroller: '.smooth-scroll',
         trigger: wrapperRef.current,
         start: scrollStart,
         end: scrollEnd,
@@ -97,7 +96,7 @@ const Snuggle = () => {
   }, [scrollStart, scrollEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
       
       <VR1 ref={vr1Ref}/>
       <Border>
@@ -170,11 +169,7 @@ const Border = styled.svg`
 const Line = styled.line`
   stroke: ${colors.roseIvory};
 
-  stroke-width: 0.069vw;
-
-  ${media.mobile} {
-    stroke-width: 0.267vw;
-  }
+  stroke-width: 1px;
 `
 
 const VR1 = styled(VR)`
