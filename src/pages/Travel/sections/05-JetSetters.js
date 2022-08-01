@@ -7,7 +7,7 @@ import media  from 'styles/media'
 
 const JetSetters = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper >
       <P>IF YOU PLAN TO JET SET</P>
       <H6>
         Fly into Salt Lake City International Airport, 

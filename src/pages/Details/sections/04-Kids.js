@@ -7,7 +7,7 @@ import media from 'styles/media'
 
 const Kids = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       <Title>ArE KIdS INvITEd?</Title>
       <Content>
         <Kicker>Of course!</Kicker>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useContext } from 'react'
 import styled from 'styled-components'
-import gsap from 'gsap'
+import gsap, { ScrollSmoother } from 'gsap/all'
 import { useLocation } from 'react-router-dom'
 import { RouteContext } from 'components/Providers'
 
@@ -81,7 +81,7 @@ const Header = () => {
 
   useEffect(() => {
     if (open) {
-      window.locomotiveScroll.stop()
+      ScrollSmoother.get().paused(true)
 
       gsap.fromTo(contentRef.current, {
         display: 'flex'
@@ -135,7 +135,7 @@ const Header = () => {
 
     } else {
       if (initDone.current) {
-        window.locomotiveScroll.start()
+        ScrollSmoother.get().paused(false)
   
         gsap.to(contentRef.current, {
           duration,
@@ -256,11 +256,13 @@ const Header = () => {
             </Logo>
           </Animation>
         </LogoWrapper>
-        {pathname !== "/rsvp" && <SmallButton 
+        {pathname !== "/rsvp" && <Animation height={logoAnimHeight} duration={0.3} trigger={logoTrigger}>
+          <SmallButton 
             onClick={() => linkClick("/rsvp")}
             backgroundColor={open ? colors.mauve800 : colors.roseIvory}
             color={open ? colors.roseIvory : colors.mauve800}
-          >RSVP</SmallButton>}
+          >RSVP</SmallButton>
+        </Animation>}
         <Toggle >
           <ToggleSvg onClick={() => setOpen(!open)}>
             <Line ref={line1Ref} x1={"0%"} x2={'0%'} y1={'40%'} y2={'40%'}/>
@@ -346,6 +348,7 @@ const Toggle = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   height: 2.847vw;
   gap: 1.39vw;

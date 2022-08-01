@@ -9,7 +9,7 @@ import ArrowSVG from 'images/largeArrow.svg'
 
 const Hero = () => {
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
       <Title>ThE DEETS</Title>
       <Content>
         <Large>Wedding Location</Large>

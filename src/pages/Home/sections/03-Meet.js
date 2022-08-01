@@ -34,7 +34,6 @@ const Meet = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        scroller: ".smooth-scroll",
         trigger: wrapperRef.current,
         start: scrollStart,
         end: scrollEnd,
@@ -53,7 +52,7 @@ const Meet = () => {
   }, [scrollStart, scrollEnd])
 
   return (
-    <Wrapper ref={wrapperRef} data-scroll-section>
+    <Wrapper ref={wrapperRef}>
 
       <StyledVR ref={vrRef}/>
 

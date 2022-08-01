@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Scroll from 'components/Scroll'
+
 import Hero       from './sections/01-Hero'
 import Wedding    from './sections/02-Wedding'
 import Weekend    from './sections/03-Weekend' 
@@ -11,7 +13,7 @@ import Footer     from 'components/Footer'
 
 const Travel = () => {
   return (
-    <>
+    <Scroll>
       <Hero/>
       <Wedding/>
       <Weekend/>
@@ -23,7 +25,7 @@ const Travel = () => {
         diamond
         leftText={"We Can't Say I Do Without You!"}
       />
-    </>
+    </Scroll>
   )
 }
 

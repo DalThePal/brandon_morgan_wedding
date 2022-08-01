@@ -71,7 +71,7 @@ const Hero = () => {
   }, [cloud1Ref, cloud2Ref, cloud3Ref, cloud4Ref, cloud5Ref, cloud6Ref])
 
   return (
-    <Wrapper data-scroll-section>
+    <Wrapper>
 
       <Title1>
         <AppearAnimation trigger={title1Trigger} duration={0.5} height="12.5vw">Morgan</AppearAnimation>

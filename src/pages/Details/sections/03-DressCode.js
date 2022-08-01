@@ -13,6 +13,7 @@ import { ScreenContext } from "components/Providers"
 const DressCode = () => {
 
   const wrapperRef = useRef(null)
+  const innerRef = useRef(null)
   const titleRef = useRef(null)
   const { mobile } = useContext(ScreenContext)
 
@@ -30,13 +31,6 @@ const DressCode = () => {
     `bottom bottom+=${(window.innerWidth / 100) * 10}`
   )
 
-  const scrollOffset = useMedia(
-    `${(window.innerWidth / 100) * 10}, ${(window.innerWidth / 100) * 21}`,
-    `${(window.innerWidth / 100) * 0}, ${(window.innerWidth / 100) * 21}`,
-    `${(window.innerWidth / 100) * 0}, ${(window.innerWidth / 100) * 21}`,
-    `-${(window.innerWidth / 100) * 0}, ${(window.innerWidth / 100) * 50}`
-  )
-
   const titleLeft = useMedia('-30%', '-30%', '-30%', '-75%')
 
   useEffect(() => {
@@ -44,9 +38,9 @@ const DressCode = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: wrapperRef.current,
-          scroller: '.smooth-scroll',
           start: scrollStart,
           end: scrollEnd,
+          pin: innerRef.current,
           scrub: true,
         }
       })
@@ -63,8 +57,8 @@ const DressCode = () => {
   }, [scrollStart, scrollEnd, titleLeft, mobile])
 
   return (
-    <Wrapper id="dress-code" ref={wrapperRef} data-scroll-section>
-      <Inner data-scroll data-scroll-sticky data-scroll-target="#dress-code" data-scroll-offset={scrollOffset}>
+    <Wrapper ref={wrapperRef}>
+      <Inner ref={innerRef}>
         {!mobile && <Title ref={titleRef}>DrESS COdE</Title>}
         {mobile && <MobileTitleWrapper ref={titleRef}>
           <Title>dress</Title>
